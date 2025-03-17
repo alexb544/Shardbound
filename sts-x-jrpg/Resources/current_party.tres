@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PartyMembers" load_steps=5 format=3 uid="uid://ckeal52vg1x3o"]
+
+[ext_resource type="PackedScene" uid="uid://croju2g5rttil" path="res://Scenes/characters/player.tscn" id="1_gnp2r"]
+[ext_resource type="Script" path="res://Utilities/party_members.gd" id="1_kjyaj"]
+[ext_resource type="PackedScene" uid="uid://c7dvwy5nvhcym" path="res://Scenes/characters/ishil.tscn" id="2_7216a"]
+[ext_resource type="PackedScene" uid="uid://0uk8n1nud5wb" path="res://Scenes/characters/wadow.tscn" id="3_xs0nk"]
+
+[resource]
+script = ExtResource("1_kjyaj")
+party1 = ExtResource("1_gnp2r")
+party2 = ExtResource("3_xs0nk")
+party4 = ExtResource("2_7216a")

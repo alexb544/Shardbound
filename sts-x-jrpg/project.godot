@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="STS x JRPG"
+run/main_scene="res://Scenes/gameplay/combat_scene.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://Graphics/ui/cursor_MAYBE.png"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=640
+window/size/window_height_override=360
+window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://Databases/": "gray",
+"res://Graphics/": "red",
+"res://Resources/": "teal",
+"res://Scenes/": "purple",
+"res://Scripts/": "green",
+"res://Utilities/": "orange"
+}
+
+[gui]
+
+theme/custom_font="res://Utilities/Fonts/Abaddon Bold.ttf"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

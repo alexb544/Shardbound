@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8c5hgeejgpnx"]
+
+[ext_resource type="Texture2D" uid="uid://cwdu8y1yvimrk" path="res://Graphics/units/enemies/zone1_enemies/1010010_idle.png" id="1_nncjy"]
+[ext_resource type="Script" path="res://Scenes/enemies/rat.gd" id="2_lyka8"]
+[ext_resource type="Resource" uid="uid://cjrcy1kjmna0q" path="res://Resources/Enemies/rat.tres" id="3_frj85"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqjob"]
+atlas = ExtResource("1_nncjy")
+region = Rect2(0, 0, 66, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m40a0"]
+atlas = ExtResource("1_nncjy")
+region = Rect2(66, 0, 66, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvepk"]
+atlas = ExtResource("1_nncjy")
+region = Rect2(132, 0, 66, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2h4t"]
+atlas = ExtResource("1_nncjy")
+region = Rect2(0, 69, 66, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql5w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqjob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m40a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvepk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2h4t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ql5w2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.108869
+script = ExtResource("2_lyka8")
+stats = ExtResource("3_frj85")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://crhhmljkxtb3g"]
+
+[ext_resource type="Texture2D" uid="uid://cu6ukef83dtib" path="res://Graphics/units/party/roy/idle.png" id="1_6qt0q"]
+[ext_resource type="Script" path="res://Scenes/characters/roy.gd" id="1_m88al"]
+[ext_resource type="Resource" uid="uid://bdkar71doovhd" path="res://Resources/Characters/roy.tres" id="2_xp1h1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t5o2"]
+atlas = ExtResource("1_6qt0q")
+region = Rect2(0, 0, 62, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kq7t"]
+atlas = ExtResource("1_6qt0q")
+region = Rect2(62, 0, 62, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkn4g"]
+atlas = ExtResource("1_6qt0q")
+region = Rect2(124, 0, 62, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7ibx"]
+atlas = ExtResource("1_6qt0q")
+region = Rect2(0, 70, 62, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqgxq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t5o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kq7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkn4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7ibx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_lqgxq")
+autoplay = "default"
+frame = 2
+frame_progress = 0.584647
+script = ExtResource("1_m88al")
+stats = ExtResource("2_xp1h1")

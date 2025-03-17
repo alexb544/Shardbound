@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx87k75wb5i35"]
+
+[ext_resource type="Texture2D" uid="uid://cuw1urxhqco3k" path="res://Graphics/ui/global_ability_10128.png" id="1_wrtyg"]
+[ext_resource type="Texture2D" uid="uid://b0fdp3osoehpy" path="res://Graphics/ui/map_icon.png" id="2_3ifwe"]
+[ext_resource type="Texture2D" uid="uid://5r0yx38u0vh5" path="res://Graphics/ui/gold_icon.png" id="3_quqpp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2t17t"]
+font_size = 14
+font_color = Color(1, 0.952941, 0.239216, 1)
+outline_size = 5
+outline_color = Color(0.0588235, 0.054902, 0, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc8ee"]
+font_size = 13
+font_color = Color(1, 0.952941, 0.239216, 1)
+outline_size = 5
+outline_color = Color(0.0605748, 0.0547391, 0, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Top_UI" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="TopUI_Bar" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.1
+offset_bottom = -4.0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Background" type="ColorRect" parent="TopUI_Bar"]
+layout_mode = 2
+color = Color(0.152941, 0.152941, 0.152941, 0.882353)
+
+[node name="MenuIcons" type="HBoxContainer" parent="TopUI_Bar"]
+clip_contents = true
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Settings" type="TextureButton" parent="TopUI_Bar/MenuIcons"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+texture_normal = ExtResource("1_wrtyg")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Map" type="TextureButton" parent="TopUI_Bar/MenuIcons"]
+custom_minimum_size = Vector2(50, 32)
+layout_mode = 2
+texture_normal = ExtResource("2_3ifwe")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Control" type="Control" parent="TopUI_Bar/MenuIcons"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="GoldAmount" type="Label" parent="TopUI_Bar/MenuIcons"]
+layout_mode = 2
+text = "50"
+label_settings = SubResource("LabelSettings_2t17t")
+
+[node name="GoldText" type="Label" parent="TopUI_Bar/MenuIcons"]
+custom_minimum_size = Vector2(-50, 0)
+layout_mode = 2
+text = "Gold: "
+label_settings = SubResource("LabelSettings_yc8ee")
+
+[node name="Gold" type="TextureRect" parent="TopUI_Bar/MenuIcons"]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+texture = ExtResource("3_quqpp")
+expand_mode = 3
+stretch_mode = 6

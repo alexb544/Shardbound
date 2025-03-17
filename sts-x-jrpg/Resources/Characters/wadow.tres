@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://dmm0sqptrat63"]
+
+[ext_resource type="Script" path="res://Utilities/character_stats.gd" id="1_flx6y"]
+
+[resource]
+script = ExtResource("1_flx6y")
+char_name = "Wadow"
+level = 3
+health = 105
+mana = 60
+strength = 8
+magic = 5
+speed = 15

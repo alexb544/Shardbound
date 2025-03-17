@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Shard" load_steps=2 format=3 uid="uid://m4xdv52q56sj"]
+
+[ext_resource type="Script" path="res://Utilities/shards.gd" id="1_wha0q"]
+
+[resource]
+script = ExtResource("1_wha0q")
+ability_name = "Firebolt"
+type = 1
+attribute = 0
+target = 2

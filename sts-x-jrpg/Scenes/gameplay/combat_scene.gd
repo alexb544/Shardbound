@@ -1,0 +1,86 @@
+extends Control
+# === Variables =======================================================================
+@export var party_list   : PartyMembers 
+@export var player_stats : CharacterStats = preload("res://Resources/Characters/Player.tres")
+
+@onready var party_positions = $Party
+@onready var enemy_positions = $Enemies
+
+var party      : PartyMembers = preload("res://Resources/current_party.tres")
+var enemy_list : EnemyList = null
+
+# === Main ============================================================================
+func _ready() -> void:
+	var player_level = get_player_level()
+	load_party()
+	set_enemy_resource("res://Resources/EnemyGroups/low_level.tres")
+	load_enemies(player_level)
+
+func _process(_delta: float) -> void:
+	pass
+
+# === Methods ==================================================================================
+func load_party():
+	var spawnpoints = party_positions.get_children() # get all children nodes under $Party
+	var party_members = party.getPartyList() # gets a list of current party members
+	
+	for i in range(party_members.size()): 
+		if party_members[i] == null: # skips iteration if unit isn't assigned/no party member avaialble
+			continue 
+		var unit = party_members[i].instantiate()
+		var spawn_point = spawnpoints[i] # gets the spawn point at index[i]
+		unit.global_position = spawn_point.global_position 
+		add_child.call_deferred(unit)
+
+func load_enemies(level: int):
+	if enemy_list == null:
+		print("Error: Enemy list not valid")
+		return
+	
+	var enemies_count = clamp(level, 1, 4) # Sets a min/max(1-4) for enemy spawns based on player's level. 
+	var enemy_group = []
+	var spawnpoints = enemy_positions.get_children() # Indexs Children Nodes under $Enemies
+	
+	while enemy_group.size() < enemies_count:
+		var selected_enemy = enemy_list.get_random_enemy() # Selects a random index from the enemy_list array using EnemyGroup Class method
+		if selected_enemy == null:
+			print("No valid enemy returned, retrying")
+			continue
+			
+		enemy_group.append(selected_enemy)
+			
+	for i in range(enemy_group.size()):
+		var enemy_scene = enemy_group[i]
+		var spawn_enemy = enemy_scene.instantiate()
+		var spawn_point = spawnpoints[i]             
+		#var spawn_point = spawnpoints[enemy_group.find(i)]            # Gets the spawn point at index[enemy] 
+		spawn_enemy.global_position = spawn_point.global_position
+		add_child.call_deferred(spawn_enemy)
+
+func get_player_level() -> int:
+	if player_stats:
+		return player_stats.level # Gets player's level 
+	else:
+		print("Error: Stats resource not loaded.")
+		return 1 # Default
+
+func set_enemy_resource(resource_path : String):
+	enemy_list = load(resource_path) as EnemyList
+	if not enemy_list:
+		print("Failed to load enemy resource from:", resource_path)
+		return
+	print("Enemy resource loaded successfully: ", enemy_list)
+	
+	if enemy_list.enemy_group.size() == 0:
+		print("Error: enemy_group is empty!")
+	else:
+		print("Enemy group loaded with ", enemy_list.enemy_group.size(), " enemies.")
+
+# === Buttons =========================================================================
+func _on_attack_pressed() -> void:
+	#TODO: Select Target & Damage Enemy 
+	pass
+
+func _on_defend_pressed() -> void:
+	# TODO: Reduce Damage Taken by 50% until next turn
+	pass

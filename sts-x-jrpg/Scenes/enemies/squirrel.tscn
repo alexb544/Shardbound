@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=3 uid="uid://cwsdlhkwalgks"]
+
+[ext_resource type="Texture2D" uid="uid://c7kc2iofyatl3" path="res://Graphics/units/enemies/zone1_enemies/1010110_idle.png" id="1_32kmt"]
+[ext_resource type="Texture2D" uid="uid://85usgtsgbmnx" path="res://Graphics/ui/indicator.png" id="2_4ylra"]
+[ext_resource type="Texture2D" uid="uid://c7mb72rbk1r53" path="res://Graphics/units/enemies/zone1_enemies/1010110_atk.png" id="2_aoj37"]
+[ext_resource type="Script" path="res://Scenes/enemies/squirrel.gd" id="3_lmkg7"]
+[ext_resource type="Resource" uid="uid://dvcu73s16pgbo" path="res://Resources/Enemies/squirrel.tres" id="4_1h3f6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sld0x"]
+atlas = ExtResource("2_aoj37")
+region = Rect2(0, 0, 54, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti0ev"]
+atlas = ExtResource("2_aoj37")
+region = Rect2(54, 0, 54, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrwr"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(0, 0, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wykh6"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(56, 0, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj2yt"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(112, 0, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnvd1"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(0, 53, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v6te"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(56, 53, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsbex"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(112, 53, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd0id"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(0, 106, 56, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a33q"]
+atlas = ExtResource("1_32kmt")
+region = Rect2(56, 106, 56, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70pgw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wykh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj2yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnvd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v6te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsbex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd0id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a33q")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Squirrel" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_70pgw")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.698111
+script = ExtResource("3_lmkg7")
+stats = ExtResource("4_1h3f6")
+
+[node name="focus" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(45, 0)
+rotation = 1.5708
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_4ylra")
+flip_h = true
+hframes = 5
+frame = 3

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://cjrcy1kjmna0q"]
+
+[ext_resource type="Script" path="res://Utilities/enemy_stats.gd" id="1_dlx0o"]
+
+[resource]
+script = ExtResource("1_dlx0o")
+enemy_name = "Rat"
+max_health = 30
+damage = 10
+speed = 7
+exp_earned = 20

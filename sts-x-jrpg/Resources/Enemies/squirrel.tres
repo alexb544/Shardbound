@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://dvcu73s16pgbo"]
+
+[ext_resource type="Script" path="res://Utilities/enemy_stats.gd" id="1_hneje"]
+
+[resource]
+script = ExtResource("1_hneje")
+enemy_name = "Squirrel"
+max_health = 25
+damage = 8
+speed = 5
+exp_earned = 15

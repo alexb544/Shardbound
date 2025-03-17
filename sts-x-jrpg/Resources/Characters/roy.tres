@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://bdkar71doovhd"]
+
+[ext_resource type="Script" path="res://Utilities/character_stats.gd" id="1_4j06y"]
+
+[resource]
+script = ExtResource("1_4j06y")
+char_name = "Roy"
+level = 3
+health = 80
+mana = 110
+strength = 6
+magic = 12
+speed = 10

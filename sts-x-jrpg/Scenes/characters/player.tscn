@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://croju2g5rttil"]
+
+[ext_resource type="Texture2D" uid="uid://qm5yn67ay2aa" path="res://Graphics/units/party/player/idle.png" id="1_eynx0"]
+[ext_resource type="Script" path="res://Scenes/characters/player.gd" id="1_w3kkf"]
+[ext_resource type="Resource" uid="uid://cyfrmbjahvuse" path="res://Resources/Characters/Player.tres" id="2_vl232"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y41w"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(0, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4brnm"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(75, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id5jv"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(150, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1muq1"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(0, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4rtl"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(75, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0s02"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(150, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvtn5"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(0, 130, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lskno"]
+atlas = ExtResource("1_eynx0")
+region = Rect2(75, 130, 75, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85f3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y41w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4brnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id5jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1muq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4rtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0s02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvtn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lskno")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_85f3m")
+autoplay = "default"
+frame_progress = 0.269593
+script = ExtResource("1_w3kkf")
+stats = ExtResource("2_vl232")

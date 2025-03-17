@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://ddfxt185sca6n"]
+
+[ext_resource type="Script" path="res://Utilities/character_stats.gd" id="1_5xwjm"]
+
+[resource]
+script = ExtResource("1_5xwjm")
+char_name = "Ishil"
+level = 3
+health = 90
+mana = 80
+strength = 12
+magic = 5
+speed = 8
