@@ -124,7 +124,7 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["character"]]
 sprite_frames = SubResource("SpriteFrames_2awgk")
 autoplay = "default"
 frame = 15

@@ -1,0 +1,17 @@
+TODO List:
+	
+	Track Party HP:
+		taking damage
+		healing
+
+
+	Create Save System (Global):
+		saves at the start of entering a new map point.
+		wipes after run is complete (won/lost)
+		
+	Settings System (Global):
+		window size?
+		sound/music?
+		keybinds?
+
+	

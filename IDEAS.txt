@@ -1,0 +1,6 @@
+Ideas/Things to implement:
+	
+	The # of enemies spawned in regular battles should be determined by how many the player has taken:
+		i.e. (1st)fight = 1 enemy, (2nd)fight = 2 enemies, (3rd&4th)fight = 3 enemies, (5th+)fight = 4 enemies
+
+	

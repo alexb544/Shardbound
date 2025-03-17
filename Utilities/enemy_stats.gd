@@ -8,3 +8,9 @@ extends Resource
 @export var speed : int
 
 @export var exp_earned : int 
+
+
+var current_health : int 
+
+func _init() -> void:
+	current_health = max_health

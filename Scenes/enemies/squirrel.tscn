@@ -104,7 +104,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Squirrel" type="AnimatedSprite2D"]
+[node name="Squirrel" type="AnimatedSprite2D" groups=["mob"]]
 sprite_frames = SubResource("SpriteFrames_70pgw")
 animation = &"Idle"
 autoplay = "Idle"
