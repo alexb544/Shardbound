@@ -14,12 +14,15 @@ var current_turn = 0
 
 # === Main ============================================================================
 func _ready() -> void:
-	var player_level = get_player_level()
-	load_party()
 	set_enemy_resource("res://Resources/EnemyGroups/low_level.tres")
-	load_enemies(player_level)
+	#var player_level = get_player_level()
+	CombatManager.battle_scaling()
+	
+	load_party()
+	load_enemies(CombatManager.combat_total)
+	print(CombatManager.combat_total)
 	setup_turn_order()
-	print(party_list)
+
 func _process(_delta: float) -> void:
 	pass
 
