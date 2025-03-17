@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_dlx0o")
 enemy_name = "Rat"
-max_health = 30
-damage = 10
-speed = 7
 exp_earned = 20
+max_health = 30
+strength = 7
+speed = 7

@@ -6,19 +6,19 @@ signal unit_died(unit)
 var combat_total : int = 0 # counts how many combats the player has taken
 
 func damage_taken(unit : Resource, amount : int):
-	if unit == null:
-		return
-	unit.current_health = max(0, unit.current_health - amount)
+	if amount < unit.current_health:
+		unit.current_health = unit.current_health - amount
+	else: 
+		unit.current_health = 0
 	health_changed.emit(unit, unit.current_health)
-	
-	if unit.current_health == 0:
-		unit_died.emit(unit)
+	unit_died.emit(unit)
 
 func heal(unit : Resource, amount : int):
-	if unit == null:
-		return
-	unit.current_health = min(unit.max_health, unit.current_health + amount)
+	unit.current_health = unit.current_health + amount
+	if unit.current_health > unit.max_health:
+		unit.current_health = unit.max_health
 	health_changed.emit(unit, unit.current_health)
 
-func battle_scaling(): # 
-	combat_total += 1
+func battle_scaling(): # Increases enemy count, based on how many battles the player has fought.
+	if combat_total < 4:
+		combat_total += 1

@@ -40,7 +40,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["character"]]
+[node name="Wadow" type="AnimatedSprite2D" groups=["character"]]
 sprite_frames = SubResource("SpriteFrames_ub5si")
 autoplay = "default"
 frame_progress = 0.617831

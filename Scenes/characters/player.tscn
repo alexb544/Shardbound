@@ -68,7 +68,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["character", "in_party"]]
+[node name="Player" type="AnimatedSprite2D" groups=["character", "in_party"]]
 sprite_frames = SubResource("SpriteFrames_85f3m")
 autoplay = "default"
 frame_progress = 0.269593

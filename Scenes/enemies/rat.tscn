@@ -40,7 +40,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["mob"]]
+[node name="Rat" type="AnimatedSprite2D" groups=["mob"]]
 sprite_frames = SubResource("SpriteFrames_ql5w2")
 animation = &"idle"
 autoplay = "idle"
