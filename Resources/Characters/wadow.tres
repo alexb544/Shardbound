@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_flx6y")
-char_name = "Wadow"
+name = "Wadow"
 level = 3
-health = 105
-mana = 60
+max_health = 0
+max_mana = 0
 strength = 8
 magic = 5
 speed = 15

@@ -4,26 +4,32 @@ extends Control
 
 @onready var party_positions = $Party
 @onready var enemy_positions = $Enemies
+@onready var party_stats : CharacterStats
+@onready var enemy_stats : EnemyStats
 
 var party : PartyMembers = preload("res://Resources/current_party.tres")
+
 var party_nodes : Array = []
 var enemy_nodes : Array = []
+
 var turn_order : Array = []
-var enemy_list : EnemyList = null
 var current_turn = 0
+
+var enemy_list : EnemyList = null
 
 # === Main ============================================================================
 func _ready() -> void:
 	CombatManager.battle_scaling()
-	# TODO: currently sets "enemy set" to draw from (change later)
+	# TODO: currently sets "enemy_list" to spawn from (change later to be dynamic)
 	set_enemy_resource("res://Resources/EnemyGroups/low_level.tres")
 	load_party()
 	load_enemies()
 	setup_turn_order()
+
 func _process(_delta: float) -> void:
 	pass
 
-# === Methods ==================================================================================
+# === Setup Functions ==================================================================================
 func load_party():
 	# get all children nodes under $Party
 	var spawnpoints = party_positions.get_children()
@@ -34,6 +40,7 @@ func load_party():
 		# skips iteration if unit isn't assigned/no party member avaialble
 		if party_members[i] == null:
 			continue 
+		
 		var unit = party_members[i].instantiate()
 		# gets the spawn point at index[i]
 		var spawn_point = spawnpoints[i]
@@ -59,12 +66,15 @@ func load_enemies():
 		
 		spawn_enemy.global_position = spawn_point.global_position
 		add_child.call_deferred(spawn_enemy)
+		spawn_enemy.stats.current_health = spawn_enemy.stats.max_health
 		enemy_nodes.append(spawn_enemy)
 		turn_order.append(spawn_enemy.stats)
-	
+		print("Spawned Enemy: ", spawn_enemy.stats.name, " -> HP: ", spawn_enemy.stats.current_health, "\n")
+		
 	turn_order.sort_custom(func(a, b): return a.speed > b.speed)
 
 func set_enemy_resource(resource_path : String):
+	#TODO: update later to select different enemy_lists depending on "something"
 	enemy_list = load(resource_path) as EnemyList
 
 func setup_turn_order():
@@ -102,9 +112,9 @@ func get_current_attacker():
 func get_selected_enemy():
 	return enemy_nodes[0].stats
 
-func calculate_damage(attacker, _target):
+func calculate_damage(attacker):
 	var attack_stat = attacker.strength
-	var base_damage = attack_stat * 2 # Modify later
+	var base_damage = attack_stat # TODO: Modify later
 	return base_damage
 
 func next_turn():
@@ -116,13 +126,15 @@ func next_turn():
 func _on_attack_pressed() -> void:
 	var attacker = get_current_attacker()
 	var target = get_selected_enemy()
-	print("attacker: ", attacker)
-	print("target: ", target)
-	var damage = calculate_damage(attacker, target)
+	
+	print("Attacker: ", attacker.name, " -> Strength: ", attacker.strength)
+	print("Target: ", target.name, " -> Current hp: ", target.current_health)
+	
+	var damage = calculate_damage(attacker)
 	CombatManager.damage_taken(target, damage)
-	print(turn_order)
-	print(enemy_nodes[0].stats.current_health)
-	# add attack animations/sounds/next turn
+	
+	print("Target HP Updated: ",target.current_health, "\n")
+	
 	next_turn()
 
 func _on_defend_pressed() -> void:

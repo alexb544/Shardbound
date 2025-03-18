@@ -43,6 +43,6 @@ animations = [{
 [node name="Wadow" type="AnimatedSprite2D" groups=["character"]]
 sprite_frames = SubResource("SpriteFrames_ub5si")
 autoplay = "default"
-frame_progress = 0.617831
+frame_progress = 0.242147
 script = ExtResource("1_gfcyv")
 stats = ExtResource("2_b7yuj")

@@ -127,7 +127,6 @@ animations = [{
 [node name="Ishil" type="AnimatedSprite2D" groups=["character"]]
 sprite_frames = SubResource("SpriteFrames_2awgk")
 autoplay = "default"
-frame = 15
-frame_progress = 0.337576
+frame_progress = 0.531109
 script = ExtResource("1_ybmi7")
 stats = ExtResource("2_dbme3")

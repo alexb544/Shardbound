@@ -44,6 +44,6 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_ql5w2")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.108869
+frame_progress = 0.551105
 script = ExtResource("2_lyka8")
 stats = ExtResource("3_frj85")

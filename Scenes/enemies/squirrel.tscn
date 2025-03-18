@@ -108,7 +108,7 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_70pgw")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.698111
+frame_progress = 0.0841219
 script = ExtResource("3_lmkg7")
 stats = ExtResource("4_1h3f6")
 

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_hneje")
-enemy_name = "Squirrel"
+name = "Squirrel"
 exp_earned = 15
 max_health = 25
 strength = 5

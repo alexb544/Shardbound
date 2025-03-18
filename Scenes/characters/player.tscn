@@ -71,6 +71,6 @@ animations = [{
 [node name="Player" type="AnimatedSprite2D" groups=["character", "in_party"]]
 sprite_frames = SubResource("SpriteFrames_85f3m")
 autoplay = "default"
-frame_progress = 0.269593
+frame_progress = 0.163794
 script = ExtResource("1_w3kkf")
 stats = ExtResource("2_vl232")

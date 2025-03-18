@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_24pgb")
-char_name = "Player"
+name = "Player"
 level = 3
-health = 100
-mana = 100
+max_health = 0
+max_mana = 0
 strength = 10
 magic = 10
 speed = 10

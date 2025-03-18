@@ -43,7 +43,6 @@ animations = [{
 [node name="Roy" type="AnimatedSprite2D" groups=["character"]]
 sprite_frames = SubResource("SpriteFrames_lqgxq")
 autoplay = "default"
-frame = 2
-frame_progress = 0.584647
+frame_progress = 0.797262
 script = ExtResource("1_m88al")
 stats = ExtResource("2_xp1h1")
