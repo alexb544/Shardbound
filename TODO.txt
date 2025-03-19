@@ -1,9 +1,8 @@
 TODO List:
 	
-	Track Party HP:
+	Track Party & Enemy Current HP (party will need to persist between battles):
 		taking damage
 		healing
-
 
 	Create Save System (Global):
 		saves at the start of entering a new map point.
@@ -13,5 +12,3 @@ TODO List:
 		window size?
 		sound/music?
 		keybinds?
-
-	
