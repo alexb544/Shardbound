@@ -1,5 +1,5 @@
 extends Control
-# === Variables =======================================================================
+# === Variables ========================================================================
 @export var party_list : PartyMembers 
 
 @onready var party_positions = $Party
@@ -82,10 +82,12 @@ func setup_turn_order():
 	for member in party_nodes:
 		if member != null:
 			turn_order.append(member.stats)
+			print(member.stats.name)
 	
 	for enemy in enemy_nodes:
 		if enemy != null:
 			turn_order.append(enemy.stats)
+			print(enemy.stats.name)
 	
 	turn_order.sort_custom(func(a,b): return a.speed > b.speed)
 	current_turn = 0
@@ -104,7 +106,10 @@ func _on_health_changed(unit, new_health):
 func _on_unit_died(unit):
 	# TODO: Remove unit from combat or play death animation for party members
 	if unit is EnemyStats:
+		print("Owner: ", unit.owner)
 		unit.owner.queue_free()
+	if unit is CharacterStats:
+		pass #play(death animation here)
 
 func get_current_attacker():
 	return turn_order[current_turn]
@@ -124,7 +129,7 @@ func next_turn():
 
 # === Buttons =========================================================================
 func _on_attack_pressed() -> void:
-	var attacker = get_current_attacker()
+	var attacker : Resource = get_current_attacker()
 	var target = get_selected_enemy()
 	
 	print("Attacker: ", attacker.name, " -> Strength: ", attacker.strength)

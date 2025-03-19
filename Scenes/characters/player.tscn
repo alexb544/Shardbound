@@ -1,8 +1,69 @@
-[gd_scene load_steps=13 format=3 uid="uid://croju2g5rttil"]
+[gd_scene load_steps=29 format=3 uid="uid://croju2g5rttil"]
 
 [ext_resource type="Texture2D" uid="uid://qm5yn67ay2aa" path="res://Graphics/units/party/player/idle.png" id="1_eynx0"]
+[ext_resource type="Texture2D" uid="uid://cr4nsblrachwm" path="res://Graphics/units/party/player/attack.png" id="1_mwtsu"]
 [ext_resource type="Script" path="res://Scenes/characters/player.gd" id="1_w3kkf"]
 [ext_resource type="Resource" uid="uid://cyfrmbjahvuse" path="res://Resources/Characters/Player.tres" id="2_vl232"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o0sl"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(0, 0, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msxh6"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(152, 0, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2su1x"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(304, 0, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyi6x"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(0, 106, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndrgg"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(152, 106, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxnyd"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(304, 106, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3pcj"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(0, 212, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh34h"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(152, 212, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmsf8"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(304, 212, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly7xx"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(0, 318, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6ec2"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(152, 318, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xns6g"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(304, 318, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmort"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(0, 424, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2j2o"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(152, 424, 152, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3hcm"]
+atlas = ExtResource("1_mwtsu")
+region = Rect2(304, 424, 152, 106)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1y41w"]
 atlas = ExtResource("1_eynx0")
@@ -40,6 +101,56 @@ region = Rect2(75, 130, 75, 65)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4o0sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msxh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2su1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyi6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndrgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxnyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3pcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh34h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmsf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly7xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6ec2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xns6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmort")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2j2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3hcm")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1y41w")
 }, {
 "duration": 1.0,
@@ -70,7 +181,8 @@ animations = [{
 
 [node name="Player" type="AnimatedSprite2D" groups=["character", "in_party"]]
 sprite_frames = SubResource("SpriteFrames_85f3m")
+animation = &"attack"
 autoplay = "default"
-frame_progress = 0.163794
+frame_progress = 0.842513
 script = ExtResource("1_w3kkf")
 stats = ExtResource("2_vl232")

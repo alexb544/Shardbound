@@ -3,7 +3,7 @@ extends Node
 signal health_changed(unit, new_health)
 signal unit_died(unit)
 
-var combat_total : int = 2 # counts how many combats the player has taken
+var combat_total : int = 0 # counts how many combats the player has taken
 
 func damage_taken(unit : Resource, amount : int):
 	if amount < unit.current_health:
