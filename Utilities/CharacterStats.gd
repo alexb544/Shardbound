@@ -1,5 +1,5 @@
-class_name CharacterStats # Stores player controlled unit's stats
 extends Resource
+class_name CharacterStats
 
 @export var name : String
 @export var level : int
@@ -10,10 +10,3 @@ extends Resource
 @export var strength : int
 @export var magic : int
 @export var speed : int
-
-var current_health : int 
-var current_mana : int
-
-func _init() -> void:
-	current_health = max_health
-	current_mana = max_mana

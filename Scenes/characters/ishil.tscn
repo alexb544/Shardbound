@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://c7dvwy5nvhcym"]
 
 [ext_resource type="Texture2D" uid="uid://u1m2g45k4t24" path="res://Graphics/units/party/ishil/idle.png" id="1_3acxr"]
-[ext_resource type="Script" path="res://Scenes/characters/ishil.gd" id="1_ybmi7"]
-[ext_resource type="Resource" uid="uid://ddfxt185sca6n" path="res://Resources/Characters/ishil.tres" id="2_dbme3"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_rtw4m"]
+[ext_resource type="Resource" uid="uid://dbov04yhw5lhg" path="res://Resources/Characters/ishil.tres" id="3_638wd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onhhg"]
 atlas = ExtResource("1_3acxr")
@@ -124,9 +124,9 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="Ishil" type="AnimatedSprite2D" groups=["character"]]
+[node name="Ishil" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_2awgk")
 autoplay = "default"
 frame_progress = 0.531109
-script = ExtResource("1_ybmi7")
-stats = ExtResource("2_dbme3")
+script = ExtResource("2_rtw4m")
+stats = ExtResource("3_638wd")

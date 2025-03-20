@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://qm5yn67ay2aa" path="res://Graphics/units/party/player/idle.png" id="1_eynx0"]
 [ext_resource type="Texture2D" uid="uid://cr4nsblrachwm" path="res://Graphics/units/party/player/attack.png" id="1_mwtsu"]
-[ext_resource type="Script" path="res://Scenes/characters/player.gd" id="1_w3kkf"]
-[ext_resource type="Resource" uid="uid://cyfrmbjahvuse" path="res://Resources/Characters/Player.tres" id="2_vl232"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="3_ggd22"]
+[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/player.tres" id="4_uhvrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4o0sl"]
 atlas = ExtResource("1_mwtsu")
@@ -145,7 +145,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c3hcm")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -179,10 +179,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="AnimatedSprite2D" groups=["character", "in_party"]]
+[node name="Player" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_85f3m")
-animation = &"attack"
 autoplay = "default"
-frame_progress = 0.842513
-script = ExtResource("1_w3kkf")
-stats = ExtResource("2_vl232")
+script = ExtResource("3_ggd22")
+stats = ExtResource("4_uhvrl")

@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cyfrmbjahvuse"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cojtu0lyxlxfo"]
 
-[ext_resource type="Script" path="res://Utilities/character_stats.gd" id="1_24pgb"]
+[ext_resource type="Script" path="res://Utilities/CharacterStats.gd" id="1_5dust"]
 
 [resource]
-script = ExtResource("1_24pgb")
+script = ExtResource("1_5dust")
 name = "Player"
-level = 3
-max_health = 0
-max_mana = 0
+level = 1
+max_health = 100
+max_mana = 100
 strength = 10
 magic = 10
 speed = 10

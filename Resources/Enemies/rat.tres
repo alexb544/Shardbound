@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://cjrcy1kjmna0q"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cb0a8kpioo2cf"]
 
-[ext_resource type="Script" path="res://Utilities/enemy_stats.gd" id="1_dlx0o"]
+[ext_resource type="Script" path="res://Utilities/CharacterStats.gd" id="1_mp8nk"]
 
 [resource]
-script = ExtResource("1_dlx0o")
+script = ExtResource("1_mp8nk")
 name = "Rat"
-exp_earned = 20
-max_health = 30
-strength = 7
-speed = 7
+level = 3
+max_health = 60
+max_mana = 0
+strength = 10
+magic = 0
+speed = 8

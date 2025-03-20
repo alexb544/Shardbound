@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8c5hgeejgpnx"]
 
 [ext_resource type="Texture2D" uid="uid://cwdu8y1yvimrk" path="res://Graphics/units/enemies/zone1_enemies/1010010_idle.png" id="1_nncjy"]
-[ext_resource type="Script" path="res://Scenes/enemies/rat.gd" id="2_lyka8"]
-[ext_resource type="Resource" uid="uid://cjrcy1kjmna0q" path="res://Resources/Enemies/rat.tres" id="3_frj85"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_lh27q"]
+[ext_resource type="Resource" uid="uid://cb0a8kpioo2cf" path="res://Resources/Enemies/rat.tres" id="3_ddhke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oqjob"]
 atlas = ExtResource("1_nncjy")
@@ -40,10 +40,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Rat" type="AnimatedSprite2D" groups=["mob"]]
+[node name="Rat" type="AnimatedSprite2D" groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_ql5w2")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.551105
-script = ExtResource("2_lyka8")
-stats = ExtResource("3_frj85")
+script = ExtResource("2_lh27q")
+stats = ExtResource("3_ddhke")
+is_enemy = true

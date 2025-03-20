@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpcjnpyx8bspc"]
+
+[ext_resource type="Script" path="res://Utilities/PartyManager.gd" id="1_avpt0"]
+
+[node name="PartyManager" type="Node2D"]
+script = ExtResource("1_avpt0")

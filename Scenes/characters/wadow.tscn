@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://0uk8n1nud5wb"]
+[gd_scene load_steps=10 format=3 uid="uid://0uk8n1nud5wb"]
 
-[ext_resource type="Script" path="res://Scenes/characters/wadow.gd" id="1_gfcyv"]
 [ext_resource type="Texture2D" uid="uid://ducp5q4dfny3n" path="res://Graphics/units/party/wadow/idle.png" id="1_yssb1"]
-[ext_resource type="Resource" uid="uid://dmm0sqptrat63" path="res://Resources/Characters/wadow.tres" id="2_b7yuj"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_qtrd0"]
+[ext_resource type="Script" path="res://Utilities/CharacterStats.gd" id="3_vwnnb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6nxk"]
 atlas = ExtResource("1_yssb1")
@@ -40,9 +40,19 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Wadow" type="AnimatedSprite2D" groups=["character"]]
+[sub_resource type="Resource" id="Resource_5f8vh"]
+script = ExtResource("3_vwnnb")
+name = "Wadow"
+level = 1
+max_health = 100
+max_mana = 100
+strength = 10
+magic = 10
+speed = 10
+
+[node name="Wadow" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_ub5si")
 autoplay = "default"
 frame_progress = 0.242147
-script = ExtResource("1_gfcyv")
-stats = ExtResource("2_b7yuj")
+script = ExtResource("2_qtrd0")
+stats = SubResource("Resource_5f8vh")

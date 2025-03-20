@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://crhhmljkxtb3g"]
 
 [ext_resource type="Texture2D" uid="uid://cu6ukef83dtib" path="res://Graphics/units/party/roy/idle.png" id="1_6qt0q"]
-[ext_resource type="Script" path="res://Scenes/characters/roy.gd" id="1_m88al"]
-[ext_resource type="Resource" uid="uid://bdkar71doovhd" path="res://Resources/Characters/roy.tres" id="2_xp1h1"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_mkori"]
+[ext_resource type="Resource" uid="uid://bcqpthc15tvcb" path="res://Resources/Characters/roy.tres" id="3_fewed"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2t5o2"]
 atlas = ExtResource("1_6qt0q")
@@ -40,9 +40,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Roy" type="AnimatedSprite2D" groups=["character"]]
+[node name="Roy" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_lqgxq")
 autoplay = "default"
 frame_progress = 0.797262
-script = ExtResource("1_m88al")
-stats = ExtResource("2_xp1h1")
+script = ExtResource("2_mkori")
+stats = ExtResource("3_fewed")

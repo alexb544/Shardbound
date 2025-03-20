@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwsdlhkwalgks"]
+[gd_scene load_steps=16 format=3 uid="uid://cwsdlhkwalgks"]
 
 [ext_resource type="Texture2D" uid="uid://c7kc2iofyatl3" path="res://Graphics/units/enemies/zone1_enemies/1010110_idle.png" id="1_32kmt"]
-[ext_resource type="Texture2D" uid="uid://85usgtsgbmnx" path="res://Graphics/ui/indicator.png" id="2_4ylra"]
 [ext_resource type="Texture2D" uid="uid://c7mb72rbk1r53" path="res://Graphics/units/enemies/zone1_enemies/1010110_atk.png" id="2_aoj37"]
-[ext_resource type="Script" path="res://Scenes/enemies/squirrel.gd" id="3_lmkg7"]
-[ext_resource type="Resource" uid="uid://dvcu73s16pgbo" path="res://Resources/Enemies/squirrel.tres" id="4_1h3f6"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="3_suvc6"]
+[ext_resource type="Resource" uid="uid://c1fv5kirskiqs" path="res://Resources/Enemies/squirrel.tres" id="4_auquo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sld0x"]
 atlas = ExtResource("2_aoj37")
@@ -104,20 +103,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Squirrel" type="AnimatedSprite2D" groups=["mob"]]
+[node name="Squirrel" type="AnimatedSprite2D" groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_70pgw")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.0841219
-script = ExtResource("3_lmkg7")
-stats = ExtResource("4_1h3f6")
-
-[node name="focus" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(45, 0)
-rotation = 1.5708
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("2_4ylra")
-flip_h = true
-hframes = 5
-frame = 3
+script = ExtResource("3_suvc6")
+stats = ExtResource("4_auquo")
+is_enemy = true

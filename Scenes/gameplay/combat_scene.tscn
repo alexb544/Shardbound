@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=19 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
-[ext_resource type="Script" path="res://Scenes/gameplay/combat_scene.gd" id="1_adwrt"]
+[ext_resource type="Script" path="res://Scenes/Gameplay/combat_scene.gd" id="1_adwrt"]
 [ext_resource type="Texture2D" uid="uid://bi4smcpjk7ktc" path="res://Graphics/backgrounds/forest/forest_day.jpg" id="1_bas1t"]
-[ext_resource type="Resource" uid="uid://ckeal52vg1x3o" path="res://Resources/current_party.tres" id="2_oaooo"]
+[ext_resource type="PackedScene" uid="uid://bl8fmiqirgnoc" path="res://Scenes/Utility Scenes/combat_manager.tscn" id="2_vxx37"]
 [ext_resource type="Texture2D" uid="uid://di3qiqfvpugsl" path="res://Graphics/ui/ui_big_pieces.png" id="2_yf22o"]
+[ext_resource type="PackedScene" uid="uid://bpcjnpyx8bspc" path="res://Scenes/Utility Scenes/party_manager.tscn" id="3_yct45"]
+[ext_resource type="PackedScene" uid="uid://b5jbnn2f1j2n8" path="res://Scenes/Utility Scenes/enemy_manager.tscn" id="3_yuwo2"]
 [ext_resource type="Texture2D" uid="uid://85usgtsgbmnx" path="res://Graphics/ui/indicator.png" id="4_ojp54"]
 [ext_resource type="Texture2D" uid="uid://d0peu6hqa82ht" path="res://Graphics/units/party/player/unit_icon.png" id="4_vxddx"]
 [ext_resource type="Texture2D" uid="uid://bcr35mh0sm4hf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010110.png" id="7_m4nht"]
@@ -43,7 +45,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_adwrt")
-party_list = ExtResource("2_oaooo")
+
+[node name="CombatManager" parent="." instance=ExtResource("2_vxx37")]
+
+[node name="PartyManager" parent="." instance=ExtResource("3_yct45")]
+
+[node name="EnemyManager" parent="." instance=ExtResource("3_yuwo2")]
 
 [node name="BattleBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -245,6 +252,7 @@ layout_mode = 0
 offset_right = 299.0
 offset_bottom = 100.0
 theme_override_constants/separation = 1
+alignment = 2
 
 [node name="PartyMember1" type="MarginContainer" parent="BottomWindow/PartyBox/PartyList"]
 layout_mode = 2
@@ -467,6 +475,3 @@ position = Vector2(85, 218)
 position = Vector2(136, 254)
 
 [node name="Top_UI" parent="." instance=ExtResource("8_k23q6")]
-
-[connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Defend" to="." method="_on_defend_pressed"]

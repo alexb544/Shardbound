@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://ddfxt185sca6n"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://dbov04yhw5lhg"]
 
-[ext_resource type="Script" path="res://Utilities/character_stats.gd" id="1_5xwjm"]
+[ext_resource type="Script" path="res://Utilities/CharacterStats.gd" id="1_682ee"]
 
 [resource]
-script = ExtResource("1_5xwjm")
+script = ExtResource("1_682ee")
 name = "Ishil"
-level = 3
-max_health = 0
-max_mana = 0
-strength = 12
-magic = 5
-speed = 8
+level = 1
+max_health = 100
+max_mana = 100
+strength = 10
+magic = 10
+speed = 10

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyList" load_steps=4 format=3 uid="uid://b5ctfjai3i20f"]
-
-[ext_resource type="PackedScene" uid="uid://cwsdlhkwalgks" path="res://Scenes/enemies/squirrel.tscn" id="1_eejfn"]
-[ext_resource type="PackedScene" uid="uid://c8c5hgeejgpnx" path="res://Scenes/enemies/rat.tscn" id="2_brj3v"]
-[ext_resource type="Script" path="res://Utilities/enemy_list.gd" id="2_uewvp"]
-
-[resource]
-script = ExtResource("2_uewvp")
-enemy_group = Array[PackedScene]([ExtResource("1_eejfn"), ExtResource("2_brj3v")])

@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="STS x JRPG"
-run/main_scene="res://Scenes/gameplay/combat_scene.tscn"
+run/main_scene="res://Scenes/Gameplay/combat_scene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://Graphics/ui/cursor_MAYBE.png"
 
 [autoload]
 
-Globals="*res://Utilities/Globals/Globals.gd"
-CombatManager="*res://Utilities/Globals/CombatManager.gd"
+InventoryManager="*res://Utilities/Globals/InventoryManager.gd"
+SessionManager="*res://Utilities/Globals/SessionManager.gd"
 
 [display]
 
@@ -41,11 +41,8 @@ folder_colors={
 
 [global_group]
 
-in_party="character in the current party"
-character="recruitable party members & player"
-mob="regular enemies"
-elite="elite enemies"
-boss="boss enemies"
+party_members=""
+enemies=""
 
 [gui]
 
