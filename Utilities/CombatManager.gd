@@ -49,8 +49,6 @@ func current_turn():
 		print("waiting for player to confirm action")
 
 
-
-
 func next_turn():
 	turn_tracker += 1
 	if turn_tracker >= turn_order.size():
