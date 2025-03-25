@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cb0a8kpioo2cf"]
 
-[ext_resource type="Script" path="res://Utilities/CharacterStats.gd" id="1_mp8nk"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_bdpun"]
 
 [resource]
-script = ExtResource("1_mp8nk")
+script = ExtResource("1_bdpun")
 name = "Rat"
 level = 3
 max_health = 60
 max_mana = 0
 strength = 10
 magic = 0
-speed = 8
+speed = 20

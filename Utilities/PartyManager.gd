@@ -1,18 +1,33 @@
 extends Node
 
-var current_party : CurrentParty
+@onready var party_spawns = %Party
+@onready var stats : CharacterStats
+
+var current_party : CurrentParty = preload("res://Resources/current_party.tres")
+var party_list : Array = []
 var party_members : Array = []
 
+
 func _ready():
-	current_party = load("res://Resources/current_party.tres")
-	
-	if current_party:
-		var party_list = current_party.get_party_list()
-	
-		for party_scene in party_list:
-			if party_scene != null:
-				var party_member = party_scene.instantiate()
-				party_members.append(party_member)
-				add_child.call_deferred(party_member)
-			else:
-				continue
+	party_list = current_party.get_party_list()
+	spawn_party()
+
+
+func spawn_party():
+	var spawnpoints = party_spawns.get_children()
+
+	for i in range(party_list.size()):
+
+		if !party_list.is_empty():
+			var member = party_list[i].instantiate()
+
+			var point = spawnpoints[i] # gets next spawnpoint
+			member.global_position = point.global_position
+
+			add_child.call_deferred(member)
+			party_members.append(member)
+
+		else:
+			pass
+
+

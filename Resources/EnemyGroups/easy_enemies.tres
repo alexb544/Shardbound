@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyGroups" load_steps=4 format=3 uid="uid://crk3bwp8i0kcm"]
 
-[ext_resource type="Script" path="res://Utilities/EnemyGroups.gd" id="1_557q4"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_557q4"]
 [ext_resource type="PackedScene" uid="uid://cwsdlhkwalgks" path="res://Scenes/Enemies/squirrel.tscn" id="1_t6m6o"]
 [ext_resource type="PackedScene" uid="uid://c8c5hgeejgpnx" path="res://Scenes/Enemies/rat.tscn" id="2_xtrsk"]
 

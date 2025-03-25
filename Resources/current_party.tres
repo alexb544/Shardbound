@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="CurrentParty" load_steps=5 format=3 uid="uid://dw433n5yckevq"]
 
-[ext_resource type="PackedScene" uid="uid://c7dvwy5nvhcym" path="res://Scenes/Characters/ishil.tscn" id="2_7216a"]
-[ext_resource type="PackedScene" uid="uid://0uk8n1nud5wb" path="res://Scenes/Characters/wadow.tscn" id="3_7xry1"]
-[ext_resource type="Script" path="res://Utilities/CurrentParty.gd" id="3_x3j0a"]
-[ext_resource type="PackedScene" uid="uid://crhhmljkxtb3g" path="res://Scenes/Characters/roy.tscn" id="4_2yfyi"]
+[ext_resource type="PackedScene" uid="uid://c7dvwy5nvhcym" path="res://Scenes/Characters/ishil.tscn" id="1_lx67e"]
+[ext_resource type="PackedScene" uid="uid://crhhmljkxtb3g" path="res://Scenes/Characters/roy.tscn" id="1_wman6"]
+[ext_resource type="PackedScene" uid="uid://0uk8n1nud5wb" path="res://Scenes/Characters/wadow.tscn" id="3_kc7jo"]
+[ext_resource type="Script" path="res://Utilities/Resources/CurrentParty.gd" id="4_y80ny"]
 
 [resource]
-script = ExtResource("3_x3j0a")
-party2 = ExtResource("2_7216a")
-party3 = ExtResource("3_7xry1")
-party4 = ExtResource("4_2yfyi")
+script = ExtResource("4_y80ny")
+party2 = ExtResource("1_lx67e")
+party3 = ExtResource("3_kc7jo")
+party4 = ExtResource("1_wman6")

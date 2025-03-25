@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cmru4r717vkco"]
 
-[ext_resource type="Script" path="res://Utilities/CharacterStats.gd" id="1_oq4lr"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_oq4lr"]
 
 [resource]
 script = ExtResource("1_oq4lr")
 name = "Wadow"
 level = 1
-max_health = 100
-max_mana = 100
-strength = 10
-magic = 10
-speed = 10
+max_health = 70
+max_mana = 50
+strength = 12
+magic = 6
+speed = 14

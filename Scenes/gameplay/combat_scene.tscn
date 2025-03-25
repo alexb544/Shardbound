@@ -46,12 +46,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_adwrt")
 
-[node name="CombatManager" parent="." instance=ExtResource("2_vxx37")]
-
-[node name="PartyManager" parent="." instance=ExtResource("3_yct45")]
-
-[node name="EnemyManager" parent="." instance=ExtResource("3_yuwo2")]
-
 [node name="BattleBackground" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -446,6 +440,7 @@ layout_mode = 2
 text = "Defend"
 
 [node name="Party" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="PartySpawner1" type="Marker2D" parent="Party"]
 position = Vector2(405, 161)
@@ -460,6 +455,7 @@ position = Vector2(516, 145)
 position = Vector2(582, 181)
 
 [node name="Enemies" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(13, -60)
 
 [node name="EnemySpawner1" type="Marker2D" parent="Enemies"]
@@ -474,4 +470,13 @@ position = Vector2(85, 218)
 [node name="EnemySpawner4" type="Marker2D" parent="Enemies"]
 position = Vector2(136, 254)
 
+[node name="CombatManager" parent="." instance=ExtResource("2_vxx37")]
+
+[node name="PartyManager" parent="." instance=ExtResource("3_yct45")]
+
+[node name="EnemyManager" parent="." instance=ExtResource("3_yuwo2")]
+
 [node name="Top_UI" parent="." instance=ExtResource("8_k23q6")]
+
+[connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Attack" to="CombatManager" method="_on_attack_pressed"]
+[connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Defend" to="CombatManager" method="_on_defend_pressed"]

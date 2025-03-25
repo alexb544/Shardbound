@@ -1,6 +1,6 @@
 extends Node
-
-var battle_count : int = 1
+# might use for tracking: gold, 
+var battle_count : int = 2
 
 
 func battle_fought():
