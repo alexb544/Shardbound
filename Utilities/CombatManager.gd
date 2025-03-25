@@ -15,6 +15,7 @@ var target : AnimatedSprite2D
 var players_turn : bool = false
 var waiting_for_input: = false
 
+
 func _ready():
 	await get_tree().process_frame # Wait to load party/enemies in before setting turn order
 	party = party_manager.get_children()
@@ -34,6 +35,8 @@ func set_turn_order():
 func current_turn():
 	if turn_order.is_empty():
 		return # avoid future errors
+	
+	print(turn_order[turn_tracker].name, "'s turn!")
 
 	if turn_order[turn_tracker].is_enemy == true: # Enemy turn: selects random target
 		await get_tree().create_timer(1).timeout
@@ -68,7 +71,6 @@ func change_selected_enemy(direction : int):
 	if enemy_index < 0:
 		enemy_index = enemies.size() - 1 # goes back to first enemy in index
 	highlight_enemy(enemy_index)
-	print("Selected enemy: ", enemy_index)
 
 
 func highlight_enemy(index : int):

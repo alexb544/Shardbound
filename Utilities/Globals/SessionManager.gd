@@ -1,5 +1,5 @@
 extends Node
-# might use for tracking: gold, 
+# might use for tracking: gold, random run info (areas visted, enemies fought, etc.)
 var battle_count : int = 2
 
 
