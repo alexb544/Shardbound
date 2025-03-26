@@ -8,6 +8,7 @@ var enemies : Array = [] # access enemies in scene
 
 var turn_order: Array = [] # Stores all characters for turn order
 var turn_tracker: int      # Tracks whose turn it is
+var turn : AnimatedSprite2D # Current unit's turn.
 
 var enemy_index : int = 0  # Selected enemy's index in enemies
 var target : AnimatedSprite2D 
@@ -21,6 +22,7 @@ func _ready():
 	party = party_manager.get_children()
 	enemies = enemy_manager.get_children()
 	set_turn_order()
+	turn = turn_order[turn_tracker]
 	current_turn()
 
 
@@ -34,15 +36,25 @@ func set_turn_order():
 # Determines if current turn is party/enemy
 func current_turn():
 	if turn_order.is_empty():
-		return # avoid future errors
+		return # avoid potential errors
 	
-	print(turn_order[turn_tracker].name, "'s turn!")
-
+	print(turn_order[turn_tracker].name, "'s turn!") # "Player's Turn!"
 	if turn_order[turn_tracker].is_enemy == true: # Enemy turn: selects random target
 		await get_tree().create_timer(1).timeout
 		target = target_random_party()
 		#attack target
-		print("random target: ", target, "\n")
+		
+		print("Random Target: ", target, "\n") # "Random Target: Player"
+		print(turn_order[turn_tracker].name, " Attacks!") # "Rat Attacks!"
+		
+		target.play("hit") # plays "hit" animation for the attacked party member.
+		await get_tree().create_timer(1).timeout # delays the "hit" animation, before going back to "default"
+		if target.stats.current_health == 0:
+			pass
+		else:
+			target.play("default")
+			#print("Target's current health: ", target.current_health)
+		
 		next_turn()
 		current_turn()
 
@@ -96,6 +108,9 @@ func attack_enemy(enemy):
 		return
 
 	print("Attacking: ", enemy.name, "\n")
+	print(turn.name)
+	turn.play("attack")
+	
 	players_turn = false
 	next_turn()
 	current_turn()

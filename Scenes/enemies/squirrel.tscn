@@ -5,14 +5,6 @@
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="3_suvc6"]
 [ext_resource type="Resource" uid="uid://c1fv5kirskiqs" path="res://Resources/Enemies/squirrel.tres" id="4_auquo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sld0x"]
-atlas = ExtResource("2_aoj37")
-region = Rect2(0, 0, 54, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ti0ev"]
-atlas = ExtResource("2_aoj37")
-region = Rect2(54, 0, 54, 53)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifrwr"]
 atlas = ExtResource("1_32kmt")
 region = Rect2(0, 0, 56, 53)
@@ -45,34 +37,16 @@ region = Rect2(0, 106, 56, 53)
 atlas = ExtResource("1_32kmt")
 region = Rect2(56, 106, 56, 53)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sld0x"]
+atlas = ExtResource("2_aoj37")
+region = Rect2(0, 0, 54, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti0ev"]
+atlas = ExtResource("2_aoj37")
+region = Rect2(54, 0, 54, 53)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_70pgw"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sld0x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ti0ev")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sld0x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ti0ev")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sld0x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ti0ev")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sld0x")
-}],
-"loop": false,
-"name": &"Hit",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ifrwr")
@@ -99,15 +73,40 @@ animations = [{
 "texture": SubResource("AtlasTexture_2a33q")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sld0x")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 4.0
 }]
 
 [node name="Squirrel" type="AnimatedSprite2D" groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_70pgw")
-animation = &"Idle"
-autoplay = "Idle"
-frame_progress = 0.0841219
+animation = &"hit"
+autoplay = "default"
 script = ExtResource("3_suvc6")
 stats = ExtResource("4_auquo")
 is_enemy = true

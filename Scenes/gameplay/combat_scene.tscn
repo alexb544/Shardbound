@@ -125,6 +125,7 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_2xnat")
 value = 100.0
 
 [node name="SelectIcon" type="TextureRect" parent="BottomWindow/EnemyBox/EnemyList/Enemy1"]
+visible = false
 self_modulate = Color(0.854902, 0, 0.678431, 1)
 custom_minimum_size = Vector2(35, 25)
 layout_mode = 2

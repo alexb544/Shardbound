@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8c5hgeejgpnx"]
+[gd_scene load_steps=12 format=3 uid="uid://c8c5hgeejgpnx"]
 
 [ext_resource type="Texture2D" uid="uid://cwdu8y1yvimrk" path="res://Graphics/units/enemies/zone1_enemies/1010010_idle.png" id="1_nncjy"]
+[ext_resource type="Texture2D" uid="uid://cjn15548rk0v7" path="res://Graphics/units/enemies/zone1_enemies/1010010_atk.png" id="2_jgcjr"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="2_lh27q"]
 [ext_resource type="Resource" uid="uid://cb0a8kpioo2cf" path="res://Resources/Enemies/rat.tres" id="3_ddhke"]
 
@@ -20,6 +21,14 @@ region = Rect2(132, 0, 66, 69)
 atlas = ExtResource("1_nncjy")
 region = Rect2(0, 69, 66, 69)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b4rg"]
+atlas = ExtResource("2_jgcjr")
+region = Rect2(0, 0, 64, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8qvd"]
+atlas = ExtResource("2_jgcjr")
+region = Rect2(64, 0, 64, 69)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ql5w2"]
 animations = [{
 "frames": [{
@@ -36,15 +45,42 @@ animations = [{
 "texture": SubResource("AtlasTexture_p2h4t")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b4rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8qvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b4rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8qvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b4rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8qvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b4rg")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 4.0
 }]
 
 [node name="Rat" type="AnimatedSprite2D" groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_ql5w2")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.551105
+animation = &"hit"
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
 script = ExtResource("2_lh27q")
 stats = ExtResource("3_ddhke")
 is_enemy = true

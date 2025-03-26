@@ -29,5 +29,3 @@ func spawn_party():
 
 		else:
 			pass
-
-

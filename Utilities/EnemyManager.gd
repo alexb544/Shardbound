@@ -1,6 +1,7 @@
 extends Node
 
 @onready var enemy_spawns = %Enemies
+@onready var stats : CharacterStats
 
 var enemy_group : EnemyGroups = preload("res://Resources/EnemyGroups/easy_enemies.tres")
 var enemies : Array = []
