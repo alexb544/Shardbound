@@ -444,16 +444,16 @@ text = "Defend"
 unique_name_in_owner = true
 
 [node name="PartySpawner1" type="Marker2D" parent="Party"]
-position = Vector2(405, 161)
+position = Vector2(405, 160)
 
 [node name="PartySpawner2" type="Marker2D" parent="Party"]
-position = Vector2(472, 197)
+position = Vector2(470, 200)
 
 [node name="PartySpawner3" type="Marker2D" parent="Party"]
-position = Vector2(516, 145)
+position = Vector2(515, 145)
 
 [node name="PartySpawner4" type="Marker2D" parent="Party"]
-position = Vector2(582, 181)
+position = Vector2(580, 180)
 
 [node name="Enemies" type="Node2D" parent="."]
 unique_name_in_owner = true

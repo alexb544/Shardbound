@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://crhhmljkxtb3g"]
+[gd_scene load_steps=29 format=3 uid="uid://crhhmljkxtb3g"]
 
 [ext_resource type="Texture2D" uid="uid://cu6ukef83dtib" path="res://Graphics/units/party/roy/idle.png" id="1_6qt0q"]
 [ext_resource type="Texture2D" uid="uid://cuyx45dhgwyw3" path="res://Graphics/units/party/roy/attack.png" id="1_f5f8h"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="2_mkori"]
 [ext_resource type="Texture2D" uid="uid://drapja5cwydsl" path="res://Graphics/units/party/roy/hurt.png" id="3_bgexp"]
 [ext_resource type="Resource" uid="uid://bcqpthc15tvcb" path="res://Resources/Characters/roy.tres" id="3_fewed"]
+[ext_resource type="Texture2D" uid="uid://hd0yj63840p7" path="res://Graphics/units/party/roy/dash.png" id="4_oa7gr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86y84"]
 atlas = ExtResource("1_f5f8h")
@@ -86,6 +87,10 @@ region = Rect2(0, 70, 62, 70)
 atlas = ExtResource("3_bgexp")
 region = Rect2(0, 0, 56, 50)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_me734"]
+atlas = ExtResource("4_oa7gr")
+region = Rect2(0, 0, 61, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqgxq"]
 animations = [{
 "frames": [{
@@ -134,7 +139,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e20ug")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 6.0
 }, {
@@ -162,11 +167,19 @@ animations = [{
 "loop": true,
 "name": &"hit",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me734")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
 }]
 
 [node name="Roy" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_lqgxq")
-animation = &"hit"
+animation = &"move"
 autoplay = "default"
 script = ExtResource("2_mkori")
 stats = ExtResource("3_fewed")

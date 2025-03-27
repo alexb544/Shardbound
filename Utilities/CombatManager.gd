@@ -22,7 +22,6 @@ func _ready():
 	party = party_manager.get_children()
 	enemies = enemy_manager.get_children()
 	set_turn_order()
-	turn = turn_order[turn_tracker]
 	current_turn()
 
 
@@ -38,30 +37,37 @@ func current_turn():
 	if turn_order.is_empty():
 		return # avoid potential errors
 	
-	print(turn_order[turn_tracker].name, "'s turn!") # "Player's Turn!"
-	if turn_order[turn_tracker].is_enemy == true: # Enemy turn: selects random target
+	print(turn_order[turn_tracker].name, "'s turn!") # "Unit's Turn!"
+	turn = turn_order[turn_tracker] # Stores active unit
+
+	# Enemy turn: selects random target
+	if turn.is_enemy == true:
 		await get_tree().create_timer(1).timeout
 		target = target_random_party()
-		#attack target
+		#apply attack/damage target logic here
 		
-		print("Random Target: ", target, "\n") # "Random Target: Player"
-		print(turn_order[turn_tracker].name, " Attacks!") # "Rat Attacks!"
+		print("Random Target: ", target) # "Random Target: Player"
+		print(turn.name, " Attacks!") # "Rat Attacks!"
 		
 		target.play("hit") # plays "hit" animation for the attacked party member.
-		await get_tree().create_timer(1).timeout # delays the "hit" animation, before going back to "default"
+		await get_tree().create_timer(1).timeout # delays the "hit" animation 1 second before going back to "default"
+
 		if target.stats.current_health == 0:
 			pass
+			# play death animation here
+			# remove target from the scene
 		else:
 			target.play("default")
 			#print("Target's current health: ", target.current_health)
 		
 		next_turn()
+		print("\n === Next Turn === \n")
 		current_turn()
 
-	elif turn_order[turn_tracker].is_enemy == false: # Player turn: select action -> select target
+	elif turn.is_enemy == false: # Player turn: select action -> select target
 		players_turn = true
 		waiting_for_input = true
-		print("waiting for player to confirm action")
+		print("Waiting on target confirmation...")
 
 
 func next_turn():
@@ -89,7 +95,7 @@ func highlight_enemy(index : int):
 	for i in range(enemies.size()):
 		enemies[i].modulate = Color(1,1,1,1) # resets color
 	enemies[index].modulate = Color(1,0,0,1) # highlights selected enemy
-	print("selected Enemey: ", enemies[index].name)
+	print("> Selected Enemey: ", enemies[index].name)
 
 
 func confirm_selection():
@@ -102,21 +108,35 @@ func confirm_selection():
 		attack_enemy(selected_enemy)
 
 
-# Temporary Function
-func attack_enemy(enemy):
+func attack_enemy(enemy: AnimatedSprite2D):
 	if waiting_for_input:
 		return
-
-	print("Attacking: ", enemy.name, "\n")
-	print(turn.name)
-	turn.play("attack")
 	
+	print(turn.name, " attacks ", enemy.name, "!\n")
+	
+	var current_position = turn.global_position
+	var offset = Vector2(50, -10)
+
+	turn.play("move")
+	await move_next_to_target(offset)
+	turn.play("attack")
+	await turn.animation_finished
+	turn.play("move")
+	await move_next_to_target(current_position - enemy.global_position)
+	turn.play("default")
+
 	players_turn = false
 	next_turn()
 	current_turn()
 
+func move_next_to_target(offset: Vector2, duration: float = 0.4 ):
+	var enemy_position = enemies[enemy_index].global_position + offset
+	var tween = get_tree().create_tween()
+	tween.tween_property(turn, "global_position", enemy_position, duration)
+	await tween.finished
 
-func _input(event):
+
+func _input(event : InputEvent) -> void:
 	if players_turn and waiting_for_input:
 
 			if event.is_action_pressed("right"):

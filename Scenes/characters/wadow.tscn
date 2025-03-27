@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://0uk8n1nud5wb"]
+[gd_scene load_steps=31 format=3 uid="uid://0uk8n1nud5wb"]
 
 [ext_resource type="Texture2D" uid="uid://bgc7ylss7mooy" path="res://Graphics/units/party/wadow/attack.png" id="1_14bay"]
 [ext_resource type="Texture2D" uid="uid://ducp5q4dfny3n" path="res://Graphics/units/party/wadow/idle.png" id="1_yssb1"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="2_qtrd0"]
 [ext_resource type="Resource" uid="uid://cmru4r717vkco" path="res://Resources/Characters/wadow.tres" id="3_8lhq8"]
 [ext_resource type="Texture2D" uid="uid://dx5yk6yyufx84" path="res://Graphics/units/party/wadow/hurt.png" id="3_kjon1"]
+[ext_resource type="Texture2D" uid="uid://bku37er65np01" path="res://Graphics/units/party/wadow/dash.png" id="4_hojm3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho3by"]
 atlas = ExtResource("1_14bay")
@@ -74,10 +75,6 @@ region = Rect2(0, 760, 167, 152)
 atlas = ExtResource("1_14bay")
 region = Rect2(167, 760, 167, 152)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2v0f"]
-atlas = ExtResource("1_14bay")
-region = Rect2(334, 760, 167, 152)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6nxk"]
 atlas = ExtResource("1_yssb1")
 region = Rect2(0, 0, 93, 65)
@@ -97,6 +94,10 @@ region = Rect2(0, 65, 93, 65)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pa2gi"]
 atlas = ExtResource("3_kjon1")
 region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qirf8"]
+atlas = ExtResource("4_hojm3")
+region = Rect2(0, 0, 96, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ub5si"]
 animations = [{
@@ -151,11 +152,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h44cf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a2v0f")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 12.0
 }, {
@@ -183,11 +181,19 @@ animations = [{
 "loop": true,
 "name": &"hit",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qirf8")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
 }]
 
 [node name="Wadow" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_ub5si")
-animation = &"hit"
+animation = &"attack"
 autoplay = "default"
 script = ExtResource("2_qtrd0")
 stats = ExtResource("3_8lhq8")
