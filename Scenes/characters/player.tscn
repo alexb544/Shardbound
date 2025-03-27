@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://croju2g5rttil"]
+[gd_scene load_steps=41 format=3 uid="uid://croju2g5rttil"]
 
 [ext_resource type="Texture2D" uid="uid://qm5yn67ay2aa" path="res://Graphics/units/party/player/idle.png" id="1_eynx0"]
 [ext_resource type="Texture2D" uid="uid://cr4nsblrachwm" path="res://Graphics/units/party/player/attack.png" id="1_mwtsu"]
 [ext_resource type="Texture2D" uid="uid://dm57jcrodrtba" path="res://Graphics/units/party/player/dying.png" id="3_eph6p"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="3_ggd22"]
-[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/player.tres" id="4_uhvrl"]
+[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/Player.tres" id="4_uhvrl"]
 [ext_resource type="Texture2D" uid="uid://bv5vyigeahulm" path="res://Graphics/units/party/player/dash.png" id="4_uwaus"]
+[ext_resource type="Texture2D" uid="uid://y8aja5mpwfw5" path="res://Graphics/units/party/player/standby.png" id="5_acul6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4o0sl"]
 atlas = ExtResource("1_mwtsu")
@@ -119,6 +120,22 @@ region = Rect2(156, 0, 78, 64)
 atlas = ExtResource("4_uwaus")
 region = Rect2(0, 64, 78, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7ycb"]
+atlas = ExtResource("5_acul6")
+region = Rect2(0, 0, 67, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2538w"]
+atlas = ExtResource("5_acul6")
+region = Rect2(67, 0, 67, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf15f"]
+atlas = ExtResource("5_acul6")
+region = Rect2(134, 0, 67, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kdui"]
+atlas = ExtResource("5_acul6")
+region = Rect2(0, 67, 67, 67)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_85f3m"]
 animations = [{
 "frames": [{
@@ -224,12 +241,28 @@ animations = [{
 "loop": true,
 "name": &"move",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7ycb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2538w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf15f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kdui")
+}],
+"loop": true,
+"name": &"turn",
+"speed": 5.0
 }]
 
 [node name="Player" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_85f3m")
-animation = &"move"
 autoplay = "default"
-frame_progress = 0.170938
+frame_progress = 0.326335
 script = ExtResource("3_ggd22")
 stats = ExtResource("4_uhvrl")

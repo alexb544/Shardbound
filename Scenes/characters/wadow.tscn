@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://0uk8n1nud5wb"]
+[gd_scene load_steps=36 format=3 uid="uid://0uk8n1nud5wb"]
 
 [ext_resource type="Texture2D" uid="uid://bgc7ylss7mooy" path="res://Graphics/units/party/wadow/attack.png" id="1_14bay"]
 [ext_resource type="Texture2D" uid="uid://ducp5q4dfny3n" path="res://Graphics/units/party/wadow/idle.png" id="1_yssb1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cmru4r717vkco" path="res://Resources/Characters/wadow.tres" id="3_8lhq8"]
 [ext_resource type="Texture2D" uid="uid://dx5yk6yyufx84" path="res://Graphics/units/party/wadow/hurt.png" id="3_kjon1"]
 [ext_resource type="Texture2D" uid="uid://bku37er65np01" path="res://Graphics/units/party/wadow/dash.png" id="4_hojm3"]
+[ext_resource type="Texture2D" uid="uid://cyrvb6rf4vbjv" path="res://Graphics/units/party/wadow/standby.png" id="5_5g1v8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho3by"]
 atlas = ExtResource("1_14bay")
@@ -99,6 +100,22 @@ region = Rect2(0, 0, 96, 48)
 atlas = ExtResource("4_hojm3")
 region = Rect2(0, 0, 96, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_txjym"]
+atlas = ExtResource("5_5g1v8")
+region = Rect2(0, 0, 89, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_too8i"]
+atlas = ExtResource("5_5g1v8")
+region = Rect2(89, 0, 89, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2srw"]
+atlas = ExtResource("5_5g1v8")
+region = Rect2(178, 0, 89, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fv5i"]
+atlas = ExtResource("5_5g1v8")
+region = Rect2(0, 76, 89, 76)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ub5si"]
 animations = [{
 "frames": [{
@@ -189,11 +206,29 @@ animations = [{
 "loop": true,
 "name": &"move",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txjym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_too8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2srw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fv5i")
+}],
+"loop": true,
+"name": &"turn",
+"speed": 5.0
 }]
 
 [node name="Wadow" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_ub5si")
-animation = &"attack"
+animation = &"turn"
 autoplay = "default"
+frame_progress = 0.678902
 script = ExtResource("2_qtrd0")
 stats = ExtResource("3_8lhq8")

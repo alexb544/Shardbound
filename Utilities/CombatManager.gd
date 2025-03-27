@@ -67,6 +67,7 @@ func current_turn():
 	elif turn.is_enemy == false: # Player turn: select action -> select target
 		players_turn = true
 		waiting_for_input = true
+		turn.play("turn") # active turn animation
 		print("Waiting on target confirmation...")
 
 
@@ -102,8 +103,10 @@ func confirm_selection():
 	if enemies.size() > 0:
 		var selected_enemy = enemies[enemy_index]
 		print("Confirmed Target: ", selected_enemy.name)
+		
 		waiting_for_input = false
 		players_turn = false # end players turn
+		
 		enemies[enemy_index].modulate = Color(1,1,1,1) # reset color
 		attack_enemy(selected_enemy)
 
@@ -125,7 +128,6 @@ func attack_enemy(enemy: AnimatedSprite2D):
 	await move_next_to_target(current_position - enemy.global_position)
 	turn.play("default")
 
-	players_turn = false
 	next_turn()
 	current_turn()
 
