@@ -9,5 +9,5 @@ func battle_fought():
 	battle_count += 1
 
 
-func reset_session():
+func reset_run():
 	battle_count = 0

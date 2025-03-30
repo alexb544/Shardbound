@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://bcqpthc15tvcb"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://bcqpthc15tvcb"]
 
 [ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_3jjgx"]
+[ext_resource type="Texture2D" uid="uid://btsa4y33bskqs" path="res://Graphics/units/party/roy/icon.png" id="1_g0bv5"]
 
 [resource]
 script = ExtResource("1_3jjgx")
 name = "Roy"
+icon = ExtResource("1_g0bv5")
 level = 1
-max_health = 100
-max_mana = 100
+max_health = 80
+current_health = 80
+max_mana = 120
+current_mana = 120
 strength = 10
 magic = 10
 speed = 10

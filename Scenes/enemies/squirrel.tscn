@@ -100,13 +100,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 4.0
+"speed": 5.0
 }]
 
 [node name="Squirrel" type="AnimatedSprite2D" groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_70pgw")
 animation = &"hit"
 autoplay = "default"
+frame = 6
+frame_progress = 1.0
 script = ExtResource("3_suvc6")
 stats = ExtResource("4_auquo")
 is_enemy = true

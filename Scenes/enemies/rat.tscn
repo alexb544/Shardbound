@@ -72,7 +72,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 4.0
+"speed": 5.0
 }]
 
 [node name="Rat" type="AnimatedSprite2D" groups=["enemies"]]

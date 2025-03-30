@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cmru4r717vkco"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://cmru4r717vkco"]
 
+[ext_resource type="Texture2D" uid="uid://bnona1lcdv3o0" path="res://Graphics/units/party/wadow/icon.png" id="1_45cog"]
 [ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_oq4lr"]
 
 [resource]
 script = ExtResource("1_oq4lr")
 name = "Wadow"
+icon = ExtResource("1_45cog")
 level = 1
-max_health = 70
-max_mana = 50
-strength = 12
+max_health = 90
+max_mana = 60
+strength = 13
 magic = 6
 speed = 14

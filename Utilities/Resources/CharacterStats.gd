@@ -1,29 +1,34 @@
 extends Resource
 class_name CharacterStats
 
+signal health_changed(value)
+signal mana_changed(value)
+
 @export var name : String
+@export var icon : Texture
 @export var level : int
 
-@export var max_health : int:
-	set(value):
-		max_health = value
-		current_health = value
-
-@export var max_mana : int:
-	set(value):
-		max_mana = value
-		current_mana = value
+@export var max_health : int
+@export var max_mana : int
 
 @export var strength : int
 @export var magic : int
 @export var speed : int
 
-var current_health : int
-var current_mana : int
+var _current_health : int = max_health
+var _current_mana : int = max_mana
 
 
-func take_damage(amount : int):
-	current_health -= amount
-	if current_health < 0:
-		current_health = 0
-	return current_health
+var current_health : int:
+	get:
+		return _current_health
+	set(value):
+		_current_health = clamp(value, 0, max_health)
+		health_changed.emit(_current_health)
+
+var current_mana : int:
+	get:
+		return _current_mana
+	set(value):
+		_current_mana = clamp(value, 0, max_mana)
+		mana_changed.emit(_current_mana)

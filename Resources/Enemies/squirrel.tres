@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://c1fv5kirskiqs"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://c1fv5kirskiqs"]
 
+[ext_resource type="Texture2D" uid="uid://bcr35mh0sm4hf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010110.png" id="1_h8qwv"]
 [ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_yu7h2"]
 
 [resource]
 script = ExtResource("1_yu7h2")
 name = "Squirrel"
+icon = ExtResource("1_h8qwv")
 level = 1
 max_health = 30
 max_mana = 0

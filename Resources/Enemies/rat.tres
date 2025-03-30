@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cb0a8kpioo2cf"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://cb0a8kpioo2cf"]
 
 [ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_bdpun"]
+[ext_resource type="Texture2D" uid="uid://daijhmwftx1wf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010010.png" id="1_igay2"]
 
 [resource]
 script = ExtResource("1_bdpun")
 name = "Rat"
+icon = ExtResource("1_igay2")
 level = 3
-max_health = 60
+max_health = 50
 max_mana = 0
 strength = 10
 magic = 0

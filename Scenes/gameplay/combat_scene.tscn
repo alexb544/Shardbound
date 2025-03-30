@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=21 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/Gameplay/combat_scene.gd" id="1_adwrt"]
@@ -18,6 +18,11 @@ spacing_bottom = -2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xnat"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pq5c8"]
+font_color = Color(1, 0.57316, 0.491667, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcd5w"]
 atlas = ExtResource("4_ojp54")
 region = Rect2(3, 12, 269, 116)
@@ -34,6 +39,10 @@ region = Rect2(259, 40, 74, 20)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0o8vi"]
 size = Vector2(56, 14)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2txkw"]
+font_color = Color(0.482185, 0.668901, 1, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="CombatScene" type="Control"]
 texture_filter = 1
@@ -92,6 +101,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="EnemyList" type="VBoxContainer" parent="BottomWindow/EnemyBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0133333
@@ -114,7 +124,7 @@ expand_mode = 1
 
 [node name="HealthBar" type="ProgressBar" parent="BottomWindow/EnemyBox/EnemyList/Enemy1"]
 self_modulate = Color(0.98275, 6.08854e-06, 1.54018e-06, 1)
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -123,6 +133,17 @@ theme_override_fonts/font = SubResource("FontVariation_n8mma")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/background = SubResource("StyleBoxEmpty_2xnat")
 value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="BottomWindow/EnemyBox/EnemyList/Enemy1/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
 
 [node name="SelectIcon" type="TextureRect" parent="BottomWindow/EnemyBox/EnemyList/Enemy1"]
 visible = false
@@ -146,7 +167,7 @@ expand_mode = 1
 
 [node name="HealthBar" type="ProgressBar" parent="BottomWindow/EnemyBox/EnemyList/Enemy2"]
 self_modulate = Color(0.98275, 6.08854e-06, 1.54018e-06, 1)
-custom_minimum_size = Vector2(70, 10)
+custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -155,6 +176,17 @@ theme_override_fonts/font = SubResource("FontVariation_n8mma")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/background = SubResource("StyleBoxEmpty_ydknu")
 value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="BottomWindow/EnemyBox/EnemyList/Enemy2/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
 
 [node name="SelectIcon" type="TextureRect" parent="BottomWindow/EnemyBox/EnemyList/Enemy2"]
 visible = false
@@ -178,7 +210,7 @@ expand_mode = 1
 
 [node name="HealthBar" type="ProgressBar" parent="BottomWindow/EnemyBox/EnemyList/Enemy3"]
 self_modulate = Color(0.98275, 6.08854e-06, 1.54018e-06, 1)
-custom_minimum_size = Vector2(70, 10)
+custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -187,6 +219,17 @@ theme_override_fonts/font = SubResource("FontVariation_n8mma")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/background = SubResource("StyleBoxEmpty_ydknu")
 value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="BottomWindow/EnemyBox/EnemyList/Enemy3/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
 
 [node name="SelectIcon" type="TextureRect" parent="BottomWindow/EnemyBox/EnemyList/Enemy3"]
 visible = false
@@ -210,7 +253,7 @@ expand_mode = 1
 
 [node name="HealthBar" type="ProgressBar" parent="BottomWindow/EnemyBox/EnemyList/Enemy4"]
 self_modulate = Color(0.98275, 6.08854e-06, 1.54018e-06, 1)
-custom_minimum_size = Vector2(70, 10)
+custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -219,6 +262,17 @@ theme_override_fonts/font = SubResource("FontVariation_n8mma")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/background = SubResource("StyleBoxEmpty_ydknu")
 value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="BottomWindow/EnemyBox/EnemyList/Enemy4/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
 
 [node name="SelectIcon" type="TextureRect" parent="BottomWindow/EnemyBox/EnemyList/Enemy4"]
 visible = false
@@ -280,6 +334,16 @@ texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0.811765, 0.105882, 0, 0.568627)
 
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember1/Info/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
+
 [node name="ManaBar" type="TextureProgressBar" parent="BottomWindow/PartyBox/PartyList/PartyMember1/Info"]
 layout_mode = 2
 value = 100.0
@@ -287,6 +351,16 @@ texture_under = SubResource("AtlasTexture_1r817")
 texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0, 0.470588, 0.988235, 0.568627)
+
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember1/Info/ManaBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_2txkw")
+horizontal_alignment = 1
 
 [node name="PartyMember2" type="MarginContainer" parent="BottomWindow/PartyBox/PartyList"]
 layout_mode = 2
@@ -318,6 +392,16 @@ texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0.811765, 0.105882, 0, 0.568627)
 
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember2/Info/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
+
 [node name="ManaBar" type="TextureProgressBar" parent="BottomWindow/PartyBox/PartyList/PartyMember2/Info"]
 layout_mode = 2
 value = 100.0
@@ -325,6 +409,16 @@ texture_under = SubResource("AtlasTexture_1r817")
 texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0, 0.470588, 0.988235, 0.568627)
+
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember2/Info/ManaBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_2txkw")
+horizontal_alignment = 1
 
 [node name="PartyMember3" type="MarginContainer" parent="BottomWindow/PartyBox/PartyList"]
 layout_mode = 2
@@ -356,6 +450,16 @@ texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0.811765, 0.105882, 0, 0.568627)
 
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember3/Info/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
+
 [node name="ManaBar" type="TextureProgressBar" parent="BottomWindow/PartyBox/PartyList/PartyMember3/Info"]
 layout_mode = 2
 value = 100.0
@@ -363,6 +467,16 @@ texture_under = SubResource("AtlasTexture_1r817")
 texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0, 0.470588, 0.988235, 0.568627)
+
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember3/Info/ManaBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_2txkw")
+horizontal_alignment = 1
 
 [node name="PartyMember4" type="MarginContainer" parent="BottomWindow/PartyBox/PartyList"]
 layout_mode = 2
@@ -394,6 +508,16 @@ texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0.811765, 0.105882, 0, 0.568627)
 
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember4/Info/HealthBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_pq5c8")
+horizontal_alignment = 1
+
 [node name="ManaBar" type="TextureProgressBar" parent="BottomWindow/PartyBox/PartyList/PartyMember4/Info"]
 layout_mode = 2
 value = 100.0
@@ -401,6 +525,16 @@ texture_under = SubResource("AtlasTexture_1r817")
 texture_progress = SubResource("PlaceholderTexture2D_0o8vi")
 texture_progress_offset = Vector2(9, 3)
 tint_progress = Color(0, 0.470588, 0.988235, 0.568627)
+
+[node name="Label" type="Label" parent="BottomWindow/PartyBox/PartyList/PartyMember4/Info/ManaBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 64.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_2txkw")
+horizontal_alignment = 1
 
 [node name="ActionsBox" type="NinePatchRect" parent="BottomWindow"]
 custom_minimum_size = Vector2(100, 100)
@@ -458,25 +592,24 @@ position = Vector2(580, 180)
 
 [node name="Enemies" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(13, -60)
 
 [node name="EnemySpawner1" type="Marker2D" parent="Enemies"]
-position = Vector2(233, 238)
+position = Vector2(230, 181)
 
 [node name="EnemySpawner2" type="Marker2D" parent="Enemies"]
-position = Vector2(177, 202)
+position = Vector2(174, 145)
 
 [node name="EnemySpawner3" type="Marker2D" parent="Enemies"]
-position = Vector2(85, 218)
+position = Vector2(82, 161)
 
 [node name="EnemySpawner4" type="Marker2D" parent="Enemies"]
-position = Vector2(136, 254)
-
-[node name="CombatManager" parent="." instance=ExtResource("2_vxx37")]
+position = Vector2(133, 197)
 
 [node name="PartyManager" parent="." instance=ExtResource("3_yct45")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("3_yuwo2")]
+
+[node name="CombatManager" parent="." instance=ExtResource("2_vxx37")]
 
 [node name="Top_UI" parent="." instance=ExtResource("8_k23q6")]
 
