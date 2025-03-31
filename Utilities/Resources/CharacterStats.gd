@@ -1,5 +1,5 @@
-extends Resource
 class_name CharacterStats
+extends Resource
 
 signal health_changed(value)
 signal mana_changed(value)

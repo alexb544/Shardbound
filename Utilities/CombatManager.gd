@@ -1,5 +1,7 @@
 extends Node
 
+#signal textbox
+
 @onready var party_manager = get_node("../PartyManager")
 @onready var enemy_manager = get_node("../EnemyManager")
 
@@ -18,7 +20,7 @@ var waiting_for_input: bool = false
 var battle_over : bool = false
 
 func _ready():
-
+	print("Battle Scene loaded")
 	await get_tree().process_frame # Wait to load party/enemies in before setting turn order
 
 	party = party_manager.get_children()
@@ -38,6 +40,8 @@ func set_turn_order():
 func current_turn():
 	
 	battle_status()
+	if battle_over == true:
+		return
 	
 	print(turn_order[turn_tracker].name, "'s turn!") # "Unit's Turn!"
 	turn = turn_order[turn_tracker] # Stores active unit
@@ -175,19 +179,6 @@ func move_next_to_target(offset: Vector2, duration: float = 0.4 ):
 		await tween.finished
 
 
-func _input(event : InputEvent) -> void:
-	if players_turn and waiting_for_input:
-
-			if event.is_action_pressed("right"):
-				change_selected_enemy(-1)
-
-			elif event.is_action_pressed("left"):
-				change_selected_enemy(1)
-
-			elif event.is_action_pressed("confirm"):
-				confirm_selection()
-
-
 func remove_unit(unit : AnimatedSprite2D):
 	if unit.is_enemy == true:
 		enemies.erase(unit)
@@ -201,23 +192,36 @@ func remove_unit(unit : AnimatedSprite2D):
 func party_victory():
 	for unit in party:
 		unit.play("win_before")
+
 		if unit == party[party.size() - 1]:
 			await party[0].animation_finished
+
 			for i in party:
 				i.play("win_after")
-
 
 
 func battle_status():
 	if party.is_empty():
 		battle_over = true
-		print("You lose!")
+		Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
 
 	if enemies.is_empty():
 		battle_over = true
-		print("You Win!")
 		party_victory()
+		Events.battle_over_screen_requested.emit("You Win!", BattleOverPanel.Type.WIN)
 
+
+func _input(event : InputEvent) -> void:
+	if players_turn and waiting_for_input:
+
+			if event.is_action_pressed("right"):
+				change_selected_enemy(-1)
+
+			elif event.is_action_pressed("left"):
+				change_selected_enemy(1)
+
+			elif event.is_action_pressed("confirm"):
+				confirm_selection()
 
 func _on_attack_pressed() -> void:
 	print("Attack button pressed")
@@ -225,3 +229,8 @@ func _on_attack_pressed() -> void:
 
 func _on_defend_pressed() -> void:
 	print("Defend button pressed")
+
+
+# func _textbox(text : String):
+# 	$Textbox/Label.text = text
+# 	emit_signal("textbox")

@@ -1,0 +1,168 @@
+[gd_scene load_steps=18 format=3 uid="uid://ch5xt75a21cvl"]
+
+[ext_resource type="Texture2D" uid="uid://cm0y20qdk6jm1" path="res://Graphics/units/party/ishil/attack_stance.png" id="1_glu1d"]
+[ext_resource type="Script" path="res://Scenes/ui/main_menu.gd" id="1_x6r8s"]
+[ext_resource type="Texture2D" uid="uid://tm8iytelyo4" path="res://Graphics/units/party/roy/attack_stance.png" id="2_2v1gr"]
+[ext_resource type="Resource" uid="uid://dfagqkp8yyiob" path="res://Resources/run_startup.tres" id="2_7dj4x"]
+[ext_resource type="Texture2D" uid="uid://dfnnioxksktmb" path="res://Graphics/units/party/player/attack_stance.png" id="3_ji0vy"]
+[ext_resource type="Texture2D" uid="uid://d26r41pa2ga4g" path="res://Graphics/units/party/wadow/attack_stance.png" id="4_0g2i7"]
+[ext_resource type="Texture2D" uid="uid://djlj5g823tmhv" path="res://Graphics/units/enemies/zone1_enemies/elites/3050140_atk.png" id="5_fhntp"]
+[ext_resource type="Texture2D" uid="uid://dvr7vnhooxsmp" path="res://Graphics/units/enemies/zone1_enemies/1040210_idle.png" id="6_ds4yb"]
+[ext_resource type="Texture2D" uid="uid://hlj8owhwtlmy" path="res://Graphics/units/enemies/zone1_enemies/elites/3010210_atk.png" id="7_ewwfa"]
+[ext_resource type="Texture2D" uid="uid://c7mb72rbk1r53" path="res://Graphics/units/enemies/zone1_enemies/1010110_atk.png" id="8_hpeil"]
+
+[sub_resource type="Gradient" id="Gradient_vfgy1"]
+offsets = PackedFloat32Array(0, 0.852941)
+colors = PackedColorArray(0.383493, 0.00143661, 0.614198, 1, 0.150851, 0.00018416, 0.239462, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w0gjh"]
+gradient = SubResource("Gradient_vfgy1")
+width = 40
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bc0h"]
+atlas = ExtResource("5_fhntp")
+region = Rect2(3, 0, 165, 258)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwqyw"]
+atlas = ExtResource("6_ds4yb")
+region = Rect2(2, 11, 69, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvu8x"]
+atlas = ExtResource("7_ewwfa")
+region = Rect2(3, 0, 199, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3ic7"]
+atlas = ExtResource("8_hpeil")
+region = Rect2(0, 0, 55, 53)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2usf"]
+font_size = 50
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.643137)
+shadow_offset = Vector2(4, 4)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x6r8s")
+run_startup = ExtResource("2_7dj4x")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_w0gjh")
+
+[node name="PartyImages" type="Node2D" parent="."]
+
+[node name="Ishil" type="Sprite2D" parent="PartyImages"]
+position = Vector2(504, 198)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_glu1d")
+
+[node name="Roy" type="Sprite2D" parent="PartyImages"]
+position = Vector2(577, 215)
+scale = Vector2(1.60915, 1.60915)
+texture = ExtResource("2_2v1gr")
+
+[node name="Player" type="Sprite2D" parent="PartyImages"]
+position = Vector2(472.044, 274.063)
+scale = Vector2(1.73093, 1.73093)
+texture = ExtResource("3_ji0vy")
+
+[node name="Wadow" type="Sprite2D" parent="PartyImages"]
+position = Vector2(553.044, 297.063)
+scale = Vector2(1.62302, 1.62302)
+texture = ExtResource("4_0g2i7")
+
+[node name="EnemyImages" type="Node2D" parent="."]
+
+[node name="Elite" type="Sprite2D" parent="EnemyImages"]
+position = Vector2(147.625, 195.777)
+scale = Vector2(0.783333, 0.783333)
+texture = SubResource("AtlasTexture_5bc0h")
+
+[node name="Squirrel4" type="Sprite2D" parent="EnemyImages"]
+position = Vector2(45, 42)
+scale = Vector2(1.21558, 1.21558)
+texture = SubResource("AtlasTexture_gwqyw")
+
+[node name="Elite2" type="Sprite2D" parent="EnemyImages"]
+position = Vector2(47.8083, 254.625)
+scale = Vector2(0.940909, 0.940909)
+texture = SubResource("AtlasTexture_bvu8x")
+
+[node name="Squirrel" type="Sprite2D" parent="EnemyImages"]
+position = Vector2(185, 297)
+scale = Vector2(1.21558, 1.21558)
+texture = SubResource("AtlasTexture_h3ic7")
+
+[node name="Squirrel2" type="Sprite2D" parent="EnemyImages"]
+position = Vector2(78, 312)
+scale = Vector2(1.21558, 1.21558)
+texture = SubResource("AtlasTexture_h3ic7")
+
+[node name="Squirrel3" type="Sprite2D" parent="EnemyImages"]
+position = Vector2(141, 329)
+scale = Vector2(1.21558, 1.21558)
+texture = SubResource("AtlasTexture_h3ic7")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.5
+offset_top = -117.0
+offset_right = 226.5
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Slay The Spire x RPG"
+label_settings = SubResource("LabelSettings_d2usf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -27.0
+offset_right = 75.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+text = "Continue"
+
+[node name="NewRun" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+text = "New Run"
+
+[node name="ExitGame" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+text = "Exit Game"
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

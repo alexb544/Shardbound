@@ -10,6 +10,6 @@ icon = ExtResource("1_ih48i")
 level = 1
 max_health = 100
 max_mana = 100
-strength = 12
+strength = 100
 magic = 12
 speed = 15

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CurrentParty" load_steps=3 format=3 uid="uid://blt4xibhey28s"]
+
+[ext_resource type="PackedScene" uid="uid://croju2g5rttil" path="res://Scenes/Characters/player.tscn" id="1_ouy2m"]
+[ext_resource type="Script" path="res://Utilities/Globals/CurrentParty.gd" id="2_wgjv8"]
+
+[resource]
+script = ExtResource("2_wgjv8")
+player = ExtResource("1_ouy2m")

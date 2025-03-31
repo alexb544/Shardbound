@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="CurrentParty" load_steps=5 format=3 uid="uid://dw433n5yckevq"]
+[gd_resource type="Resource" script_class="CurrentParty" load_steps=4 format=3 uid="uid://dw433n5yckevq"]
 
+[ext_resource type="Script" path="res://Utilities/Globals/CurrentParty.gd" id="1_05pbk"]
 [ext_resource type="PackedScene" uid="uid://c7dvwy5nvhcym" path="res://Scenes/Characters/ishil.tscn" id="1_lx67e"]
-[ext_resource type="PackedScene" uid="uid://crhhmljkxtb3g" path="res://Scenes/Characters/roy.tscn" id="3_6ij22"]
-[ext_resource type="PackedScene" uid="uid://0uk8n1nud5wb" path="res://Scenes/Characters/wadow.tscn" id="3_kc7jo"]
-[ext_resource type="Script" path="res://Utilities/Resources/CurrentParty.gd" id="4_y80ny"]
+[ext_resource type="PackedScene" uid="uid://croju2g5rttil" path="res://Scenes/Characters/player.tscn" id="2_i0agj"]
 
 [resource]
-script = ExtResource("4_y80ny")
-party2 = ExtResource("3_kc7jo")
-party3 = ExtResource("1_lx67e")
-party4 = ExtResource("3_6ij22")
+script = ExtResource("1_05pbk")
+player = ExtResource("2_i0agj")
+party2 = ExtResource("1_lx67e")

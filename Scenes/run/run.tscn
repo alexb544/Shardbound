@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtdqe5v3g6uin"]
+
+[ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
+[ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
+[ext_resource type="Resource" uid="uid://dfagqkp8yyiob" path="res://Resources/run_startup.tres" id="2_3na1u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avtq3"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.266667, 0, 0.431373, 0.564706)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37551, 0.00165262, 0.653501, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Run" type="Node"]
+script = ExtResource("1_vv28b")
+run_startup = ExtResource("2_3na1u")
+
+[node name="Map" parent="." instance=ExtResource("1_2fcmb")]
+
+[node name="CurrentView" type="Node" parent="."]
+
+[node name="DebugButtons" type="VBoxContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_vertical = 2
+
+[node name="MapButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_avtq3")
+text = "Map"
+
+[node name="BattleButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_avtq3")
+text = "Battle"
+
+[node name="TownButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_avtq3")
+text = "Town"
+
+[node name="LootRoomButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_avtq3")
+text = "Loot"
+
+[node name="RewardButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_avtq3")
+text = "Reward"
