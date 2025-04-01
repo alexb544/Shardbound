@@ -223,6 +223,7 @@ func _input(event : InputEvent) -> void:
 			elif event.is_action_pressed("confirm"):
 				confirm_selection()
 
+
 func _on_attack_pressed() -> void:
 	print("Attack button pressed")
 
