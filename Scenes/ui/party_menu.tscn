@@ -1,25 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwjo265dnpgve"]
+[gd_scene load_steps=7 format=3 uid="uid://dwjo265dnpgve"]
 
 [ext_resource type="PackedScene" uid="uid://d1sa06tckcsoy" path="res://Scenes/ui/party_panel.tscn" id="1_05fvy"]
-
-[sub_resource type="Gradient" id="Gradient_04dhu"]
-offsets = PackedFloat32Array(0, 0.52907, 1)
-colors = PackedColorArray(0.431373, 0, 0.552941, 0.776471, 0.576471, 0.00392157, 0.847059, 0.87451, 0.486275, 0, 0.631373, 0.713726)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2etiy"]
-gradient = SubResource("Gradient_04dhu")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2r7wl"]
-texture = SubResource("GradientTexture1D_2etiy")
-modulate_color = Color(0.808998, 0.808998, 0.808998, 1)
+[ext_resource type="StyleBox" uid="uid://crdubq5bqn3ot" path="res://Utilities/Themes/menu_background_theme.tres" id="1_npn3j"]
+[ext_resource type="Theme" uid="uid://llodmqv2j7vt" path="res://Utilities/Themes/button_theme.tres" id="3_bmoop"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkvov"]
 bg_color = Color(0, 0, 0, 1)
 draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(0, 0, 0, 0.803922)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
@@ -61,7 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_2r7wl")
+theme_override_styles/panel = ExtResource("1_npn3j")
 
 [node name="Border" type="Panel" parent="."]
 layout_mode = 1
@@ -147,5 +138,6 @@ offset_top = 4.0
 offset_right = -3.0
 offset_bottom = 30.0
 grow_horizontal = 0
+theme = ExtResource("3_bmoop")
 theme_override_font_sizes/font_size = 16
 text = "x"

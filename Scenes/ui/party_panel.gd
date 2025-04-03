@@ -3,13 +3,9 @@ extends CenterContainer
 
 signal tooltip_requested(stats : CharacterStats)
 
-# const BASE_STYLEBOX := preload()
-# const HOVER_STYLEBOX := preload()
-
 @export var party_member : CharacterStats : set = set_party_ui
 @export var current_party : CurrentParty = preload("res://Resources/current_party.tres")
 
-@onready var panel : Panel = $Visuals/Panel
 @onready var character_name : Label = %Name
 @onready var sprite : AnimatedSprite2D = %Sprite
 

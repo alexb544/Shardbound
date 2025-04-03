@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://d1sa06tckcsoy"]
 
 [ext_resource type="Script" path="res://Scenes/ui/party_panel.gd" id="1_0ohyd"]
-[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/player.tres" id="2_qmqxg"]
+[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/Player.tres" id="2_qmqxg"]
 [ext_resource type="Texture2D" uid="uid://dfnnioxksktmb" path="res://Graphics/units/party/player/attack_stance.png" id="3_xhkiw"]
 [ext_resource type="SpriteFrames" uid="uid://pptrq6podwf" path="res://Graphics/units/party/player/player_sprite_frames.tres" id="4_gqvqk"]
 

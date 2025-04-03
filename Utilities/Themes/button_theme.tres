@@ -1,0 +1,59 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://llodmqv2j7vt"]
+
+[ext_resource type="StyleBox" uid="uid://du6f7pnsl48bi" path="res://Utilities/Themes/button_normal_style_box_flat.tres" id="1_a1k1a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om1qu"]
+bg_color = Color(0.388235, 0, 0.388235, 0.74902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.403922)
+shadow_size = 1
+shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsgpc"]
+bg_color = Color(0.388235, 0, 0.388235, 0.74902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.403922)
+shadow_size = 1
+shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6q1v"]
+bg_color = Color(0.572216, 0.000237477, 0.572212, 0.662745)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.403922)
+shadow_size = 1
+shadow_offset = Vector2(-1, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 0.77481, 0.986157, 1)
+Button/colors/font_focus_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.776471, 0.984314, 1)
+Button/constants/align_to_largest_stylebox = 1
+Button/styles/focus = SubResource("StyleBoxFlat_om1qu")
+Button/styles/hover = SubResource("StyleBoxFlat_tsgpc")
+Button/styles/normal = ExtResource("1_a1k1a")
+Button/styles/pressed = SubResource("StyleBoxFlat_r6q1v")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=23 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/battle/combat_scene.gd" id="1_adwrt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://di3qiqfvpugsl" path="res://Graphics/ui/ui_big_pieces.png" id="2_yf22o"]
 [ext_resource type="PackedScene" uid="uid://bpcjnpyx8bspc" path="res://Scenes/Utility Scenes/party_manager.tscn" id="3_yct45"]
 [ext_resource type="PackedScene" uid="uid://b5jbnn2f1j2n8" path="res://Scenes/Utility Scenes/enemy_manager.tscn" id="3_yuwo2"]
+[ext_resource type="Theme" uid="uid://llodmqv2j7vt" path="res://Utilities/Themes/button_theme.tres" id="4_3cb6v"]
 [ext_resource type="Texture2D" uid="uid://d0peu6hqa82ht" path="res://Graphics/units/party/player/unit_icon.png" id="4_vxddx"]
 [ext_resource type="Texture2D" uid="uid://dxv7rwtwrpem8" path="res://Graphics/ui/party_border.png" id="5_gp0s8"]
 [ext_resource type="Texture2D" uid="uid://bcr35mh0sm4hf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010110.png" id="7_m4nht"]
@@ -142,6 +143,7 @@ anchor_top = 0.722
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 0.0799866
+theme = ExtResource("4_3cb6v")
 alignment = 1
 
 [node name="EnemyBox" type="NinePatchRect" parent="BottomWindow"]
