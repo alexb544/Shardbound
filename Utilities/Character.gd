@@ -1,3 +1,4 @@
+class_name Character
 extends AnimatedSprite2D
 
 signal attacking(damage)

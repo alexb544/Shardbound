@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwjo265dnpgve"]
+
+[ext_resource type="PackedScene" uid="uid://d1sa06tckcsoy" path="res://Scenes/ui/party_panel.tscn" id="1_05fvy"]
+
+[sub_resource type="Gradient" id="Gradient_04dhu"]
+offsets = PackedFloat32Array(0, 0.52907, 1)
+colors = PackedColorArray(0.431373, 0, 0.552941, 0.776471, 0.576471, 0.00392157, 0.847059, 0.87451, 0.486275, 0, 0.631373, 0.713726)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2etiy"]
+gradient = SubResource("Gradient_04dhu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2r7wl"]
+texture = SubResource("GradientTexture1D_2etiy")
+modulate_color = Color(0.808998, 0.808998, 0.808998, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkvov"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.803922)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_iqr5o"]
+font_size = 34
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_d7cjs"]
+color = Color(0.261042, 0.000624521, 0.394009, 1)
+grow_begin = 8.0
+grow_end = 8.0
+thickness = 3
+
+[node name="PartyMenu" type="Control"]
+custom_minimum_size = Vector2(450, 250)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -125.0
+offset_right = 261.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2r7wl")
+
+[node name="Border" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vkvov")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.5
+offset_top = -118.0
+offset_right = 250.5
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Party"
+label_settings = SubResource("LabelSettings_iqr5o")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_d7cjs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Party" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+theme_override_constants/h_separation = 7
+columns = 4
+
+[node name="PartyMenuUI" parent="MarginContainer/VBoxContainer/HBoxContainer/Party" instance=ExtResource("1_05fvy")]
+layout_mode = 2
+
+[node name="PartyMenuUI2" parent="MarginContainer/VBoxContainer/HBoxContainer/Party" instance=ExtResource("1_05fvy")]
+layout_mode = 2
+
+[node name="PartyMenuUI3" parent="MarginContainer/VBoxContainer/HBoxContainer/Party" instance=ExtResource("1_05fvy")]
+layout_mode = 2
+
+[node name="PartyMenuUI4" parent="MarginContainer/VBoxContainer/HBoxContainer/Party" instance=ExtResource("1_05fvy")]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -29.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = 30.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "x"

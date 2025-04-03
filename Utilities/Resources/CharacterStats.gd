@@ -5,8 +5,8 @@ signal health_changed(value)
 signal mana_changed(value)
 
 @export var name : String
-@export var icon : Texture
 @export var level : int
+@export var icon : Texture
 
 @export var max_health : int
 @export var max_mana : int
@@ -14,6 +14,9 @@ signal mana_changed(value)
 @export var strength : int
 @export var magic : int
 @export var speed : int
+
+@export_group("UI")
+@export var sprite : SpriteFrames
 
 var _current_health : int = max_health
 var _current_mana : int = max_mana
