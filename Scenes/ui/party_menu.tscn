@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwjo265dnpgve"]
+[gd_scene load_steps=6 format=3 uid="uid://dwjo265dnpgve"]
 
 [ext_resource type="PackedScene" uid="uid://d1sa06tckcsoy" path="res://Scenes/ui/party_panel.tscn" id="1_05fvy"]
 [ext_resource type="StyleBox" uid="uid://crdubq5bqn3ot" path="res://Utilities/Themes/menu_background_theme.tres" id="1_npn3j"]
@@ -23,12 +23,6 @@ outline_size = 3
 outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_d7cjs"]
-color = Color(0.261042, 0.000624521, 0.394009, 1)
-grow_begin = 8.0
-grow_end = 8.0
-thickness = 3
 
 [node name="PartyMenu" type="Control"]
 custom_minimum_size = Vector2(450, 250)
@@ -98,10 +92,6 @@ size_flags_vertical = 0
 text = "Party"
 label_settings = SubResource("LabelSettings_iqr5o")
 horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_d7cjs")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

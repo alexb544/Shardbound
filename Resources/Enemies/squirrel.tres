@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_yu7h2")
 name = "Squirrel"
-icon = ExtResource("1_h8qwv")
 level = 1
+icon = ExtResource("1_h8qwv")
 max_health = 30
 max_mana = 0
 strength = 5

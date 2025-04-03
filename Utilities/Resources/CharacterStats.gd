@@ -5,8 +5,10 @@ signal health_changed(value)
 signal mana_changed(value)
 
 @export var name : String
-@export var level : int
 @export var icon : Texture
+
+@export var level : int
+@export var experience : int 
 
 @export var max_health : int
 @export var max_mana : int

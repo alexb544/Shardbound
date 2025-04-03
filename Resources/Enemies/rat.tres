@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_bdpun")
 name = "Rat"
-icon = ExtResource("1_igay2")
 level = 3
+icon = ExtResource("1_igay2")
 max_health = 50
 max_mana = 0
 strength = 10

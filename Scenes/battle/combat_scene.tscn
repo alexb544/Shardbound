@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=24 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/battle/combat_scene.gd" id="1_adwrt"]
@@ -53,6 +53,8 @@ font_color = Color(1, 0.57316, 0.491667, 1)
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Theme" id="Theme_3nydt"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_djcrc"]
 atlas = ExtResource("5_gp0s8")
 region = Rect2(9, 9, 118, 118)
@@ -89,23 +91,23 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="BottomBackground" type="NinePatchRect" parent="."]
+self_modulate = Color(0.852624, 0.630733, 1, 1)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_top = -103.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_7wgks")
 region_rect = Rect2(83, 18, 10, 13)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="TextBox" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,8 +144,8 @@ anchors_preset = -1
 anchor_top = 0.722
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.0799866
-theme = ExtResource("4_3cb6v")
+offset_top = -1.92001
+offset_bottom = -2.0
 alignment = 1
 
 [node name="EnemyBox" type="NinePatchRect" parent="BottomWindow"]
@@ -162,6 +164,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
 offset_right = -17.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -314,6 +317,7 @@ horizontal_alignment = 1
 [node name="PartyBox" type="NinePatchRect" parent="BottomWindow"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
+theme = SubResource("Theme_3nydt")
 texture = ExtResource("1_7wgks")
 region_rect = Rect2(99, 1, 10, 14)
 patch_margin_left = 4
@@ -577,17 +581,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_3cb6v")
 alignment = 1
 
 [node name="Attack" type="Button" parent="BottomWindow/ActionsBox/ActionList"]
 layout_mode = 2
+size_flags_vertical = 3
 action_mode = 0
 text = "Attack"
 
 [node name="ShardMenu" type="MenuButton" parent="BottomWindow/ActionsBox/ActionList"]
 layout_mode = 2
+size_flags_vertical = 3
 keep_pressed_outside = true
 text = "Shards"
 flat = false
@@ -600,6 +611,7 @@ popup/item_2/id = 2
 
 [node name="Defend" type="Button" parent="BottomWindow/ActionsBox/ActionList"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Defend"
 
 [node name="Party" type="Node2D" parent="."]

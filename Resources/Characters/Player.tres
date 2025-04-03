@@ -7,8 +7,9 @@
 [resource]
 script = ExtResource("1_5dust")
 name = "Player"
-level = 1
 icon = ExtResource("1_ih48i")
+level = 1
+experience = 50
 max_health = 100
 max_mana = 100
 strength = 10

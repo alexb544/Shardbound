@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1sa06tckcsoy"]
+[gd_scene load_steps=17 format=3 uid="uid://d1sa06tckcsoy"]
 
 [ext_resource type="Script" path="res://Scenes/ui/party_panel.gd" id="1_0ohyd"]
-[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/Player.tres" id="2_qmqxg"]
+[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/player.tres" id="2_qmqxg"]
 [ext_resource type="Texture2D" uid="uid://dfnnioxksktmb" path="res://Graphics/units/party/player/attack_stance.png" id="3_xhkiw"]
 [ext_resource type="SpriteFrames" uid="uid://pptrq6podwf" path="res://Graphics/units/party/player/player_sprite_frames.tres" id="4_gqvqk"]
 
@@ -27,8 +27,22 @@ outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_j5ii7"]
+outline_size = 3
+outline_color = Color(0.528768, 0.00189808, 0.750115, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3kklb"]
+content_margin_bottom = 4.0
+color = Color(0.496933, 0.000308855, 0.536777, 0.623529)
+grow_begin = 0.0
+grow_end = 0.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_1wdj4"]
-font_size = 12
+font_size = 10
+outline_size = 3
+outline_color = Color(0.47451, 0, 0.631373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1tvu"]
 bg_color = Color(0.559526, 0, 0, 0.392157)
@@ -43,7 +57,7 @@ corner_radius_top_left = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_p44w6"]
-font_size = 8
+font_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpb72"]
 bg_color = Color(0.000767204, 0.239722, 0.813736, 0.392157)
@@ -102,9 +116,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qkb3q")
 
 [node name="MarginContainer" type="MarginContainer" parent="Visuals"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -90.0
+offset_right = 59.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.995671)
@@ -115,7 +135,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Visuals/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = -3
 
 [node name="Name" type="Label" parent="Visuals/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -133,16 +153,35 @@ texture = ExtResource("3_xhkiw")
 expand_mode = 5
 stretch_mode = 4
 
+[node name="Level" type="Label" parent="Visuals/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LVL 5"
+label_settings = SubResource("LabelSettings_j5ii7")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Visuals/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_3kklb")
+
 [node name="Sprite" type="AnimatedSprite2D" parent="Visuals/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-position = Vector2(55.4354, 69.5143)
-scale = Vector2(1.41409, 1.41409)
+position = Vector2(54.4354, 62.465)
+scale = Vector2(1.36338, 1.36338)
 sprite_frames = ExtResource("4_gqvqk")
 frame_progress = 0.13865
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Visuals/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 theme_override_constants/separation = 4
+alignment = 1
 
 [node name="Health" type="HBoxContainer" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -150,24 +189,34 @@ layout_mode = 2
 
 [node name="HP" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Health"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
+size_flags_vertical = 5
 text = "HP:"
 label_settings = SubResource("LabelSettings_1wdj4")
+horizontal_alignment = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Health"]
-custom_minimum_size = Vector2(60, 10)
+custom_minimum_size = Vector2(80, 10)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_x1tvu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yr5ty")
 value = 50.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Health"]
-layout_mode = 2
+[node name="Label" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Health/ProgressBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 14.0
+grow_horizontal = 2
+size_flags_horizontal = 11
 text = "100/100"
 label_settings = SubResource("LabelSettings_p44w6")
+horizontal_alignment = 1
 
 [node name="Mana" type="HBoxContainer" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -176,49 +225,68 @@ layout_mode = 2
 [node name="MP" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Mana"]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 5
 text = "MP:"
 label_settings = SubResource("LabelSettings_1wdj4")
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="ProgressBar2" type="ProgressBar" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Mana"]
-custom_minimum_size = Vector2(60, 10)
+custom_minimum_size = Vector2(80, 10)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_bpb72")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nkhch")
 value = 80.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Mana"]
-layout_mode = 2
+[node name="Label" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Mana/ProgressBar2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.5
+offset_right = 14.5
+offset_bottom = 12.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 text = "100/100"
 label_settings = SubResource("LabelSettings_p44w6")
+horizontal_alignment = 1
 
 [node name="Experience" type="HBoxContainer" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="EXP" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Experience"]
-layout_mode = 2
-size_flags_horizontal = 10
-text = "EXP:"
-label_settings = SubResource("LabelSettings_1wdj4")
-
-[node name="ProgressBar2" type="ProgressBar" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Experience"]
-custom_minimum_size = Vector2(60, 10)
+[node name="XP" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Experience"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "XP:"
+label_settings = SubResource("LabelSettings_1wdj4")
+horizontal_alignment = 2
+
+[node name="ProgressBar2" type="ProgressBar" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Experience"]
+custom_minimum_size = Vector2(80, 10)
+layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_tm3gc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_da4od")
 value = 60.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Experience"]
-layout_mode = 2
+[node name="Label" type="Label" parent="Visuals/MarginContainer/VBoxContainer/VBoxContainer/Experience/ProgressBar2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -14.5
+offset_right = 14.5
+offset_bottom = 12.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 text = "100/100"
 label_settings = SubResource("LabelSettings_p44w6")
+horizontal_alignment = 1
 
 [connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
 [connection signal="mouse_entered" from="Visuals" to="." method="_on_visuals_mouse_entered"]
