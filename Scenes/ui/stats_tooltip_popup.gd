@@ -1,8 +1,8 @@
 class_name StatsTooltipPopup
 extends Control
-
+# NOT WORKING
 @onready var stat_description : RichTextLabel = %StatsDescription
-
+@onready var background : ColorRect = %Background
 
 func _ready():
 	hide_tooltip()
@@ -12,6 +12,8 @@ func _ready():
 
 func show_tooltip(stats : CharacterStats) -> void:
 	stat_description = RichTextLabel.new()
+	background.add_child(stat_description)
+	stat_description.bbcode_enabled = true
 	stat_description.text = " " + str(stats.strength) + "\n " + str(stats.magic) + "\n SPD: " + str(stats.speed)
 	add_child(stat_description)
 	show()
