@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=23 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/battle/combat_scene.gd" id="1_adwrt"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://d0peu6hqa82ht" path="res://Graphics/units/party/player/unit_icon.png" id="4_vxddx"]
 [ext_resource type="Texture2D" uid="uid://dxv7rwtwrpem8" path="res://Graphics/ui/party_border.png" id="5_gp0s8"]
 [ext_resource type="Texture2D" uid="uid://bcr35mh0sm4hf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010110.png" id="7_m4nht"]
-[ext_resource type="PackedScene" uid="uid://bx87k75wb5i35" path="res://Scenes/ui/top_ui.tscn" id="8_k23q6"]
 [ext_resource type="PackedScene" uid="uid://ekip16go0cc6" path="res://Scenes/ui/battle_over_panel.tscn" id="12_v623e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ncj"]
@@ -596,18 +595,13 @@ size_flags_vertical = 3
 action_mode = 0
 text = "Attack"
 
-[node name="ShardMenu" type="MenuButton" parent="BottomWindow/ActionsBox/ActionList"]
+[node name="Shards" type="MenuButton" parent="BottomWindow/ActionsBox/ActionList"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 keep_pressed_outside = true
 text = "Shards"
 flat = false
-item_count = 3
-popup/item_0/text = "Shard 1"
-popup/item_1/text = "Shard 2"
-popup/item_1/id = 1
-popup/item_2/text = "Shard 3"
-popup/item_2/id = 2
 
 [node name="Defend" type="Button" parent="BottomWindow/ActionsBox/ActionList"]
 layout_mode = 2
@@ -649,8 +643,6 @@ position = Vector2(133, 197)
 [node name="EnemyManager" parent="." instance=ExtResource("3_yuwo2")]
 
 [node name="CombatManager" parent="." instance=ExtResource("2_vxx37")]
-
-[node name="Top_UI" parent="." instance=ExtResource("8_k23q6")]
 
 [node name="BattleOverLayer" type="CanvasLayer" parent="."]
 layer = 2

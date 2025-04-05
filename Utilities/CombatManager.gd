@@ -4,9 +4,11 @@ extends Node
 
 @onready var party_manager = get_node("../PartyManager")
 @onready var enemy_manager = get_node("../EnemyManager")
+@onready var shards_button = %Shards 
 
 var party : Array = []   # access party members in scene
 var enemies : Array = [] # access enemies in scene
+var character : Character # access Character class
 
 var turn_order: Array = [] # Stores all characters for turn order
 var turn_tracker: int      # Tracks whose turn it is
@@ -20,6 +22,7 @@ var waiting_for_input: bool = false
 var battle_over : bool = false
 
 func _ready():
+	battle_over = false
 	print("Battle Scene loaded")
 	await get_tree().process_frame # Wait to load party/enemies in before setting turn order
 
@@ -68,9 +71,7 @@ func current_turn():
 		await move_next_to_target(current_position - target.global_position)
 
 		if target.stats.current_health == 0:
-			pass
-			# play death animation here
-			# remove target from the scene
+			remove_unit(target)
 		else:
 			target.play("default")
 		
@@ -81,6 +82,10 @@ func current_turn():
 	elif turn.is_enemy == false && battle_over == false: # Player turn: select action -> select target
 		players_turn = true
 		waiting_for_input = true
+
+		var shard_list = turn.get_shards()
+		generate_shard_list(shard_list)
+
 		turn.play("turn") # active turn animation
 		print("Waiting on target confirmation...")
 
@@ -142,7 +147,7 @@ func attack_enemy(enemy: AnimatedSprite2D):
 	await move_next_to_target(offset) # move to selected enemy
 
 	turn.play("attack")
-	enemy.stats.current_health -= turn.stats.strength
+	enemy.stats.current_health = enemy.stats.current_health - turn.stats.strength
 
 	if enemy.stats.current_health > 0:
 		enemy.play("hit")
@@ -225,6 +230,7 @@ func _input(event : InputEvent) -> void:
 
 
 func _on_attack_pressed() -> void:
+
 	print("Attack button pressed")
 
 
@@ -232,6 +238,11 @@ func _on_defend_pressed() -> void:
 	print("Defend button pressed")
 
 
-# func _textbox(text : String):
-# 	$Textbox/Label.text = text
-# 	emit_signal("textbox")
+func generate_shard_list(shard_list : Array[Resource]):
+	var popup = shards_button.get_popup()
+	popup.clear()
+	
+	for shard in shard_list:
+		var index = popup.get_item_count()
+		popup.add_item(shard.id)
+		popup.set_item_icon(index, shard.icon)

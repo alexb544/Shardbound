@@ -1,11 +1,9 @@
 class_name Character
 extends AnimatedSprite2D
 
-signal attacking(damage)
-
-
 @export var stats: CharacterStats
 @export var is_enemy : bool
+@export var shards : Array[Resource]
 
 
 func _ready() -> void:
@@ -32,7 +30,13 @@ func get_stats():
 			stats.current_mana = loaded_stats.max_mana
 
 
-func attack(target : AnimatedSprite2D):
-	var damage = stats.strength
-	attacking.emit(damage)
-	target.stats.current_health -= damage
+func add_shard(shard : Resource) -> void:
+	if shards.size() < 3:
+		shards.append(shard)
+	else:
+		print("You already have 3 shards equipped!")
+		return
+
+
+func get_shards() -> Array[Resource]:
+	return shards

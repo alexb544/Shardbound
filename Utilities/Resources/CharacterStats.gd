@@ -1,7 +1,7 @@
 class_name CharacterStats
 extends Resource
 
-signal health_changed(value)
+signal health_changed(value : int)
 signal mana_changed(value)
 
 @export var name : String
@@ -20,20 +20,27 @@ signal mana_changed(value)
 @export_group("UI")
 @export var sprite : SpriteFrames
 
-var _current_health : int = max_health
-var _current_mana : int = max_mana
-
-
-var current_health : int:
-	get:
-		return _current_health
+var current_health : int = max_health: 
 	set(value):
-		_current_health = clamp(value, 0, max_health)
-		health_changed.emit(_current_health)
+		current_health = clampi(value, 0, max_health)
+		health_changed.emit(current_health)
 
-var current_mana : int:
-	get:
-		return _current_mana
+var current_mana : int = max_mana:
 	set(value):
-		_current_mana = clamp(value, 0, max_mana)
-		mana_changed.emit(_current_mana)
+		current_mana = clampi(value, 0, max_mana)
+		mana_changed.emit(current_mana)
+
+
+func take_damage(damage : int) -> void:
+	self.current_health -= damage
+
+
+func heal(amount : int) -> void:
+	self.current_health += amount
+
+
+func create_instance() -> Resource:
+	var instance : CharacterStats = self.duplicate()
+	instance.current_health = max_health
+	instance.current_mana = max_mana
+	return instance

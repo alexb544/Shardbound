@@ -44,6 +44,17 @@ bg_color = Color(0.222673, 0.000415633, 0.351634, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxqlf"]
 bg_color = Color(0.392157, 0, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.811765)
+shadow_size = 5
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_7p4nj"]
 color = Color(0.158688, 0.000221642, 0.257933, 1)
@@ -54,11 +65,13 @@ Button/colors/font_focus_color = Color(1, 0.776471, 0.984314, 1)
 Button/colors/font_hover_color = Color(1, 0.776471, 0.984314, 1)
 Button/colors/font_hover_pressed_color = Color(1, 0.776471, 0.984314, 1)
 Button/constants/align_to_largest_stylebox = 1
+Button/icons/icon = null
 Button/styles/disabled = null
 Button/styles/focus = SubResource("StyleBoxFlat_om1qu")
 Button/styles/hover = SubResource("StyleBoxFlat_tsgpc")
 Button/styles/normal = ExtResource("1_a1k1a")
 Button/styles/pressed = SubResource("StyleBoxFlat_r6q1v")
+PopupMenu/constants/icon_max_width = 30
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_d2wf0")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_nxqlf")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_7p4nj")

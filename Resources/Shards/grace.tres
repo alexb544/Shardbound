@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://rv815f2akbrm"]
+
+[ext_resource type="Texture2D" uid="uid://didtde55261nd" path="res://Graphics/items/shards/supp_small.png" id="1_xelkq"]
+[ext_resource type="Script" path="res://Resources/Shards/grace.gd" id="2_1ecdg"]
+
+[resource]
+script = ExtResource("2_1ecdg")
+id = "Grace"
+type = 1
+target = 0
+mana = 15
+icon = ExtResource("1_xelkq")
+description = "Heal one of your allies
+Single Target -- 15 MP"

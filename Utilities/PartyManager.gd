@@ -12,8 +12,8 @@ var party_members : Array = []
 
 func _ready():
 	party_list = current_party.get_party_list()
-	spawn_party()
-	set_party_ui()
+	await spawn_party()
+	await set_party_ui()
 
 
 func spawn_party():
@@ -49,7 +49,7 @@ func set_party_ui():
 			var health_text = health_bar.get_node("Label") as Label
 			health_text.text = str(unit.stats.current_health)
 
-			unit.stats.health_changed.connect(_on_health_changed.bind(health_bar, health_text))
+			unit.stats.health_changed.connect(Callable(self, "_on_health_changed").bind(health_bar, health_text))
 
 			# == Mana Bar ======================================================
 			var mana_bar = info.get_node("ManaBar") as TextureProgressBar

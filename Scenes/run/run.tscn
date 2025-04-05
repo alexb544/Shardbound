@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtdqe5v3g6uin"]
+[gd_scene load_steps=6 format=3 uid="uid://dtdqe5v3g6uin"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
 [ext_resource type="Resource" uid="uid://dfagqkp8yyiob" path="res://Resources/run_startup.tres" id="2_3na1u"]
+[ext_resource type="PackedScene" uid="uid://bx87k75wb5i35" path="res://Scenes/ui/top_ui.tscn" id="4_or6xi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avtq3"]
 content_margin_left = 2.0
@@ -64,3 +65,5 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_avtq3")
 text = "Reward"
+
+[node name="Top_UI" parent="." instance=ExtResource("4_or6xi")]

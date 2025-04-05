@@ -9,6 +9,7 @@ extends Node
 # Battle-related events
 signal battle_over_screen_requested(text : String, type : BattleOverPanel.Type)
 signal battle_won
+signal shard_used(shard : Shard)
 
 # Map-related events
 signal map_exited

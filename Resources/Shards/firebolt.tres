@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c6l3h6ncnrhtf"]
+
+[ext_resource type="Texture2D" uid="uid://bvadgg1fa7ml6" path="res://Graphics/items/shards/fire_small.png" id="1_erah8"]
+[ext_resource type="Script" path="res://Resources/Shards/firebolt.gd" id="1_suqk6"]
+
+[resource]
+script = ExtResource("1_suqk6")
+id = "Firebolt"
+type = 0
+target = 0
+mana = 10
+icon = ExtResource("1_erah8")
+description = "Hurl a ball of fire at your enemy
+Single Target -- 10 MP"
