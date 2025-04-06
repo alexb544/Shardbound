@@ -11,6 +11,6 @@ level = 3
 experience = 0
 max_health = 50
 max_mana = 0
-strength = 200
+strength = 12
 magic = 0
 speed = 20

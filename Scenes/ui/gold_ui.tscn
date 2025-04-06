@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://7s8frk066iun"]
+
+[ext_resource type="Script" path="res://Scenes/ui/gold_ui.gd" id="1_tjix0"]
+[ext_resource type="Texture2D" uid="uid://5r0yx38u0vh5" path="res://Graphics/ui/gold_icon.png" id="3_b085q"]
+
+[sub_resource type="FontVariation" id="FontVariation_qxp08"]
+spacing_bottom = -3
+
+[sub_resource type="LabelSettings" id="LabelSettings_2t17t"]
+font = SubResource("FontVariation_qxp08")
+font_color = Color(1, 0.952941, 0.239216, 1)
+outline_size = 3
+outline_color = Color(0.0588235, 0.054902, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1.5, 1.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u36x5"]
+atlas = ExtResource("3_b085q")
+region = Rect2(31, 28, 47, 52)
+
+[node name="GoldUI" type="HBoxContainer"]
+offset_right = 38.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+script = ExtResource("1_tjix0")
+
+[node name="GoldValue" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "9999"
+label_settings = SubResource("LabelSettings_2t17t")
+
+[node name="GoldImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_u36x5")
+expand_mode = 5
+stretch_mode = 4

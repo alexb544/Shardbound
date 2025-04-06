@@ -6,15 +6,22 @@ const BATTLE_REWARD_SCENE := preload("res://Scenes/battle_reward/battle_reward.t
 const TOWN_SCENE := preload("res://Scenes/town/town.tscn")
 const MAP_SCENE := preload("res://Scenes/map/map.tscn")
 const LOOT_ROOM_SCENE := preload("res://Scenes/loot_room/loot_room.tscn")
+const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn") # NEW
 
 @export var run_startup : RunStartup
 
-@onready var current_view : Node = $CurrentView 
+@onready var current_view : Node = $CurrentView
 @onready var map_button : Button = %MapButton
 @onready var battle_button : Button = %BattleButton 
 @onready var town_button : Button = %TownButton 
 @onready var loot_room_button : Button = %LootRoomButton 
-@onready var rewards_button : Button = %RewardButton 
+@onready var rewards_button : Button = %RewardButton  # NEW
+
+@onready var gold_ui : GoldUI = %GoldUI
+@onready var party_menu_button : TextureButton = %PartyMenuButton # NEW
+
+var stats : RunStats
+var character : CharacterStats
 
 var current_party : CurrentParty = preload("res://Resources/current_party.tres")
 var new_party : CurrentParty = preload("res://Resources/new_party.tres")
@@ -26,14 +33,17 @@ func _ready():
 	
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
-			current_party = new_party
+			current_party = new_party.duplicate()
 			_start_run()
 		RunStartup.Type.CONTINUED_RUN:
 			print("TODO: load previous Run")
 
 
 func _start_run() -> void:
+	stats = RunStats.new()
+
 	_setup_event_connections()
+	_setup_top_bar()
 	print("TODO: procedurally generate map")
 
 
@@ -42,7 +52,7 @@ func _change_view(scene : PackedScene) -> void:
 		current_view.get_child(0).queue_free()
 
 	var new_view := scene.instantiate()
-	current_view.add_child(new_view)
+	current_view.add_child.call_deferred(new_view)
 
 
 func _setup_event_connections() -> void:
@@ -59,5 +69,20 @@ func _setup_event_connections() -> void:
 	loot_room_button.pressed.connect(_change_view.bind(LOOT_ROOM_SCENE))
 
 
+func _setup_top_bar():
+	gold_ui.run_stats = stats
+
+
 func _on_map_exited() -> void:
 	print("TODO: from the MAP, change view based on room type")
+
+# NEW
+func _on_party_menu_button_pressed() -> void:
+	var menu_open := get_node_or_null("PartyMenu")
+	if menu_open:
+		menu_open.queue_free()
+	else:
+		var new_party_menu = PARTY_MENU_SCENE.instantiate()
+		new_party_menu.name = "PartyMenu"
+		add_child.call_deferred(new_party_menu)
+

@@ -32,7 +32,8 @@ func _ready():
 	set_turn_order()
 
 	current_turn()
-
+	battle_over = false
+	
 # Appends party/enemies stats.speed to turn_order[] & sorts them (high -> low)
 func set_turn_order():
 	turn_order = party + enemies
@@ -194,17 +195,6 @@ func remove_unit(unit : AnimatedSprite2D):
 	unit.queue_free()
 
 
-func party_victory():
-	for unit in party:
-		unit.play("win_before")
-
-		if unit == party[party.size() - 1]:
-			await party[0].animation_finished
-
-			for i in party:
-				i.play("win_after")
-
-
 func battle_status():
 	if party.is_empty():
 		battle_over = true
@@ -214,6 +204,17 @@ func battle_status():
 		battle_over = true
 		party_victory()
 		Events.battle_over_screen_requested.emit("You Win!", BattleOverPanel.Type.WIN)
+
+
+func party_victory():
+	for unit in party:
+		unit.play("win_before")
+
+		if unit == party[party.size() - 1]:
+			await party[0].animation_finished
+
+			for i in party:
+				i.play("win_after")
 
 
 func _input(event : InputEvent) -> void:
@@ -230,8 +231,10 @@ func _input(event : InputEvent) -> void:
 
 
 func _on_attack_pressed() -> void:
-
-	print("Attack button pressed")
+	if players_turn:
+		confirm_selection()
+	else:
+		print("Wait your turn!")
 
 
 func _on_defend_pressed() -> void:
@@ -242,6 +245,9 @@ func generate_shard_list(shard_list : Array[Resource]):
 	var popup = shards_button.get_popup()
 	popup.clear()
 	
+	if shard_list.is_empty():
+		return 
+
 	for shard in shard_list:
 		var index = popup.get_item_count()
 		popup.add_item(shard.id)

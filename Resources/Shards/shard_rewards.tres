@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShardPile" load_steps=4 format=3 uid="uid://dqx4v4jaodquo"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="1_ugee1"]
+[ext_resource type="Resource" uid="uid://rv815f2akbrm" path="res://Resources/Shards/grace.tres" id="2_sgipr"]
+[ext_resource type="Resource" uid="uid://c6l3h6ncnrhtf" path="res://Resources/Shards/firebolt.tres" id="3_eo11w"]
+
+[resource]
+script = ExtResource("1_ugee1")
+shards = Array[Resource]([ExtResource("2_sgipr"), ExtResource("2_sgipr"), ExtResource("2_sgipr"), ExtResource("2_sgipr"), ExtResource("3_eo11w"), ExtResource("3_eo11w"), ExtResource("3_eo11w"), ExtResource("3_eo11w"), ExtResource("3_eo11w")])

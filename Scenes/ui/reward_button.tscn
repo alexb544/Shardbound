@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://dngb8cht4mqbl"]
+
+[ext_resource type="StyleBox" uid="uid://c64f2c4biko0q" path="res://Utilities/Themes/button_normal_theme.tres" id="1_0s4hh"]
+[ext_resource type="Texture2D" uid="uid://5r0yx38u0vh5" path="res://Graphics/ui/gold_icon.png" id="2_4nqm7"]
+[ext_resource type="Script" path="res://Scenes/ui/reward_button.gd" id="2_ta1g3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om1qu"]
+bg_color = Color(0.262745, 0, 0.407843, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsgpc"]
+bg_color = Color(0.261345, 0.00056828, 0.408267, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6q1v"]
+bg_color = Color(0.392157, 0, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="Theme" id="Theme_wrsik"]
+Button/colors/font_color = Color(0.901961, 0.811765, 1, 1)
+Button/colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 0.560784)
+Button/colors/font_focus_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/align_to_largest_stylebox = 1
+Button/icons/icon = null
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxFlat_om1qu")
+Button/styles/hover = SubResource("StyleBoxFlat_tsgpc")
+Button/styles/normal = ExtResource("1_0s4hh")
+Button/styles/pressed = SubResource("StyleBoxFlat_r6q1v")
+
+[sub_resource type="LabelSettings" id="LabelSettings_luqmy"]
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(150, 30)
+offset_right = 150.0
+offset_bottom = 25.0
+theme = SubResource("Theme_wrsik")
+script = ExtResource("2_ta1g3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -19.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = -5
+
+[node name="CustomIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_4nqm7")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="CustomText" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99 Gold"
+label_settings = SubResource("LabelSettings_luqmy")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

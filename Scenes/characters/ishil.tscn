@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://c7dvwy5nvhcym"]
+[gd_scene load_steps=74 format=3 uid="uid://c7dvwy5nvhcym"]
 
 [ext_resource type="Texture2D" uid="uid://u1m2g45k4t24" path="res://Graphics/units/party/ishil/idle.png" id="1_3acxr"]
 [ext_resource type="Texture2D" uid="uid://nvce8gm7dso8" path="res://Graphics/units/party/ishil/attack.png" id="1_r7xy1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://edh76dtui5se" path="res://Graphics/units/party/ishil/standby.png" id="5_glfbv"]
 [ext_resource type="Texture2D" uid="uid://beymi11gc80o5" path="res://Graphics/units/party/ishil/win_begin.png" id="6_pb1p4"]
 [ext_resource type="Texture2D" uid="uid://rpqjjg47x45e" path="res://Graphics/units/party/ishil/win_end.png" id="6_w2nao"]
+[ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="10_vcryy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idmkm"]
 atlas = ExtResource("1_r7xy1")
@@ -475,9 +476,14 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="Resource" id="Resource_mt2ol"]
+script = ExtResource("10_vcryy")
+shards = Array[Resource]([])
+
 [node name="Ishil" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_2awgk")
 animation = &"win_after"
 autoplay = "default"
 script = ExtResource("2_rtw4m")
 stats = ExtResource("3_638wd")
+shard_pile = SubResource("Resource_mt2ol")

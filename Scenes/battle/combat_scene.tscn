@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=24 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/battle/combat_scene.gd" id="1_adwrt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d0peu6hqa82ht" path="res://Graphics/units/party/player/unit_icon.png" id="4_vxddx"]
 [ext_resource type="Texture2D" uid="uid://dxv7rwtwrpem8" path="res://Graphics/ui/party_border.png" id="5_gp0s8"]
 [ext_resource type="Texture2D" uid="uid://bcr35mh0sm4hf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010110.png" id="7_m4nht"]
+[ext_resource type="Theme" uid="uid://ll01f215dntj" path="res://Utilities/Themes/popup_menu_theme.tres" id="9_cdlp8"]
 [ext_resource type="PackedScene" uid="uid://ekip16go0cc6" path="res://Scenes/ui/battle_over_panel.tscn" id="12_v623e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ncj"]
@@ -599,14 +600,10 @@ text = "Attack"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("9_cdlp8")
 keep_pressed_outside = true
 text = "Shards"
 flat = false
-
-[node name="Defend" type="Button" parent="BottomWindow/ActionsBox/ActionList"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Defend"
 
 [node name="Party" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -653,4 +650,3 @@ offset_top = -144.0
 offset_bottom = 54.0
 
 [connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Attack" to="CombatManager" method="_on_attack_pressed"]
-[connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Defend" to="CombatManager" method="_on_defend_pressed"]

@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 
 @export var stats: CharacterStats
 @export var is_enemy : bool
-@export var shards : Array[Resource]
+@export var shard_pile : ShardPile 
 
 
 func _ready() -> void:
@@ -31,12 +31,14 @@ func get_stats():
 
 
 func add_shard(shard : Resource) -> void:
-	if shards.size() < 3:
-		shards.append(shard)
+	if shard_pile.size() < 3:
+		shard_pile.append(shard)
 	else:
 		print("You already have 3 shards equipped!")
 		return
 
 
-func get_shards() -> Array[Resource]:
-	return shards
+func get_shards():
+	if shard_pile == null:
+		return
+	return self.shard_pile.shards

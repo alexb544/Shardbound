@@ -1,5 +1,74 @@
+class_name BattleReward
 extends Control
 
 
-func _on_button_pressed() -> void:
+const SHARD_REWARDS = preload("res://Resources/Shards/shard_rewards.tres")
+const REWARD_BUTTON = preload("res://Scenes/ui/reward_button.tscn")
+const GOLD_ICON := preload("res://Graphics/ui/gold_icon.png")
+const GOLD_TEXT := "%s Gold"
+const SHARD_ICON := preload("res://Graphics/items/shards/fire_small.png")
+const SHARD_TEXT := "%s"
+
+
+@export var run_stats : RunStats
+@export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
+@export var current_party : CurrentParty = preload("res://Resources/current_party.tres")
+
+@onready var rewards : VBoxContainer = %Rewards
+@onready var instance = character.instantiate()
+
+func _ready():
+	party_instantiate()
+	for node : Node in rewards.get_children():
+		node.queue_free()
+	
+	run_stats = RunStats.new() # for testing
+	run_stats.gold_changed.connect(func(): print("Gold %s" % run_stats.gold)) # for testing
+	
+	add_gold_reward(50)
+	add_shard_reward()
+	add_shard_reward()
+
+
+func add_gold_reward(amount : int) -> void:
+	var gold_reward := REWARD_BUTTON.instantiate() as RewardButton
+	gold_reward.reward_icon = GOLD_ICON
+	gold_reward.reward_text = GOLD_TEXT % amount
+	gold_reward.pressed.connect(_on_gold_reward_taken.bind(amount))
+	rewards.add_child.call_deferred(gold_reward)
+
+
+func _on_gold_reward_taken(amount : int) -> void:
+	if not run_stats:
+		return
+
+	run_stats.gold += amount
+
+
+func _on_back_button_pressed() -> void:
 	Events.battle_reward_exited.emit()
+
+
+func add_shard_reward() -> void:
+	var random_shard = SHARD_REWARDS.shards.pick_random()
+	var shard_reward := REWARD_BUTTON.instantiate() as RewardButton
+	shard_reward.reward_icon = random_shard.icon
+	shard_reward.reward_text = SHARD_TEXT % random_shard.id
+	shard_reward.pressed.connect(_on_shard_reward_taken.bind(random_shard))
+	rewards.add_child.call_deferred(shard_reward)
+
+
+func _on_shard_reward_taken(shard : Resource) -> void:
+	if not shard:
+		return
+	
+	print("Shards Before:\n%s\n" % instance.shard_pile)
+	instance.shard_pile.add_shard(shard)
+	print("Shards After:\n%s\n" % instance.shard_pile)
+
+
+func party_instantiate() -> void:
+	var party = current_party.get_party_list()
+
+	for i in party:
+		await i.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://0uk8n1nud5wb"]
+[gd_scene load_steps=62 format=3 uid="uid://0uk8n1nud5wb"]
 
 [ext_resource type="Texture2D" uid="uid://bgc7ylss7mooy" path="res://Graphics/units/party/wadow/attack.png" id="1_14bay"]
 [ext_resource type="Texture2D" uid="uid://ducp5q4dfny3n" path="res://Graphics/units/party/wadow/idle.png" id="1_yssb1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cyrvb6rf4vbjv" path="res://Graphics/units/party/wadow/standby.png" id="5_5g1v8"]
 [ext_resource type="Texture2D" uid="uid://dlckv86dsbcwa" path="res://Graphics/units/party/wadow/win_end.png" id="6_7i1nq"]
 [ext_resource type="Texture2D" uid="uid://82o83g0i0ube" path="res://Graphics/units/party/wadow/win_begin.png" id="7_obsby"]
+[ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="10_7gxgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho3by"]
 atlas = ExtResource("1_14bay")
@@ -391,9 +392,14 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Resource" id="Resource_wtmf2"]
+script = ExtResource("10_7gxgy")
+shards = Array[Resource]([])
+
 [node name="Wadow" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = SubResource("SpriteFrames_ub5si")
 animation = &"win_after"
 autoplay = "default"
 script = ExtResource("2_qtrd0")
 stats = ExtResource("3_8lhq8")
+shard_pile = SubResource("Resource_wtmf2")

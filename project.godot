@@ -18,8 +18,8 @@ config/icon="res://Graphics/ui/cursor_MAYBE.png"
 [autoload]
 
 InventoryManager="*res://Utilities/Globals/InventoryManager.gd"
-SessionManager="*res://Utilities/Globals/SessionManager.gd"
 Events="*res://Utilities/Globals/events.gd"
+SessionManager="*res://Utilities/Globals/SessionManager.gd"
 
 [display]
 

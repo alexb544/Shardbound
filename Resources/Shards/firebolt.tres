@@ -7,6 +7,7 @@
 script = ExtResource("1_suqk6")
 id = "Firebolt"
 type = 0
+rarity = 0
 target = 0
 mana = 10
 icon = ExtResource("1_erah8")
