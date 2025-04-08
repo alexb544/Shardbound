@@ -17,8 +17,11 @@ func use_shard() -> Resource:
 
 
 func add_shard(shard : Resource) -> void:
-    shards.append(shard)
-    shard_pile_size_changed.emit(shards.size())
+    if shards.size() < 3 && !shards.has(shard):
+        shards.append(shard)
+        shard_pile_size_changed.emit(shards.size())
+    else:
+        print("You already have that shard! Or 3 shards are already equipped!")
 
 
 func clear() -> void:

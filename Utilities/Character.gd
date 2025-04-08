@@ -30,14 +30,6 @@ func get_stats():
 			stats.current_mana = loaded_stats.max_mana
 
 
-func add_shard(shard : Resource) -> void:
-	if shard_pile.size() < 3:
-		shard_pile.append(shard)
-	else:
-		print("You already have 3 shards equipped!")
-		return
-
-
 func get_shards():
 	if shard_pile == null:
 		return

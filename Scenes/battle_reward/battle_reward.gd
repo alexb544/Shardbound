@@ -21,12 +21,11 @@ func _ready():
 	for node : Node in rewards.get_children():
 		node.queue_free()
 	
-	run_stats = RunStats.new() # for testing
-	run_stats.gold_changed.connect(func(): print("Gold %s" % run_stats.gold)) # for testing
+	# run_stats = RunStats.new() # for testing
+	# run_stats.gold_changed.connect(func(): print("Gold %s" % run_stats.gold)) # for testing
 	
-	add_gold_reward(50)
-	add_shard_reward()
-	add_shard_reward()
+	# add_gold_reward(129)
+	# add_shard_reward()
 
 
 func add_gold_reward(amount : int) -> void:
@@ -44,10 +43,6 @@ func _on_gold_reward_taken(amount : int) -> void:
 	run_stats.gold += amount
 
 
-func _on_back_button_pressed() -> void:
-	Events.battle_reward_exited.emit()
-
-
 func add_shard_reward() -> void:
 	var random_shard = SHARD_REWARDS.shards.pick_random()
 	var shard_reward := REWARD_BUTTON.instantiate() as RewardButton
@@ -60,10 +55,8 @@ func add_shard_reward() -> void:
 func _on_shard_reward_taken(shard : Resource) -> void:
 	if not shard:
 		return
-	
-	print("Shards Before:\n%s\n" % instance.shard_pile)
+
 	instance.shard_pile.add_shard(shard)
-	print("Shards After:\n%s\n" % instance.shard_pile)
 
 
 func party_instantiate() -> void:
@@ -71,3 +64,7 @@ func party_instantiate() -> void:
 
 	for i in party:
 		await i.instantiate()
+
+
+func _on_back_button_pressed() -> void:
+	Events.battle_reward_exited.emit()
