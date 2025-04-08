@@ -1,17 +1,18 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://dbov04yhw5lhg"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://dbov04yhw5lhg"]
 
 [ext_resource type="Texture2D" uid="uid://dfjj57ni3loqp" path="res://Graphics/units/party/ishil/icon.png" id="1_345bv"]
 [ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_682ee"]
+[ext_resource type="SpriteFrames" uid="uid://dy2x1uv7wktp4" path="res://Resources/SpriteFrames/ishil_sprite_frames.tres" id="3_ro6ek"]
 
 [resource]
 script = ExtResource("1_682ee")
 name = "Ishil"
 icon = ExtResource("1_345bv")
 level = 1
+experience = 0
 max_health = 110
-current_health = 110
 max_mana = 90
-current_mana = 90
 strength = 10
 magic = 10
 speed = 7
+sprite = ExtResource("3_ro6ek")

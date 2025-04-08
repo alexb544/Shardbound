@@ -36,6 +36,7 @@ func set_party_ui(unit : CharacterStats) -> void:
 		await ready
 
 	party_member = unit
+	sprite.sprite_frames = party_member.sprite
 	sprite.play("default")
 	character_name.text = party_member.name
 	level.text = "LVL " + str(party_member.level)

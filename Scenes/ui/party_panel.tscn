@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1sa06tckcsoy"]
+[gd_scene load_steps=16 format=3 uid="uid://d1sa06tckcsoy"]
 
 [ext_resource type="Script" path="res://Scenes/ui/party_panel.gd" id="1_0ohyd"]
 [ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/player.tres" id="2_qmqxg"]
@@ -17,12 +17,6 @@ outline_size = 3
 outline_color = Color(0.528768, 0.00189808, 0.750115, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_3kklb"]
-content_margin_bottom = 4.0
-color = Color(0.496933, 0.000308855, 0.536777, 0.623529)
-grow_begin = 0.0
-grow_end = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1wdj4"]
 font_size = 10
@@ -146,20 +140,11 @@ text = "LVL 5"
 label_settings = SubResource("LabelSettings_j5ii7")
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Visuals/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(45, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxLine_3kklb")
-
 [node name="Sprite" type="AnimatedSprite2D" parent="Visuals/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 position = Vector2(54.4354, 62.465)
 scale = Vector2(1.36338, 1.36338)
 sprite_frames = ExtResource("4_gqvqk")
-frame_progress = 0.13865
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Visuals/MarginContainer/VBoxContainer"]
 layout_mode = 2

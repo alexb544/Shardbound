@@ -3,18 +3,10 @@ extends Resource
 
 enum Type {ATTACK, HEAL}
 enum Target {PARTY, ALL_PARTY, SINGLE_ENEMY, ALL_ENEMIES}
-enum Rarity {COMMON, UNCOMMON, RARE}
-
-const RARITY_COLORS := {
-    Shard.Rarity.COMMON: Color.GRAY,
-    Shard.Rarity.UNCOMMON: Color.CORNFLOWER_BLUE,
-    Shard.Rarity.RARE: Color.GOLD
-}
 
 @export_group("Shard Attributes")
 @export var id : String
 @export var type : Type
-@export var rarity : Rarity
 @export var target : Target
 @export var mana : int
 
@@ -33,7 +25,6 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
         return []
     
     var tree := targets[0].get_tree()
-
     match target:
         Target.PARTY:
             return tree.get_nodes_in_group("party_members")

@@ -1,7 +1,6 @@
 class_name BattleReward
 extends Control
 
-
 const SHARD_REWARDS = preload("res://Resources/Shards/shard_rewards.tres")
 const REWARD_BUTTON = preload("res://Scenes/ui/reward_button.tscn")
 const GOLD_ICON := preload("res://Graphics/ui/gold_icon.png")
@@ -9,13 +8,13 @@ const GOLD_TEXT := "%s Gold"
 const SHARD_ICON := preload("res://Graphics/items/shards/fire_small.png")
 const SHARD_TEXT := "%s"
 
-
 @export var run_stats : RunStats
 @export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
 @export var current_party : CurrentParty = preload("res://Resources/current_party.tres")
 
 @onready var rewards : VBoxContainer = %Rewards
 @onready var instance = character.instantiate()
+
 
 func _ready():
 	party_instantiate()
