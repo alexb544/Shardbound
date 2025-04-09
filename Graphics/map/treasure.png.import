@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mxc58djmxo4h"
-path="res://.godot/imported/town.png-0f0cd864d2f7505e25c04300595895dd.ctex"
+uid="uid://bgteih626b36d"
+path="res://.godot/imported/treasure.png-dabc125e54c4bfb2908256f8efce73ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/map/location_icons/town/town.png"
-dest_files=["res://.godot/imported/town.png-0f0cd864d2f7505e25c04300595895dd.ctex"]
+source_file="res://Graphics/map/treasure.png"
+dest_files=["res://.godot/imported/treasure.png-dabc125e54c4bfb2908256f8efce73ed.ctex"]
 
 [params]
 
