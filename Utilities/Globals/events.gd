@@ -14,7 +14,7 @@ signal shard_used(shard : Shard)
 
 
 # Map-related events
-signal map_exited
+signal map_exited(room : Room)
 
 
 # Town-releated events
