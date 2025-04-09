@@ -6,7 +6,7 @@ const BATTLE_REWARD_SCENE := preload("res://Scenes/battle_reward/battle_reward.t
 const TOWN_SCENE := preload("res://Scenes/town/town.tscn")
 const MAP_SCENE := preload("res://Scenes/map/map.tscn")
 const LOOT_ROOM_SCENE := preload("res://Scenes/loot_room/loot_room.tscn")
-const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn") # NEW
+const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn")
 
 @export var run_startup : RunStartup
 
@@ -15,16 +15,16 @@ const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn") # NEW
 @onready var battle_button : Button = %BattleButton 
 @onready var town_button : Button = %TownButton 
 @onready var loot_room_button : Button = %LootRoomButton 
-@onready var rewards_button : Button = %RewardButton  # NEW
+@onready var rewards_button : Button = %RewardButton
 
 @onready var gold_ui : GoldUI = %GoldUI
-@onready var party_menu_button : TextureButton = %PartyMenuButton # NEW
+@onready var party_menu_button : TextureButton = %PartyMenuButton 
 
-var stats : RunStats
-var character : CharacterStats
-
-var current_party : CurrentParty = preload("res://Resources/current_party.tres")
+var current_party : CurrentParty
 var new_party : CurrentParty = preload("res://Resources/new_party.tres")
+
+var run_stats : RunStats
+var party : CurrentParty
 
 
 func _ready():
@@ -40,23 +40,25 @@ func _ready():
 
 
 func _start_run() -> void:
-	stats = RunStats.new()
+	run_stats = RunStats.new()
 
 	_setup_event_connections()
 	_setup_top_bar()
 	print("TODO: procedurally generate map")
 
 
-func _change_view(scene : PackedScene) -> void:
+func _change_view(scene : PackedScene) -> Node:
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 
 	var new_view := scene.instantiate()
 	current_view.add_child.call_deferred(new_view)
+	
+	return new_view
 
 
 func _setup_event_connections() -> void:
-	Events.battle_won.connect(_change_view.bind(BATTLE_REWARD_SCENE))
+	Events.battle_won.connect(_on_battle_won)
 	Events.battle_reward_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.town_exited.connect(_change_view.bind(MAP_SCENE))
 	Events.map_exited.connect(_on_map_exited)
@@ -70,13 +72,25 @@ func _setup_event_connections() -> void:
 
 
 func _setup_top_bar():
-	gold_ui.run_stats = stats
+	gold_ui.run_stats = run_stats
+
+
+func _on_battle_won() -> void:
+	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
+	await get_tree().create_timer(.01).timeout # game crashes if this isn't included (change_view returns before scene is ready otherwise)
+	reward_scene.run_stats = run_stats
+	reward_scene.current_party = current_party
+
+	# temp code -> should come from battle encounter data as dependency
+	reward_scene.add_gold_reward(77)
+	reward_scene.add_shard_reward()
+
 
 
 func _on_map_exited() -> void:
 	print("TODO: from the MAP, change view based on room type")
 
-# NEW
+
 func _on_party_menu_button_pressed() -> void:
 	var menu_open := get_node_or_null("PartyMenu")
 	if menu_open:
@@ -85,4 +99,3 @@ func _on_party_menu_button_pressed() -> void:
 		var new_party_menu = PARTY_MENU_SCENE.instantiate()
 		new_party_menu.name = "PartyMenu"
 		add_child.call_deferred(new_party_menu)
-

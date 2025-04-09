@@ -10,10 +10,10 @@ extends Button
 
 func set_reward_icon(new_icon : Texture) -> void:
     reward_icon = new_icon
-
+    
     if not is_node_ready():
         await ready
-    
+
     custom_icon.texture = reward_icon
 
 

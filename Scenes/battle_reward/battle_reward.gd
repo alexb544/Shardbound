@@ -5,12 +5,11 @@ const SHARD_REWARDS = preload("res://Resources/Shards/shard_rewards.tres")
 const REWARD_BUTTON = preload("res://Scenes/ui/reward_button.tscn")
 const GOLD_ICON := preload("res://Graphics/ui/gold_icon.png")
 const GOLD_TEXT := "%s Gold"
-const SHARD_ICON := preload("res://Graphics/items/shards/fire_small.png")
 const SHARD_TEXT := "%s"
 
 @export var run_stats : RunStats
-@export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
 @export var current_party : CurrentParty = preload("res://Resources/current_party.tres")
+@export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
 
 @onready var rewards : VBoxContainer = %Rewards
 @onready var instance = character.instantiate()
@@ -20,12 +19,6 @@ func _ready():
 	party_instantiate()
 	for node : Node in rewards.get_children():
 		node.queue_free()
-	
-	# run_stats = RunStats.new() # for testing
-	# run_stats.gold_changed.connect(func(): print("Gold %s" % run_stats.gold)) # for testing
-	
-	# add_gold_reward(129)
-	# add_shard_reward()
 
 
 func add_gold_reward(amount : int) -> void:

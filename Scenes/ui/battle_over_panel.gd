@@ -9,16 +9,14 @@ enum Type {WIN, LOSE}
 
 
 func _ready():
-    continue_button.pressed.connect(func(): Events.battle_won.emit())
-    restart_button.pressed.connect(get_tree().reload_current_scene)
-    Events.battle_over_screen_requested.connect(show_screen)
+	continue_button.pressed.connect(func(): Events.battle_won.emit())
+	restart_button.pressed.connect(get_tree().reload_current_scene)
+	Events.battle_over_screen_requested.connect(show_screen)
 
 
 func show_screen(text : String, type : Type) -> void:
-    label.text = text
-    continue_button.visible = type == Type.WIN
-    restart_button.visible = type == Type.LOSE
-    await get_tree().create_timer(3).timeout
-    show()
-
-
+	label.text = text
+	continue_button.visible = type == Type.WIN
+	restart_button.visible = type == Type.LOSE
+	await get_tree().create_timer(3).timeout
+	show()
