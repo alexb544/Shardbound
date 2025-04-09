@@ -70,7 +70,6 @@ theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Reward"
 
 [node name="TopBar" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="Background" type="ColorRect" parent="TopBar"]
 offset_right = 640.0
