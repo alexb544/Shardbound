@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://bblw2l2wcfpqy"]
+
+[ext_resource type="PackedScene" uid="uid://c8c5hgeejgpnx" path="res://Scenes/Enemies/rat.tscn" id="1_8lv5l"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_s0p8t"]
+
+[resource]
+script = ExtResource("1_s0p8t")
+battle_tier = 3
+weight = 10.0
+gold_reward_min = 200
+gold_reward_max = 500
+exp_reward = 100
+enemies = Array[PackedScene]([ExtResource("1_8lv5l"), ExtResource("1_8lv5l"), ExtResource("1_8lv5l"), ExtResource("1_8lv5l")])
+pool = Array[ExtResource("1_s0p8t")]([])

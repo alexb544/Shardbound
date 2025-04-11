@@ -1,6 +1,9 @@
+class_name Battle
 extends Control
 
 signal textbox_closed
+
+@export var battle_stats : EnemyGroups
 
 @onready var party_manager = $PartyManager
 @onready var enemy_manager = $EnemyManager
@@ -12,6 +15,11 @@ func _ready() -> void:
 	$TextBox.hide()
 	display_text("Battle Start!")
 	
+
+func start_battle() -> void:
+	pass
+	#MusicPlayer.play(music, true)
+
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("confirm") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and $TextBox.is_visible_in_tree():

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=8 format=3 uid="uid://cyoyg1cls8v7w"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_b2fct"]
+[ext_resource type="Resource" uid="uid://bvpgvbiixuw5p" path="res://Resources/EnemyGroup/0_rat.tres" id="2_yeqvv"]
+[ext_resource type="Resource" uid="uid://bdyjo3pbwapjt" path="res://Resources/EnemyGroup/0_squirrel.tres" id="3_j5nwk"]
+[ext_resource type="Resource" uid="uid://mmlgx2nulvgv" path="res://Resources/EnemyGroup/0_squirrel_two.tres" id="4_gpe1u"]
+[ext_resource type="Resource" uid="uid://dcwonyklrys7s" path="res://Resources/EnemyGroup/1_rat_two.tres" id="5_seea4"]
+[ext_resource type="Resource" uid="uid://o8qehvmn8hj8" path="res://Resources/EnemyGroup/2_elite_option_1.tres" id="6_m6pqr"]
+[ext_resource type="Resource" uid="uid://bblw2l2wcfpqy" path="res://Resources/EnemyGroup/3_boss_option_1.tres" id="7_twrag"]
+
+[resource]
+script = ExtResource("1_b2fct")
+battle_tier = 0
+weight = 0.0
+gold_reward_min = 0
+gold_reward_max = 0
+exp_reward = 0
+enemies = Array[PackedScene]([])
+pool = Array[ExtResource("1_b2fct")]([ExtResource("2_yeqvv"), ExtResource("3_j5nwk"), ExtResource("4_gpe1u"), ExtResource("5_seea4"), ExtResource("6_m6pqr"), ExtResource("7_twrag")])

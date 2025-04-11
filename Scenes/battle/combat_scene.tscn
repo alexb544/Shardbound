@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=25 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/battle/combat_scene.gd" id="1_adwrt"]
 [ext_resource type="Texture2D" uid="uid://bi4smcpjk7ktc" path="res://Graphics/backgrounds/forest/forest_day.jpg" id="1_bas1t"]
+[ext_resource type="Resource" uid="uid://dw433n5yckevq" path="res://Resources/current_party.tres" id="2_ifv04"]
 [ext_resource type="PackedScene" uid="uid://bl8fmiqirgnoc" path="res://Scenes/Utility Scenes/combat_manager.tscn" id="2_vxx37"]
 [ext_resource type="Texture2D" uid="uid://di3qiqfvpugsl" path="res://Graphics/ui/ui_big_pieces.png" id="2_yf22o"]
 [ext_resource type="PackedScene" uid="uid://bpcjnpyx8bspc" path="res://Scenes/Utility Scenes/party_manager.tscn" id="3_yct45"]
@@ -80,6 +81,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_adwrt")
+current_party = ExtResource("2_ifv04")
 
 [node name="BattleBackground" type="TextureRect" parent="."]
 layout_mode = 1

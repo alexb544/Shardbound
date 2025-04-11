@@ -10,7 +10,4 @@ enum Type {NOT_ASSIGNED, MONSTER, TREASURE, TOWN, ELITE, BOSS}
 @export var next_rooms : Array[Room]
 @export var selected := false
 
-
-# Debug (before adding visuals)
-func _to_string() -> String:
-    return "%s (%s)" % [column, Type.keys()[type][0]]
+@export var battle_stats : EnemyGroups

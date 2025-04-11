@@ -2,6 +2,7 @@ class_name RunStats
 extends Resource
 
 signal gold_changed
+signal party_changed
 
 const STARTING_GOLD := 100
 const BASE_SHARD_REWARDS := 1

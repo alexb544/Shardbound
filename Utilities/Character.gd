@@ -7,27 +7,13 @@ extends AnimatedSprite2D
 
 
 func _ready() -> void:
-	get_stats()
+	set_character_stats(stats)
+	
 
-
-func get_stats():
-	if stats:
-		var path : String
-		if !is_enemy:
-			path = "res://Resources/Characters/" + stats.name.to_lower() + ".tres"
-		else:
-			path = "res://Resources/Enemies/" + stats.name.to_lower() + ".tres"
-		
-		var loaded_stats = ResourceLoader.load(path) as CharacterStats
-		if loaded_stats:
-			stats.max_health = loaded_stats.max_health
-			stats.max_mana = loaded_stats.max_mana
-			stats.strength = loaded_stats.strength
-			stats.magic = loaded_stats.magic
-			stats.speed = loaded_stats.speed
-
-			stats.current_health = loaded_stats.max_health
-			stats.current_mana = loaded_stats.max_mana
+func set_character_stats(value : CharacterStats) -> void:
+	stats = value
+	stats.current_health = stats.max_health
+	stats.current_mana = stats.max_mana
 
 
 func get_shards():

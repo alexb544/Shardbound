@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1dnnokw604gt"]
+[gd_scene load_steps=6 format=3 uid="uid://d1dnnokw604gt"]
 
 [ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_sr2ls"]
 [ext_resource type="Script" path="res://Scenes/map/map_generator.gd" id="2_0cx1m"]
+[ext_resource type="Resource" uid="uid://cyoyg1cls8v7w" path="res://Resources/EnemyGroups/all_enemy_groups.tres" id="3_mokso"]
 
 [sub_resource type="Gradient" id="Gradient_ldnfe"]
 offsets = PackedFloat32Array(0, 0.342105, 0.673684, 1)
@@ -27,6 +28,7 @@ offset = Vector2(320, 180)
 
 [node name="MapGenerator" type="Node" parent="."]
 script = ExtResource("2_0cx1m")
+enemy_groups_pool = ExtResource("3_mokso")
 
 [node name="MapBackground" type="CanvasLayer" parent="."]
 layer = -1

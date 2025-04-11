@@ -3,6 +3,7 @@ extends Resource
 
 signal health_changed(value : int)
 signal mana_changed(value)
+signal stats_changed
 
 @export var name : String
 @export var icon : Texture
@@ -24,16 +25,19 @@ var current_health : int = max_health:
 	set(value):
 		current_health = clampi(value, 0, max_health)
 		health_changed.emit(current_health)
+		stats_changed.emit()
+
 
 var current_mana : int = max_mana:
 	set(value):
 		current_mana = clampi(value, 0, max_mana)
 		mana_changed.emit(current_mana)
+		stats_changed.emit()
 
 
 func take_damage(damage : int) -> void:
-	self.current_health -= damage
-
+	current_health -= damage
+		
 
 func heal(amount : int) -> void:
 	self.current_health += amount

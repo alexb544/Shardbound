@@ -21,10 +21,7 @@ const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn")
 @onready var party_menu_button : TextureButton = %PartyMenuButton 
 
 var current_party : CurrentParty
-var new_party : CurrentParty = preload("res://Resources/new_party.tres")
-
 var run_stats : RunStats
-var party : CurrentParty
 
 
 func _ready():
@@ -33,8 +30,9 @@ func _ready():
 	
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
-			current_party = new_party.duplicate()
+			current_party = run_startup.current_party.create_new_party()
 			_start_run()
+
 		RunStartup.Type.CONTINUED_RUN:
 			print("TODO: load previous Run")
 
@@ -85,29 +83,41 @@ func _setup_top_bar():
 	gold_ui.run_stats = run_stats
 
 
+func _on_battle_room_entered(room : Room) -> void:
+	var battle_scene : Battle = _change_view(BATTLE_SCENE) as Battle
+	battle_scene.battle_stats = room.battle_stats
+
+	var party_manager : PartyManager = battle_scene.get_node("PartyManager") as PartyManager
+	party_manager.current_party = self.current_party
+
+	var enemy_manager : EnemyManager = battle_scene.get_node("EnemyManager") as EnemyManager
+	enemy_manager.enemy_group = battle_scene.battle_stats
+	
+	battle_scene.start_battle()
+	
+
 func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	await get_tree().create_timer(.01).timeout # game crashes if this isn't included (change_view returns before scene is ready otherwise)
 	reward_scene.run_stats = run_stats
 	reward_scene.current_party = current_party
 
-	# temp code -> should come from battle encounter data as dependency
-	reward_scene.add_gold_reward(77)
+	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
 	reward_scene.add_shard_reward()
 
 
 func _on_map_exited(room : Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
-			_change_view(BATTLE_SCENE)
+			_on_battle_room_entered(room)
 		Room.Type.TREASURE:
 			_change_view(LOOT_ROOM_SCENE)
 		Room.Type.TOWN:
 			_change_view(TOWN_SCENE)
 		Room.Type.ELITE:
-			_change_view(BATTLE_SCENE) # TODO: might need to change later
+			_on_battle_room_entered(room) # TODO: might need to change later
 		Room.Type.BOSS:
-			_change_view(BATTLE_SCENE) # TODO: might need to change later
+			_on_battle_room_entered(room) # TODO: might need to change later
 
 
 func _on_party_menu_button_pressed() -> void:

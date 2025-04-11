@@ -7,6 +7,7 @@ extends Control
 @onready var party_menu_ui : PartyPanel
 
 var stats : CharacterStats
+var run_stats : RunStats
 
 
 func _ready():

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://mmlgx2nulvgv"]
+
+[ext_resource type="PackedScene" uid="uid://cwsdlhkwalgks" path="res://Scenes/Enemies/squirrel.tscn" id="1_bl4ok"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="2_i8xbj"]
+
+[resource]
+script = ExtResource("2_i8xbj")
+battle_tier = 0
+weight = 1.5
+gold_reward_min = 40
+gold_reward_max = 60
+exp_reward = 50
+enemies = Array[PackedScene]([ExtResource("1_bl4ok"), ExtResource("1_bl4ok")])
+pool = Array[ExtResource("2_i8xbj")]([])

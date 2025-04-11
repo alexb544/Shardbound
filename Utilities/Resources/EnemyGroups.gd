@@ -1,23 +1,59 @@
-extends Resource
 class_name EnemyGroups
+extends Resource
 
-@export var enemy_group : Array[PackedScene] = []
+@export_range(0, 3) var battle_tier : int # 0 = easy, 1 = normal, 2 = elite, 3 = boss
+@export_range(0.0, 10.0) var weight : float
+@export var gold_reward_min : int
+@export var gold_reward_max : int
+@export var exp_reward : int
+@export var enemies : Array[PackedScene] = []
 
-var enemy_resource : EnemyGroups
+@export var pool : Array[EnemyGroups]
 
-# Picks an enemy resource based on how far the player has gotten
-func set_enemy_resource():
-	var enemy_resource_path : String
-
-	if SessionManager.battle_count <= 3:
-		enemy_resource_path = "res://Resources/EnemyGroups/easy_enemies.tres"
-	else:
-		enemy_resource_path = "res://Resources/EnemyGroups/hard_enemies.tres"
-
-	var updated_enemy_resource = load(enemy_resource_path) as EnemyGroups
-	enemy_resource = updated_enemy_resource
-	return enemy_resource
+var accumulated_weight : float = 0.0 
+var total_weights_by_tier := [0.0, 0.0, 0.0, 0.0]
 
 
-func get_random_enemy() -> PackedScene:
-	return enemy_group[randi() % enemy_group.size()]
+func _get_enemy_group() -> Array[PackedScene]:
+	var enemy_array : Array[PackedScene] = []
+	if EnemyGroups: 
+		for i in range(enemies.size()):
+			enemy_array.append(enemies[i])
+
+	return enemy_array
+
+
+func roll_gold_reward() -> int:
+	return randi_range(gold_reward_min, gold_reward_max)
+
+
+func _get_all_battle_for_tier(tier : int) -> Array[EnemyGroups]:
+	return pool.filter(
+		func(battle : EnemyGroups):
+			return battle.battle_tier == tier
+	)
+
+
+func _setup_weight_for_tier(tier : int) -> void:
+	var battles := _get_all_battle_for_tier(tier)
+	total_weights_by_tier[tier] = 0.0 
+
+	for battle : EnemyGroups in battles:
+		total_weights_by_tier[tier] += battle.weight
+		battle.accumulated_weight = total_weights_by_tier[tier]
+
+
+func get_random_battle_for_tier(tier : int) -> EnemyGroups:
+	var roll := randf_range(0.0, total_weights_by_tier[tier])
+	var battles := _get_all_battle_for_tier(tier)
+
+	for battle : EnemyGroups in battles:
+		if battle.accumulated_weight > roll:
+			return battle
+	
+	return null
+
+
+func setup() -> void:
+	for i in 4:
+		_setup_weight_for_tier(i)

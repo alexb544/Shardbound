@@ -1,12 +1,12 @@
-extends Node
 class_name EnemyManager
+extends Node
 
 @onready var enemy_spawns = %Enemies
 @onready var enemy_container = %EnemyList
 @onready var stats : CharacterStats
 
-var enemy_group : EnemyGroups = preload("res://Resources/EnemyGroups/easy_enemies.tres")
-var enemies : Array = []
+var enemy_group : EnemyGroups
+var enemies : Array[PackedScene] = []
 var spawned_enemies : Array = []
 
 
@@ -16,12 +16,8 @@ func _ready():
 
 
 func spawn_enemies():
+	enemies = enemy_group._get_enemy_group()
 	var spawnpoints = enemy_spawns.get_children()
-	var count = enemy_count()
-
-	while enemies.size() < count:
-		var enemy = enemy_group.get_random_enemy()
-		enemies.append(enemy)
 
 	for i in range(enemies.size()):
 		var enemy = enemies[i]
@@ -34,19 +30,6 @@ func spawn_enemies():
 		
 		add_child.call_deferred(spawn_enemy)
 		spawned_enemies.append(spawn_enemy)
-
-
-func enemy_count():
-	var count = 0
-	if SessionManager.battle_count == 1:
-		count = 1
-	elif SessionManager.battle_count == 2:
-		count = 2
-	elif SessionManager.battle_count == 3:
-		count = 3
-	else:
-		count = 4
-	return count
 
 
 func set_enemy_ui():
