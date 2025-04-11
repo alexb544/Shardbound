@@ -2,15 +2,15 @@ class_name MapGenerator
 extends Node
 
 # Experiment later with different values
-const X_DIST := 30
-const Y_DIST := 25
+const X_DIST := 50
+const Y_DIST := 40
 const PLACEMENT_RANDOMNESS := 5
 const FLOORS := 15
 const MAP_WIDTH := 7
 const PATHS := 6
-const MONSTER_ROOM_WEIGHT := 10.0
-const ELITE_ROOM_WEIGHT := 2.5 
-const TOWN_ROOM_WEIGHT := 4.0
+const MONSTER_ROOM_WEIGHT := 8.0
+const ELITE_ROOM_WEIGHT := 2.0
+const TOWN_ROOM_WEIGHT := 5.0
 
 var random_room_type_weights = {
     Room.Type.MONSTER : 0.0,
@@ -134,11 +134,13 @@ func _setup_boss_room() -> void:
 
 
 func _setup_random_room_weights() -> void:
+    print(random_room_type_weights)
     random_room_type_weights[Room.Type.MONSTER] = MONSTER_ROOM_WEIGHT
-    random_room_type_weights[Room.Type.TOWN] = MONSTER_ROOM_WEIGHT + TOWN_ROOM_WEIGHT
-    random_room_type_weights[Room.Type.ELITE] = MONSTER_ROOM_WEIGHT + TOWN_ROOM_WEIGHT + ELITE_ROOM_WEIGHT
+    random_room_type_weights[Room.Type.ELITE] = MONSTER_ROOM_WEIGHT + TOWN_ROOM_WEIGHT
+    random_room_type_weights[Room.Type.TOWN] = MONSTER_ROOM_WEIGHT + TOWN_ROOM_WEIGHT + ELITE_ROOM_WEIGHT
 
-    random_room_type_total_weight = random_room_type_weights[Room.Type.ELITE]
+    random_room_type_total_weight = random_room_type_weights[Room.Type.TOWN]
+    print(random_room_type_weights)
 
 
 func _setup_room_types() -> void:
@@ -148,12 +150,12 @@ func _setup_room_types() -> void:
             room.type = Room.Type.MONSTER
     
     # 9th floor is always loot
-    for room : Room in map_data[8]:
+    for room : Room in map_data[floori(FLOORS / 2)]:
         if room.next_rooms.size() > 0:
             room.type = Room.Type.TREASURE
     
     # last floor before boss is always a town
-    for room : Room in map_data[13]:
+    for room : Room in map_data[FLOORS - 2]:
         if room.next_rooms.size() > 0:
             room.type = Room.Type.TOWN
 
@@ -168,20 +170,25 @@ func _setup_room_types() -> void:
 func _set_room_randomly(room_to_set : Room) -> void:
     var town_below_4 := true
     var consecutive_town := true
-    #var consecutive_elite := true # maybe add later
+    var consecutive_elite := true
+    var elite_below_4 := true
     var town_on_13 := true
 
     var type_candidate : Room.Type
 
-    while town_below_4 or consecutive_town or town_on_13:
+    while town_below_4 or elite_below_4 or consecutive_town or consecutive_elite or town_on_13:
         type_candidate = _get_random_room_type_by_weight()
 
         var is_town := type_candidate == Room.Type.TOWN
         var has_town_parent := _room_has_parent_of_type(room_to_set, Room.Type.TOWN)
+        var is_elite := type_candidate == Room.Type.ELITE
+        var has_elite_parent := _room_has_parent_of_type(room_to_set, Room.Type.ELITE)
 
-        town_below_4 = is_town and room_to_set.row < 3
+        town_below_4 = is_town and room_to_set.row < 2
         consecutive_town = is_town and has_town_parent
-        town_on_13 = is_town and room_to_set.row == 12
+        elite_below_4 = is_elite and room_to_set.row < 3
+        consecutive_elite = is_elite and has_elite_parent
+        town_on_13 = is_town and room_to_set.row == FLOORS - 3
     
     room_to_set.type = type_candidate
 
@@ -217,5 +224,5 @@ func _get_random_room_type_by_weight() -> Room.Type:
     for type : Room.Type in random_room_type_weights:
         if random_room_type_weights[type] > roll:
             return type
-
+    
     return Room.Type.MONSTER

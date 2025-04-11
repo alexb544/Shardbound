@@ -4,5 +4,6 @@
 
 [node name="MapLine" type="Line2D"]
 texture_repeat = 2
+default_color = Color(0.884051, 0.813965, 1, 1)
 texture = ExtResource("1_j3ks3")
 texture_mode = 1
