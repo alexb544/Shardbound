@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch5xt75a21cvl"]
+[gd_scene load_steps=23 format=3 uid="uid://ch5xt75a21cvl"]
 
 [ext_resource type="Texture2D" uid="uid://cm0y20qdk6jm1" path="res://Graphics/units/party/ishil/attack_stance.png" id="1_glu1d"]
 [ext_resource type="Script" path="res://Scenes/ui/main_menu.gd" id="1_x6r8s"]
@@ -40,6 +40,74 @@ font_size = 50
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.643137)
 shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om1qu"]
+bg_color = Color(0.262745, 0, 0.407843, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsgpc"]
+bg_color = Color(0.261345, 0.00056828, 0.408267, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ro5d"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.265906, 0.000658766, 0.430084, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.699235, 0.433895, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6q1v"]
+bg_color = Color(0.392157, 0, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="Theme" id="Theme_4faho"]
+Button/colors/font_color = Color(0.901961, 0.811765, 1, 1)
+Button/colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 0.560784)
+Button/colors/font_focus_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/align_to_largest_stylebox = 1
+Button/icons/icon = null
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxFlat_om1qu")
+Button/styles/hover = SubResource("StyleBoxFlat_tsgpc")
+Button/styles/normal = SubResource("StyleBoxFlat_1ro5d")
+Button/styles/pressed = SubResource("StyleBoxFlat_r6q1v")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -145,6 +213,7 @@ offset_right = 75.0
 offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_4faho")
 theme_override_constants/separation = 10
 
 [node name="Continue" type="Button" parent="VBoxContainer"]

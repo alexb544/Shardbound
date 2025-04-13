@@ -1,6 +1,109 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3fc5ai7e1pt3"]
+[gd_scene load_steps=11 format=3 uid="uid://c3fc5ai7e1pt3"]
 
 [ext_resource type="Script" path="res://Scenes/town/town.gd" id="1_0dvok"]
+[ext_resource type="Texture2D" uid="uid://dtbra717lfuy3" path="res://Graphics/backgrounds/town/town.jpg" id="2_kbuep"]
+[ext_resource type="Theme" uid="uid://llodmqv2j7vt" path="res://Utilities/Themes/button_theme.tres" id="3_qwukg"]
+[ext_resource type="LabelSettings" uid="uid://dqpqpk2ys3h25" path="res://Utilities/Themes/menu_header_text.tres" id="4_iwohm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6e1n"]
+bg_color = Color(0.266667, 0, 0.431373, 0.564706)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.37551, 0.00165262, 0.653501, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5vr2"]
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_id7wt"]
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_vioa7"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_fade_out_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(0.920995, 0.920995, 0.920995, 1), Color(0.0156863, 0.0156863, 0.0156863, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pt6i0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.920995, 0.920995, 0.920995, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1naw"]
+_data = {
+"RESET": SubResource("Animation_pt6i0"),
+"fade_out": SubResource("Animation_vioa7")
+}
 
 [node name="Town" type="Control"]
 layout_mode = 3
@@ -12,7 +115,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0dvok")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(0.920995, 0.920995, 0.920995, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +124,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.658824)
+texture = ExtResource("2_kbuep")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -29,22 +134,80 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -24.0
-offset_right = 32.0
-offset_bottom = 24.0
+offset_left = -149.0
+offset_top = -74.0
+offset_right = 149.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Header" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Town"
+label_settings = ExtResource("4_iwohm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(50, 25)
+[node name="TownMenuContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "Go Back"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6e1n")
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TownMenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UI" type="VBoxContainer" parent="VBoxContainer/TownMenuContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("3_qwukg")
+
+[node name="Options" type="HBoxContainer" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="Recruit" type="VBoxContainer" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Recruit"]
+layout_mode = 2
+text = "Recruit Party"
+label_settings = SubResource("LabelSettings_w5vr2")
+horizontal_alignment = 1
+
+[node name="RecruitButton" type="Button" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Recruit"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Recruit"
+
+[node name="Inn" type="VBoxContainer" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Inn"]
+layout_mode = 2
+text = "+30% HP & MP"
+label_settings = SubResource("LabelSettings_id7wt")
+horizontal_alignment = 1
+
+[node name="InnButton" type="Button" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Inn"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Rest at Inn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m1naw")
+}
+
+[connection signal="pressed" from="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Recruit/RecruitButton" to="." method="_on_recruit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Inn/InnButton" to="." method="_on_inn_button_pressed"]

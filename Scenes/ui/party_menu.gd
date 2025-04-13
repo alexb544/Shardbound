@@ -1,7 +1,7 @@
 class_name PartyMenu
 extends Control
 
-@export var current_party : CurrentParty = preload("res://Resources/current_party.tres")
+@export var current_party : CurrentParty 
 
 @onready var party_menu : GridContainer = %Party
 @onready var party_menu_ui : PartyPanel
@@ -11,6 +11,7 @@ var run_stats : RunStats
 
 
 func _ready():
+	current_party = run_stats.current_party
 	var party_list = current_party.get_party_list()
 
 	for i in range(party_menu.get_child_count()):

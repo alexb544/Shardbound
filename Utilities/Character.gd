@@ -20,3 +20,17 @@ func get_shards():
 	if shard_pile == null:
 		return
 	return self.shard_pile.shards
+
+
+func take_damage(damage : int) -> void:
+	var initial_health := stats.current_health 
+	stats.take_damage(damage)
+	if initial_health > stats.health:
+		Events.party_member_hit.emit() # modulates red and if !is_enemy, plays "hit" animation
+
+
+func create_instance() -> AnimatedSprite2D:
+	var instance: Character = self.duplicate()
+	instance.stats.current_health = stats.max_health
+	instance.stats.current_mana = stats.current_mana
+	return instance

@@ -40,7 +40,7 @@ func take_damage(damage : int) -> void:
 		
 
 func heal(amount : int) -> void:
-	self.current_health += amount
+	current_health += amount
 
 
 func create_instance() -> Resource:

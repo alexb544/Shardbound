@@ -33,6 +33,7 @@ run_startup = ExtResource("2_3na1u")
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="DebugButtons" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 100.0
@@ -74,7 +75,7 @@ text = "Reward"
 [node name="Background" type="ColorRect" parent="TopBar"]
 offset_right = 640.0
 offset_bottom = 32.0
-color = Color(0.152941, 0.152941, 0.152941, 0.882353)
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.882353)
 
 [node name="BarItems" type="HBoxContainer" parent="TopBar"]
 anchors_preset = 10

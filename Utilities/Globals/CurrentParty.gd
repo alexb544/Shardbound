@@ -1,5 +1,5 @@
-extends Resource
 class_name CurrentParty
+extends CharacterStats # changed from "Resource"
 
 signal party_changed
 

@@ -1,7 +1,7 @@
 extends Node
 
 # Party-related events
-
+signal party_member_hit()
 
 # Enemy-related events
 

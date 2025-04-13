@@ -1,7 +1,5 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://llodmqv2j7vt"]
 
-[ext_resource type="StyleBox" uid="uid://c64f2c4biko0q" path="res://Utilities/Themes/button_normal_theme.tres" id="1_wuvxl"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om1qu"]
 bg_color = Color(0.262745, 0, 0.407843, 1)
 border_width_left = 1
@@ -25,6 +23,22 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja303"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.23739, 0.000526767, 0.386979, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3157, 0.00115297, 0.554708, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6q1v"]
 bg_color = Color(0.392157, 0, 0.6, 1)
@@ -51,5 +65,5 @@ Button/icons/icon = null
 Button/styles/disabled = null
 Button/styles/focus = SubResource("StyleBoxFlat_om1qu")
 Button/styles/hover = SubResource("StyleBoxFlat_tsgpc")
-Button/styles/normal = ExtResource("1_wuvxl")
+Button/styles/normal = SubResource("StyleBoxFlat_ja303")
 Button/styles/pressed = SubResource("StyleBoxFlat_r6q1v")
