@@ -7,7 +7,6 @@ signal stats_changed
 
 @export var name : String
 @export var icon : Texture
-
 @export var level : int
 @export var experience : int 
 
@@ -18,7 +17,6 @@ signal stats_changed
 @export var magic : int
 @export var speed : int
 
-@export_group("UI")
 @export var sprite : SpriteFrames
 
 var current_health : int = max_health: 
@@ -26,7 +24,6 @@ var current_health : int = max_health:
 		current_health = clampi(value, 0, max_health)
 		health_changed.emit(current_health)
 		stats_changed.emit()
-
 
 var current_mana : int = max_mana:
 	set(value):
@@ -42,9 +39,3 @@ func take_damage(damage : int) -> void:
 func heal(amount : int) -> void:
 	current_health += amount
 
-
-func create_instance() -> Resource:
-	var instance : CharacterStats = self.duplicate()
-	instance.current_health = max_health
-	instance.current_mana = max_mana
-	return instance

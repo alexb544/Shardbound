@@ -4,16 +4,17 @@ extends AnimatedSprite2D
 @export var stats: CharacterStats
 @export var is_enemy : bool
 @export var shard_pile : ShardPile 
+@export var scene : PackedScene
 
 
-func _ready() -> void:
-	set_character_stats(stats)
+#func _ready() -> void:
+	#set_character_stats(stats)
 	
 
 func set_character_stats(value : CharacterStats) -> void:
 	stats = value
-	stats.current_health = stats.max_health
-	stats.current_mana = stats.max_mana
+	#stats.current_health = stats.max_health
+	#stats.current_mana = stats.max_mana
 
 
 func get_shards():

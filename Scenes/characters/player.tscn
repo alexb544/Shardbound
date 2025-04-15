@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://pptrq6podwf" path="res://Graphics/units/party/player/player_sprite_frames.tres" id="1_3j8rh"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="3_ggd22"]
-[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/Characters/player.tres" id="4_uhvrl"]
+[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/CharacterStats/player.tres" id="4_uhvrl"]
 [ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="4_y0kbo"]
 
 [sub_resource type="Resource" id="Resource_dxwpf"]

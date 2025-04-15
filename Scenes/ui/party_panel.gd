@@ -1,7 +1,7 @@
 class_name PartyPanel
 extends CenterContainer
 
-signal tooltip_requested(stats : CharacterStats)
+#signal tooltip_requested(stats : CharacterStats)
 
 @export var party_member : CharacterStats : set = set_party_ui
 
@@ -13,12 +13,12 @@ signal tooltip_requested(stats : CharacterStats)
 @onready var mana : HBoxContainer = %Mana
 @onready var experience : HBoxContainer = %Experience
 
-var stats : CharacterStats
+#var stats : CharacterStats
 
 
-func _on_visuals_gui_input(event : InputEvent) -> void:
-	if event.is_action_pressed("left_mouse"):
-		tooltip_requested.emit(stats)
+# func _on_visuals_gui_input(event : InputEvent) -> void:
+# 	if event.is_action_pressed("left_mouse"):
+# 		tooltip_requested.emit(stats)
 
 
 func _on_visuals_mouse_entered() -> void:
@@ -47,6 +47,7 @@ func set_party_ui(unit : CharacterStats) -> void:
 	health_bar.value = party_member.current_health
 	var health_label : Label = health_bar.get_child(0)
 	health_label.text = str(party_member.current_health) + "/" + str(party_member.max_health)
+	# add signals to dynamically update health (same for mana/xp)
 
 	# Mana Bar:
 	var mana_bar : ProgressBar = mana.get_child(1)

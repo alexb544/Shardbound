@@ -25,6 +25,7 @@ func spawn_enemies():
 		var point = spawnpoints[i]
 
 		spawn_enemy.stats = spawn_enemy.stats.duplicate(true) # ensures enemies don't share stats
+		spawn_enemy.stats.current_health = spawn_enemy.stats.max_health
 
 		spawn_enemy.global_position = point.global_position
 		

@@ -8,12 +8,13 @@ const GOLD_TEXT := "%s Gold"
 const SHARD_TEXT := "%s"
 
 @export var run_stats : RunStats
-@export var current_party : CurrentParty = preload("res://Resources/current_party.tres")
+#@export var current_party : CurrentParty = preload("res://Resources/current_party.tres") 
 @export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
 
 @onready var rewards : VBoxContainer = %Rewards
 @onready var instance = character.instantiate()
 
+var current_party : CurrentParty = GlobalParty.current_party
 
 func _ready():
 	party_instantiate()
@@ -53,10 +54,10 @@ func _on_shard_reward_taken(shard : Resource) -> void:
 
 
 func party_instantiate() -> void:
-	var party = current_party.get_party_list()
+	var party = current_party.party_members
 
 	for i in party:
-		await i.instantiate()
+		await i.scene.instantiate()
 
 
 func _on_back_button_pressed() -> void:

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="RunStartup" load_steps=3 format=3 uid="uid://dfagqkp8yyiob"]
 
-[ext_resource type="Resource" uid="uid://dw433n5yckevq" path="res://Resources/current_party.tres" id="1_vpcas"]
+[ext_resource type="Resource" uid="uid://dww1ng02bgot" path="res://Resources/new_party.tres" id="1_pl3qp"]
 [ext_resource type="Script" path="res://Utilities/Resources/run_startup.gd" id="1_xq1t7"]
 
 [resource]
 script = ExtResource("1_xq1t7")
 type = 0
-current_party = ExtResource("1_vpcas")
+current_party = ExtResource("1_pl3qp")

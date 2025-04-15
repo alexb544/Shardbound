@@ -8,4 +8,8 @@ colors = PackedColorArray(0.196078, 0, 0.360784, 1, 0.297406, 0.001021, 0.52462,
 gradient = SubResource("Gradient_04dhu")
 
 [resource]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
 texture = SubResource("GradientTexture1D_2etiy")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://ctsuki2cs6qde"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/character_data.gd" id="1_n0iwn"]
+[ext_resource type="PackedScene" uid="uid://crhhmljkxtb3g" path="res://Scenes/Characters/roy.tscn" id="1_v8eei"]
+[ext_resource type="Resource" uid="uid://bcqpthc15tvcb" path="res://Resources/CharacterStats/roy.tres" id="3_d26hj"]
+
+[resource]
+script = ExtResource("1_n0iwn")
+scene = ExtResource("1_v8eei")
+stats = ExtResource("3_d26hj")

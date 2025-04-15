@@ -30,7 +30,6 @@ func _ready():
 	
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
-			current_party = run_startup.current_party.create_new_party()
 			_start_run()
 
 		RunStartup.Type.CONTINUED_RUN:
@@ -39,6 +38,7 @@ func _ready():
 
 func _start_run() -> void:
 	run_stats = RunStats.new()
+	GlobalParty.new_party_run()
 
 	_setup_event_connections()
 	_setup_top_bar()
@@ -81,14 +81,11 @@ func _setup_event_connections() -> void:
 
 func _setup_top_bar():
 	gold_ui.run_stats = run_stats
-
+	
 
 func _on_battle_room_entered(room : Room) -> void:
 	var battle_scene : Battle = _change_view(BATTLE_SCENE) as Battle
 	battle_scene.battle_stats = room.battle_stats
-
-	var party_manager : PartyManager = battle_scene.get_node("PartyManager") as PartyManager
-	party_manager.current_party = self.current_party
 
 	var enemy_manager : EnemyManager = battle_scene.get_node("EnemyManager") as EnemyManager
 	enemy_manager.enemy_group = battle_scene.battle_stats
@@ -100,7 +97,7 @@ func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	await get_tree().create_timer(.01).timeout # game crashes if this isn't included (change_view returns before scene is ready otherwise)
 	reward_scene.run_stats = run_stats
-	reward_scene.current_party = current_party
+	reward_scene.current_party = GlobalParty.current_party
 
 	reward_scene.add_gold_reward(map.last_room.battle_stats.roll_gold_reward())
 	reward_scene.add_shard_reward()

@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://dy2x1uv7wktp4" path="res://Resources/SpriteFrames/ishil_sprite_frames.tres" id="1_kyq6b"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="2_rtw4m"]
-[ext_resource type="Resource" uid="uid://dbov04yhw5lhg" path="res://Resources/Characters/ishil.tres" id="3_638wd"]
+[ext_resource type="Resource" uid="uid://dbov04yhw5lhg" path="res://Resources/CharacterStats/ishil.tres" id="3_638wd"]
 [ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="10_vcryy"]
 
 [sub_resource type="Resource" id="Resource_mt2ol"]

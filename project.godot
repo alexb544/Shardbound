@@ -20,6 +20,7 @@ config/icon="res://Graphics/ui/cursor_MAYBE.png"
 InventoryManager="*res://Utilities/Globals/InventoryManager.gd"
 Events="*res://Utilities/Globals/events.gd"
 SessionManager="*res://Utilities/Globals/SessionManager.gd"
+GlobalParty="*res://Resources/Party/GlobalParty.gd"
 
 [debug]
 

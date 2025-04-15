@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://sac2qcbodhpm"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/character_data.gd" id="1_b8vwv"]
+[ext_resource type="PackedScene" uid="uid://croju2g5rttil" path="res://Scenes/Characters/player.tscn" id="1_ybrvt"]
+[ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/CharacterStats/player.tres" id="3_qwc6i"]
+
+[resource]
+script = ExtResource("1_b8vwv")
+scene = ExtResource("1_ybrvt")
+stats = ExtResource("3_qwc6i")

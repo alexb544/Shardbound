@@ -33,7 +33,6 @@ run_startup = ExtResource("2_3na1u")
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="DebugButtons" type="VBoxContainer" parent="."]
-visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 100.0
@@ -48,6 +47,7 @@ text = "Map"
 
 [node name="BattleButton" type="Button" parent="DebugButtons"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Battle"

@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://cclv5ve7rpt2u" path="res://Resources/SpriteFrames/roy_sprite_frames.tres" id="1_bt0gw"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="2_mkori"]
-[ext_resource type="Resource" uid="uid://bcqpthc15tvcb" path="res://Resources/Characters/roy.tres" id="3_fewed"]
+[ext_resource type="Resource" uid="uid://bcqpthc15tvcb" path="res://Resources/CharacterStats/roy.tres" id="3_fewed"]
 [ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="10_hn5xw"]
 
 [sub_resource type="Resource" id="Resource_74ysu"]

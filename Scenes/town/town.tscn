@@ -30,6 +30,33 @@ outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_pt6i0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.920995, 0.920995, 0.920995, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_vioa7"]
 resource_name = "fade_out"
 length = 2.0
@@ -70,33 +97,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
 "values": [Color(0.920995, 0.920995, 0.920995, 1), Color(0.0156863, 0.0156863, 0.0156863, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_pt6i0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.920995, 0.920995, 0.920995, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m1naw"]
