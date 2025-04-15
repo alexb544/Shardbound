@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_kt07q")
 battle_tier = 2
-weight = 1.0
+weight = 0.5
 gold_reward_min = 100
 gold_reward_max = 125
 exp_reward = 100

@@ -253,3 +253,6 @@ func generate_shard_list(shard_list : Array[Resource]):
 		var index = popup.get_item_count()
 		popup.add_item(shard.id)
 		popup.set_item_icon(index, shard.icon)
+
+
+

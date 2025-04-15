@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=3 uid="uid://warwobw4wn8j"]
+
+[ext_resource type="Texture2D" uid="uid://dx0t1ntuurx1o" path="res://Graphics/units/enemies/zone1_enemies/elites/3050140_idle.png" id="1_jnyid"]
+[ext_resource type="Texture2D" uid="uid://bceepxookv2gt" path="res://Graphics/units/enemies/zone1_enemies/elites/3050142_atk.png" id="2_ihcus"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="3_sfyv7"]
+[ext_resource type="Resource" uid="uid://b10tqssddrnyh" path="res://Resources/Enemies/elites/elite_1_stats.tres" id="4_pub21"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwye0"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(0, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30n02"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(177, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6cg8"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(531, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pwt2"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(708, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvg1n"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(885, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv7ej"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(1062, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8fm5"]
+atlas = ExtResource("1_jnyid")
+region = Rect2(1239, 0, 177, 269)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjqnb"]
+atlas = ExtResource("2_ihcus")
+region = Rect2(0, 0, 252, 284)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rere0"]
+atlas = ExtResource("2_ihcus")
+region = Rect2(252, 0, 252, 284)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2sji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwye0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30n02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6cg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pwt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvg1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv7ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8fm5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rere0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rere0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rere0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjqnb")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="AxeKnight" type="AnimatedSprite2D" groups=["enemies"]]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_n2sji")
+autoplay = "default"
+frame_progress = 0.173821
+script = ExtResource("3_sfyv7")
+stats = ExtResource("4_pub21")
+is_enemy = true

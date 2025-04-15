@@ -10,4 +10,6 @@ battle_tier = 0
 weight = 0.0
 gold_reward_min = 0
 gold_reward_max = 0
+exp_reward = 0
 enemies = Array[PackedScene]([ExtResource("1_t6m6o"), ExtResource("2_xtrsk")])
+pool = Array[ExtResource("1_557q4")]([])

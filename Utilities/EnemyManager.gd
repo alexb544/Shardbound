@@ -20,17 +20,20 @@ func spawn_enemies():
 	var spawnpoints = enemy_spawns.get_children()
 
 	for i in range(enemies.size()):
-		var enemy = enemies[i]
-		var spawn_enemy = enemy.instantiate()
-		var point = spawnpoints[i]
+		if enemies[i] != null:
+			var enemy = enemies[i]
+			var spawn_enemy = enemy.instantiate()
+			var point = spawnpoints[i]
 
-		spawn_enemy.stats = spawn_enemy.stats.duplicate(true) # ensures enemies don't share stats
-		spawn_enemy.stats.current_health = spawn_enemy.stats.max_health
+			spawn_enemy.stats = spawn_enemy.stats.duplicate(true) # ensures enemies don't share stats
+			spawn_enemy.stats.current_health = spawn_enemy.stats.max_health
 
-		spawn_enemy.global_position = point.global_position
-		
-		add_child.call_deferred(spawn_enemy)
-		spawned_enemies.append(spawn_enemy)
+			spawn_enemy.global_position = point.global_position
+			
+			add_child.call_deferred(spawn_enemy)
+			spawned_enemies.append(spawn_enemy)
+		else:
+			continue
 
 
 func set_enemy_ui():
