@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CurrentParty" load_steps=6 format=3 uid="uid://qpor6kvehb4k"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/character_data.gd" id="1_heb3b"]
+[ext_resource type="Resource" uid="uid://c65cfln6s1r45" path="res://Resources/CharacterData/ishil_data.tres" id="2_d0bui"]
+[ext_resource type="Script" path="res://Utilities/Globals/CurrentParty.gd" id="2_j8e7w"]
+[ext_resource type="Resource" uid="uid://ctsuki2cs6qde" path="res://Resources/CharacterData/roy_data.tres" id="3_lgjc3"]
+[ext_resource type="Resource" uid="uid://bi04odlu2d6nf" path="res://Resources/CharacterData/wadow_data.tres" id="4_cmh57"]
+
+[resource]
+script = ExtResource("2_j8e7w")
+party_members = Array[ExtResource("1_heb3b")]([ExtResource("2_d0bui"), ExtResource("3_lgjc3"), ExtResource("4_cmh57")])

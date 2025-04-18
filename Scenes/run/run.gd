@@ -20,7 +20,6 @@ const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn")
 @onready var gold_ui : GoldUI = %GoldUI
 @onready var party_menu_button : TextureButton = %PartyMenuButton 
 
-var current_party : CurrentParty
 var run_stats : RunStats
 
 

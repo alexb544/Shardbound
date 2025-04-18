@@ -39,3 +39,6 @@ func take_damage(damage : int) -> void:
 func heal(amount : int) -> void:
 	current_health += amount
 
+
+func regen(amount : int) -> void:
+	current_mana += amount

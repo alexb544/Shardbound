@@ -21,6 +21,7 @@ InventoryManager="*res://Utilities/Globals/InventoryManager.gd"
 Events="*res://Utilities/Globals/events.gd"
 SessionManager="*res://Utilities/Globals/SessionManager.gd"
 GlobalParty="*res://Resources/Party/GlobalParty.gd"
+Recruits="*res://Utilities/Globals/recruits.gd"
 
 [debug]
 
