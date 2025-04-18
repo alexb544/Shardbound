@@ -8,7 +8,6 @@ const GOLD_TEXT := "%s Gold"
 const SHARD_TEXT := "%s"
 
 @export var run_stats : RunStats
-#@export var current_party : CurrentParty = preload("res://Resources/current_party.tres") 
 @export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
 
 @onready var rewards : VBoxContainer = %Rewards
@@ -49,7 +48,7 @@ func add_shard_reward() -> void:
 func _on_shard_reward_taken(shard : Resource) -> void:
 	if not shard:
 		return
-
+	# would need some type of menu here (party panel?) -> then click on who to equip shard
 	instance.shard_pile.add_shard(shard)
 
 

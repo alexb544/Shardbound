@@ -7,7 +7,7 @@ extends Control
 func _ready():
 	hide_tooltip()
 	await get_tree().create_timer(1).timeout
-	show_tooltip(preload("res://Resources/Characters/ishil.tres"))
+	show_tooltip(preload("res://Resources/CharacterStats/player.tres"))
 
 
 func show_tooltip(stats : CharacterStats) -> void:

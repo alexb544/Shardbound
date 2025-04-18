@@ -1,12 +1,31 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtdqe5v3g6uin"]
+[gd_scene load_steps=19 format=3 uid="uid://dtdqe5v3g6uin"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
 [ext_resource type="Resource" uid="uid://dfagqkp8yyiob" path="res://Resources/run_startup.tres" id="2_3na1u"]
+[ext_resource type="Texture2D" uid="uid://brlsgd4rojgrf" path="res://Graphics/map/combat.png" id="4_l135o"]
 [ext_resource type="StyleBox" uid="uid://c64f2c4biko0q" path="res://Utilities/Themes/button_normal_theme.tres" id="4_q6bvw"]
 [ext_resource type="Texture2D" uid="uid://ddr0jnpr6fbvb" path="res://Graphics/ui/menus/equipment.png" id="5_0kxh3"]
+[ext_resource type="Texture2D" uid="uid://c10m31uxnngtc" path="res://Graphics/map/combat_elite.png" id="5_bbfw0"]
+[ext_resource type="Texture2D" uid="uid://7rf36jemaueo" path="res://Graphics/map/town.png" id="6_2m4gf"]
 [ext_resource type="PackedScene" uid="uid://7s8frk066iun" path="res://Scenes/ui/gold_ui.tscn" id="6_ktpsy"]
 [ext_resource type="Texture2D" uid="uid://b0fdp3osoehpy" path="res://Graphics/ui/map_icon.png" id="6_svwdx"]
+[ext_resource type="Texture2D" uid="uid://bgteih626b36d" path="res://Graphics/map/treasure.png" id="7_oktae"]
+[ext_resource type="Texture2D" uid="uid://dcb82imadalll" path="res://Graphics/map/combat_boss.png" id="8_ji52s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fd26"]
+font_size = 15
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fb0o1"]
+font_size = 14
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkcqa"]
 atlas = ExtResource("5_0kxh3")
@@ -30,9 +49,119 @@ run_startup = ExtResource("2_3na1u")
 
 [node name="Map" parent="." instance=ExtResource("1_2fcmb")]
 
+[node name="Label" type="CanvasLayer" parent="Map"]
+layer = -1
+offset = Vector2(5, 0)
+transform = Transform2D(1, 0, 0, 1, 5, 0)
+
+[node name="Key" type="VBoxContainer" parent="Map/Label"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -81.0
+offset_right = 102.0
+offset_bottom = 89.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -1
+
+[node name="KeyLabel" type="Label" parent="Map/Label/Key"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "KEY:"
+label_settings = SubResource("LabelSettings_1fd26")
+
+[node name="HSeparator" type="HSeparator" parent="Map/Label/Key"]
+self_modulate = Color(0.368802, 0.0013286, 0.59252, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="Combat" type="HBoxContainer" parent="Map/Label/Key"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Combat"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("4_l135o")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Map/Label/Key/Combat"]
+layout_mode = 2
+text = "Combat"
+label_settings = SubResource("LabelSettings_fb0o1")
+
+[node name="Elite" type="HBoxContainer" parent="Map/Label/Key"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Elite"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("5_bbfw0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Map/Label/Key/Elite"]
+layout_mode = 2
+text = "Elite"
+label_settings = SubResource("LabelSettings_fb0o1")
+
+[node name="Boss" type="HBoxContainer" parent="Map/Label/Key"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Boss"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("8_ji52s")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Map/Label/Key/Boss"]
+layout_mode = 2
+text = "Boss"
+label_settings = SubResource("LabelSettings_fb0o1")
+
+[node name="Treasure" type="HBoxContainer" parent="Map/Label/Key"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Treasure"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("7_oktae")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Map/Label/Key/Treasure"]
+layout_mode = 2
+text = "Treasure"
+label_settings = SubResource("LabelSettings_fb0o1")
+
+[node name="Town" type="HBoxContainer" parent="Map/Label/Key"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Town"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("6_2m4gf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Map/Label/Key/Town"]
+layout_mode = 2
+text = "Town"
+label_settings = SubResource("LabelSettings_fb0o1")
+
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="DebugButtons" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 100.0

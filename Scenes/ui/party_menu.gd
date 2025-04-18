@@ -1,5 +1,5 @@
 class_name PartyMenu
-extends Control
+extends CanvasLayer
 
 #@export var current_party : CurrentParty #= preload("res://Resources/current_party.tres")
 
