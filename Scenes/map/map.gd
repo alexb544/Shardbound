@@ -1,7 +1,7 @@
 class_name Map 
 extends Node2D
 
-const SCROLL_SPEED := 15
+const SCROLL_SPEED := 35
 const MAP_ROOM = preload("res://Scenes/map/map_room.tscn")
 const MAP_LINE = preload("res://Scenes/map/map_line.tscn")
 
@@ -16,13 +16,21 @@ var floors_climbed : int
 var last_room : Room
 var camera_edge_y : float
 
+var dragging = false
+var last_mouse_pos := Vector2.ZERO
+
 
 func _ready() -> void:
+	camera_2d.make_current()
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
 
-	# USED TO TEST BY ITSELF
-	#generate_new_map()
-	#unlock_floor(0)
+
+func _process(_delta: float) -> void:
+	if dragging:
+		var mouse_pos = get_viewport().get_mouse_position()
+		var delta_y = mouse_pos.y - last_mouse_pos.y
+		camera_2d.position.y -= delta_y
+		last_mouse_pos = mouse_pos
 
 
 func _input(event : InputEvent) -> void:
@@ -33,7 +41,11 @@ func _input(event : InputEvent) -> void:
 		camera_2d.position.y -= SCROLL_SPEED
 	elif event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
-	
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		dragging = event.pressed
+		last_mouse_pos = get_viewport().get_mouse_position()
+
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
 

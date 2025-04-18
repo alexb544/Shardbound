@@ -593,6 +593,7 @@ alignment = 1
 [node name="Attack" type="Button" parent="BottomWindow/ActionsBox/ActionList"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 action_mode = 0
 text = "Attack"
 
@@ -600,6 +601,7 @@ text = "Attack"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme = ExtResource("9_cdlp8")
 keep_pressed_outside = true
 text = "Shards"

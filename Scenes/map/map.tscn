@@ -24,7 +24,10 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -104)
 offset = Vector2(320, 180)
+zoom = Vector2(0.9, 0.9)
+position_smoothing_enabled = true
 
 [node name="MapGenerator" type="Node" parent="."]
 script = ExtResource("2_0cx1m")
