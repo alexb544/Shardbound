@@ -6,6 +6,7 @@ const BATTLE_REWARD_SCENE := preload("res://Scenes/battle_reward/battle_reward.t
 const TOWN_SCENE := preload("res://Scenes/town/town.tscn")
 const LOOT_ROOM_SCENE := preload("res://Scenes/loot_room/loot_room.tscn")
 const PARTY_MENU_SCENE := preload("res://Scenes/ui/party_menu.tscn")
+const SETTINGS_SCENE := preload("res://Scenes/ui/settings_panel.tscn")
 
 @export var run_startup : RunStartup
 
@@ -124,3 +125,26 @@ func _on_party_menu_button_pressed() -> void:
 		var new_party_menu = PARTY_MENU_SCENE.instantiate()
 		new_party_menu.name = "PartyMenu"
 		add_child.call_deferred(new_party_menu)
+
+
+func _on_settings_pressed() -> void:
+	var menu_open := get_node_or_null("SettingsPanel")
+	if menu_open:
+		menu_open.queue_free()
+	else:
+		var new_settings_panel = SETTINGS_SCENE.instantiate()
+		new_settings_panel.name = "SettingsPanel" 
+		add_child.call_deferred(new_settings_panel)
+
+
+func _on_map_pressed() -> void:
+	if map.visible:
+		if current_view.get_child_count() > 0:
+			map.hide_map()
+			current_view.get_child(0).show()
+			map.dragging = false
+	else:
+		if current_view.get_child_count() > 0:
+			map.show_map()
+			current_view.get_child(0).hide()
+			map.dragging = false

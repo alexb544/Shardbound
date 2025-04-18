@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtdqe5v3g6uin"]
+[gd_scene load_steps=23 format=3 uid="uid://dtdqe5v3g6uin"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b0fdp3osoehpy" path="res://Graphics/ui/map_icon.png" id="6_svwdx"]
 [ext_resource type="Texture2D" uid="uid://bgteih626b36d" path="res://Graphics/map/treasure.png" id="7_oktae"]
 [ext_resource type="Texture2D" uid="uid://dcb82imadalll" path="res://Graphics/map/combat_boss.png" id="8_ji52s"]
+[ext_resource type="Texture2D" uid="uid://djnoca0e6mh75" path="res://Graphics/ui/setting.png" id="11_ikp8x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1fd26"]
 font_size = 15
@@ -42,13 +43,21 @@ outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_es2tx"]
+atlas = ExtResource("11_ikp8x")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv787"]
+atlas = ExtResource("11_ikp8x")
+region = Rect2(-35.7407, -44.5896, 582.844, 588.159)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqb1g"]
 atlas = ExtResource("6_svwdx")
-region = Rect2(27, 32, 59, 49)
+region = Rect2(27.2489, 32.5876, 57.9609, 47.6318)
 margin = Rect2(12, 3, 30, 10)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_fysw8"]
-diffuse_texture = ExtResource("6_svwdx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_srwli"]
+atlas = ExtResource("6_svwdx")
+region = Rect2(19.1933, 16.6508, 74.2171, 78.4581)
 
 [node name="Run" type="Node"]
 script = ExtResource("1_vv28b")
@@ -222,6 +231,7 @@ offset_right = 640.0
 offset_bottom = 32.0
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
 
 [node name="BarItems" type="HBoxContainer" parent="TopBar/BarItemsContainer"]
 layout_mode = 2
@@ -251,17 +261,35 @@ clip_contents = true
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_constants/separation = 24
+theme_override_constants/separation = 15
 alignment = 2
 
-[node name="Map" type="TextureButton" parent="TopBar/BarItemsContainer/BarItems/MenuIcons"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 32)
+[node name="ButtonMap" type="HBoxContainer" parent="TopBar/BarItemsContainer/BarItems/MenuIcons"]
 layout_mode = 2
+
+[node name="Settings" type="TextureButton" parent="TopBar/BarItemsContainer/BarItems/MenuIcons/ButtonMap"]
+unique_name_in_owner = true
+self_modulate = Color(0.762404, 0.762404, 0.762404, 1)
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_es2tx")
+texture_hover = SubResource("AtlasTexture_hv787")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Map" type="TextureButton" parent="TopBar/BarItemsContainer/BarItems/MenuIcons/ButtonMap"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = SubResource("AtlasTexture_sqb1g")
-texture_hover = SubResource("CanvasTexture_fysw8")
+texture_hover = SubResource("AtlasTexture_srwli")
 ignore_texture_size = true
 stretch_mode = 6
 
@@ -271,3 +299,5 @@ layout_mode = 2
 theme_override_constants/separation = 5
 
 [connection signal="pressed" from="TopBar/BarItemsContainer/BarItems/PartyMenuButton" to="." method="_on_party_menu_button_pressed"]
+[connection signal="pressed" from="TopBar/BarItemsContainer/BarItems/MenuIcons/ButtonMap/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="TopBar/BarItemsContainer/BarItems/MenuIcons/ButtonMap/Map" to="." method="_on_map_pressed"]

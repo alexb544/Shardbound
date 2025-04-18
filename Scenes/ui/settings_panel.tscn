@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://eheahd0d5ms7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxgos"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k81u"]
+bg_color = Color(0.266667, 0, 0.431373, 0.901961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.37551, 0.00165262, 0.653501, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_7eqhu"]
+font_size = 25
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gw2il"]
+font_size = 14
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="SettingsPanel" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.5
+offset_top = -120.0
+offset_right = 192.5
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="SettingsLabel" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+label_settings = SubResource("LabelSettings_jxgos")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2k81u")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/RewardContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/RewardContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Controls" type="Label" parent="VBoxContainer/RewardContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Controls"
+label_settings = SubResource("LabelSettings_7eqhu")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/RewardContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAP: 
+ - Navigate Map = [Scroll Wheel] or [Hold LMB and Drag]
+ - Select Path = [LMB]
+
+Battle:
+ - Change Target = [A] & [D]
+ - Select Target = [E] or Click [Attack]
+
+Menus:
+ - Select Options = [LMB]"
+label_settings = SubResource("LabelSettings_gw2il")

@@ -21,6 +21,7 @@ var last_mouse_pos := Vector2.ZERO
 
 
 func _ready() -> void:
+	dragging = false
 	camera_2d.make_current()
 	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
 
