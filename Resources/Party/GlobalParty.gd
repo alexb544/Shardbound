@@ -24,6 +24,8 @@ func get_specific_party_scene(i : int) -> PackedScene:
 func add_to_party(party_data : CharacterData) -> void:
 	if current_party.party_members.size() < 4:
 		current_party.party_members.append(party_data)
+		current_party.party_members[current_party.party_members.size() - 1].stats.current_health = current_party.party_members[current_party.party_members.size() - 1].stats.max_health
+		current_party.party_members[current_party.party_members.size() - 1].stats.current_mana = current_party.party_members[current_party.party_members.size() - 1].stats.max_mana
 	else:
 		print("Not enough room in your party!")
 
