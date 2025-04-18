@@ -103,10 +103,11 @@ reward_icon = ExtResource("6_wnsqx")
 reward_text = "Thunder"
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_hhtu2")
-text = "Continue >>>"
+text = "Skip"
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

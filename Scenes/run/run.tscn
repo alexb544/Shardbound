@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtdqe5v3g6uin"]
+[gd_scene load_steps=20 format=3 uid="uid://dtdqe5v3g6uin"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
@@ -34,6 +34,13 @@ region = Rect2(25, 22, 63, 69)
 [sub_resource type="AtlasTexture" id="AtlasTexture_egg66"]
 atlas = SubResource("AtlasTexture_bkcqa")
 region = Rect2(-6.8716, -8.13692, 76.79, 84.7558)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vuwrh"]
+font_size = 14
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sqb1g"]
 atlas = ExtResource("6_svwdx")
@@ -160,40 +167,44 @@ label_settings = SubResource("LabelSettings_fb0o1")
 
 [node name="CurrentView" type="Node" parent="."]
 
-[node name="DebugButtons" type="VBoxContainer" parent="."]
-visible = false
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_top = 100.0
-offset_right = 64.0
+[node name="DebugButtonsCL" type="CanvasLayer" parent="."]
+
+[node name="DebugButtons" type="VBoxContainer" parent="DebugButtonsCL"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 58.0
+offset_bottom = 110.0
 grow_vertical = 2
 
-[node name="MapButton" type="Button" parent="DebugButtons"]
+[node name="MapButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Map"
 
-[node name="BattleButton" type="Button" parent="DebugButtons"]
+[node name="BattleButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Battle"
 
-[node name="TownButton" type="Button" parent="DebugButtons"]
+[node name="TownButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Town"
 
-[node name="LootRoomButton" type="Button" parent="DebugButtons"]
+[node name="LootRoomButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Loot"
 
-[node name="RewardButton" type="Button" parent="DebugButtons"]
+[node name="RewardButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
@@ -206,18 +217,17 @@ offset_right = 640.0
 offset_bottom = 32.0
 color = Color(0.0705882, 0.0705882, 0.0705882, 0.882353)
 
-[node name="BarItems" type="HBoxContainer" parent="TopBar"]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="TopBar/BarItems"]
-layout_mode = 2
+[node name="BarItemsContainer" type="MarginContainer" parent="TopBar"]
+offset_right = 640.0
+offset_bottom = 32.0
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 7
 
-[node name="PartyMenuButton" type="TextureButton" parent="TopBar/BarItems/MarginContainer"]
+[node name="BarItems" type="HBoxContainer" parent="TopBar/BarItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PartyMenuButton" type="TextureButton" parent="TopBar/BarItemsContainer/BarItems"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
@@ -229,7 +239,13 @@ texture_hover = SubResource("AtlasTexture_egg66")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MenuIcons" type="HBoxContainer" parent="TopBar/BarItems/MarginContainer"]
+[node name="Label" type="Label" parent="TopBar/BarItemsContainer/BarItems"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Party"
+label_settings = SubResource("LabelSettings_vuwrh")
+
+[node name="MenuIcons" type="HBoxContainer" parent="TopBar/BarItemsContainer/BarItems"]
 unique_name_in_owner = true
 clip_contents = true
 layout_direction = 3
@@ -238,7 +254,7 @@ size_flags_horizontal = 10
 theme_override_constants/separation = 24
 alignment = 2
 
-[node name="Map" type="TextureButton" parent="TopBar/BarItems/MarginContainer/MenuIcons"]
+[node name="Map" type="TextureButton" parent="TopBar/BarItemsContainer/BarItems/MenuIcons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 32)
 layout_mode = 2
@@ -249,9 +265,9 @@ texture_hover = SubResource("CanvasTexture_fysw8")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="GoldUI" parent="TopBar/BarItems/MarginContainer/MenuIcons" instance=ExtResource("6_ktpsy")]
+[node name="GoldUI" parent="TopBar/BarItemsContainer/BarItems/MenuIcons" instance=ExtResource("6_ktpsy")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[connection signal="pressed" from="TopBar/BarItems/MarginContainer/PartyMenuButton" to="." method="_on_party_menu_button_pressed"]
+[connection signal="pressed" from="TopBar/BarItemsContainer/BarItems/PartyMenuButton" to="." method="_on_party_menu_button_pressed"]

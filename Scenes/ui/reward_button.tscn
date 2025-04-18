@@ -66,6 +66,7 @@ shadow_color = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(150, 30)
 offset_right = 150.0
 offset_bottom = 25.0
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_wrsik")
 script = ExtResource("2_ta1g3")
 

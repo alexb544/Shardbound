@@ -12,8 +12,12 @@ const SHARD_TEXT := "%s"
 
 @onready var rewards : VBoxContainer = %Rewards
 @onready var instance = character.instantiate()
+@onready var back_button : Button = %BackButton
 
 var current_party : CurrentParty = GlobalParty.current_party
+var total_rewards := 0
+var claimed_rewards := 0
+
 
 func _ready():
 	party_instantiate()
@@ -27,6 +31,7 @@ func add_gold_reward(amount : int) -> void:
 	gold_reward.reward_text = GOLD_TEXT % amount
 	gold_reward.pressed.connect(_on_gold_reward_taken.bind(amount))
 	rewards.add_child.call_deferred(gold_reward)
+	total_rewards += 1
 
 
 func _on_gold_reward_taken(amount : int) -> void:
@@ -34,6 +39,7 @@ func _on_gold_reward_taken(amount : int) -> void:
 		return
 
 	run_stats.gold += amount
+	_check_all_rewards_claimed()
 
 
 func add_shard_reward() -> void:
@@ -43,6 +49,7 @@ func add_shard_reward() -> void:
 	shard_reward.reward_text = SHARD_TEXT % random_shard.id
 	shard_reward.pressed.connect(_on_shard_reward_taken.bind(random_shard))
 	rewards.add_child.call_deferred(shard_reward)
+	total_rewards += 1
 
 
 func _on_shard_reward_taken(shard : Resource) -> void:
@@ -50,6 +57,14 @@ func _on_shard_reward_taken(shard : Resource) -> void:
 		return
 	# would need some type of menu here (party panel?) -> then click on who to equip shard
 	instance.shard_pile.add_shard(shard)
+	_check_all_rewards_claimed()
+
+
+func _check_all_rewards_claimed() -> void:
+	claimed_rewards += 1
+	if claimed_rewards >= total_rewards:
+		back_button.text = "Continue >>"
+		back_button.mouse_default_cursor_shape = CURSOR_POINTING_HAND
 
 
 func party_instantiate() -> void:
