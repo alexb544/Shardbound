@@ -43,8 +43,7 @@ func set_turn_order():
 
 # Determines if current turn is party/enemy
 func current_turn():
-	shards_button.disabled = true
-	attack_button.disabled = true
+	disable_buttons()
 	battle_status()
 	if battle_over == true:
 		return
@@ -78,8 +77,7 @@ func current_turn():
 	elif turn.is_enemy == false && battle_over == false:
 		players_turn = true
 		waiting_for_input = true
-		shards_button.disabled = false
-		attack_button.disabled = false
+		enable_buttons()
 
 		shard_list = turn.get_shards()
 		generate_shard_list()
@@ -124,6 +122,7 @@ func highlight_enemy(index : int): # Helper: highlight targeted enemy
 
 func confirm_selection(): # Confirms target to attack
 	if enemies.size() > 0 && enemy_index < enemies.size():
+		disable_buttons()
 		var selected_enemy = enemies[enemy_index]		
 		waiting_for_input = false
 		players_turn = false # end players turn
@@ -252,27 +251,30 @@ func generate_shard_list():
 
 
 func _on_shard_option_selected(i : int) -> void:
-	if i >= 0 and i < shard_list.size():
-		if shard_list[i].type == 0:
-			var target_array : Array[Node]
-			target_array.append(enemies[enemy_index])
+	if enemies.size() > 0 && enemy_index < enemies.size():
+		if i >= 0 and i < shard_list.size():
+			if shard_list[i].type == 0:
+				disable_buttons()
+				var target_array : Array[Node]
+				target_array.append(enemies[enemy_index])
 
-			turn.play("shard_cast")
-			await get_tree().create_timer(1).timeout
+				turn.play("shard_cast")
+				await get_tree().create_timer(1).timeout
 
-			shard_list[i].play(target_array, turn.stats)
-			remove_unit(target_array[i] as AnimatedSprite2D)
-		
-		if shard_list[i].type == 1:
-			var target_array : Array[Node]
-			target_array.append(party[0])
-			turn.play("shard_cast")
-			await get_tree().create_timer(1).timeout
-			shard_list[i].play(target_array, turn.stats)
-		
-		players_turn = false
-		turn.play("default")
-		end_turn()
+				shard_list[i].play(target_array, turn.stats)
+				remove_unit(target_array[i] as AnimatedSprite2D)
+			
+			if shard_list[i].type == 1:
+				disable_buttons()
+				var target_array : Array[Node]
+				target_array.append(party[0])
+				turn.play("shard_cast")
+				await get_tree().create_timer(1).timeout
+				shard_list[i].play(target_array, turn.stats)
+			
+			players_turn = false
+			turn.play("default")
+			end_turn()
 
 	else:
 		print("invalid shard ID: ", i)
@@ -287,3 +289,13 @@ func _on_shards_toggled(toggled_on: bool) -> void:
 			turn.play("turn")
 		else:
 			turn.play("default")
+
+
+func disable_buttons() -> void:
+	attack_button.disabled = true
+	shards_button.disabled = true
+
+
+func enable_buttons() -> void:
+	attack_button.disabled = false
+	shards_button.disabled = false

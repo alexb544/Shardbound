@@ -18,10 +18,6 @@ func _ready():
 				panel.show()
 		else:
 			party_menu.get_child(i).hide()
-		
-
-func _on_close_button_pressed() -> void:
-	queue_free()
 
 
 func _on_shard_selected() -> void:

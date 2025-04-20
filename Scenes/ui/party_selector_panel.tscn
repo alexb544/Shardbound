@@ -42,6 +42,7 @@ script = ExtResource("1_xfn7u")
 [node name="Visuals" type="Control" parent="."]
 custom_minimum_size = Vector2(120, 180)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="Visuals"]
 layout_mode = 1
@@ -50,6 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_htcfn")
 
 [node name="MarginContainer" type="MarginContainer" parent="Visuals"]
@@ -60,6 +62,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.995671)
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 4
@@ -67,6 +70,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Visuals/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = -4
 
 [node name="Name" type="Label" parent="Visuals/MarginContainer/VBoxContainer"]
@@ -83,6 +87,7 @@ vertical_alignment = 1
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(110, 95)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("4_w8r26")
 expand_mode = 5
 stretch_mode = 4
@@ -104,12 +109,14 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="Visuals/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 9
 theme_override_styles/separator = SubResource("StyleBoxLine_0ajm8")
 
 [node name="CenterContainer" type="CenterContainer" parent="Visuals/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="ShardList" type="RichTextLabel" parent="Visuals/MarginContainer/VBoxContainer/CenterContainer"]
 unique_name_in_owner = true
@@ -117,17 +124,22 @@ clip_contents = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 bbcode_enabled = true
 text = "(img) Shard
 (img) Shard"
 fit_content = true
 scroll_active = false
 
-[node name="SelectButton" type="Button" parent="Visuals/MarginContainer"]
-self_modulate = Color(0, 0, 0, 0.392157)
+[node name="SelectButton" type="Button" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
 custom_minimum_size = Vector2(112, 170)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[connection signal="pressed" from="Visuals/MarginContainer/SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="mouse_entered" from="SelectButton" to="." method="_on_select_button_mouse_entered"]
+[connection signal="mouse_exited" from="SelectButton" to="." method="_on_select_button_mouse_exited"]
+[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]

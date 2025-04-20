@@ -8,8 +8,11 @@ signal shard_selected
 @onready var character_name : Label = %Name
 @onready var sprite : AnimatedSprite2D = %Sprite
 @onready var shard_list : RichTextLabel = %ShardList
+@onready var select_button : Button = %SelectButton
 
 var shard_to_select : Resource
+var is_button_visible : bool
+
 
 func set_party_ui(unit : Character) -> void:
 	if not is_node_ready():
@@ -49,12 +52,23 @@ func _on_select_button_pressed() -> void:
 
 	if party_member.get_shards().size() >= 2:
 		print("This character holds too many shards!")
-		return
+		pass
 	
 	if shard_to_select:
 		party_member.shard_pile.add_shard(shard_to_select)
 		emit_signal("shard_selected")
 
-
 func set_shard_to_select(shard : Resource) -> void:
 	shard_to_select = shard
+
+
+func _on_select_button_mouse_entered() -> void:
+	if not is_button_visible:
+		select_button.self_modulate = "a601eeaa"
+		is_button_visible = true
+
+
+func _on_select_button_mouse_exited() -> void:
+	if is_button_visible:
+		select_button.self_modulate = "ffffff00"
+		is_button_visible = false
