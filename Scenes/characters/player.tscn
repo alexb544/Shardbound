@@ -15,7 +15,6 @@ shards = Array[Resource]([ExtResource("5_6u78y"), ExtResource("6_b3y3a")])
 sprite_frames = ExtResource("1_3j8rh")
 animation = &"shard_cast"
 autoplay = "default"
-frame_progress = 0.496208
 script = ExtResource("3_ggd22")
 stats = ExtResource("4_uhvrl")
 shard_pile = SubResource("Resource_dxwpf")

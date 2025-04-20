@@ -1,11 +1,13 @@
-[gd_resource type="SpriteFrames" load_steps=69 format=3 uid="uid://dy2x1uv7wktp4"]
+[gd_resource type="SpriteFrames" load_steps=83 format=3 uid="uid://dy2x1uv7wktp4"]
 
 [ext_resource type="Texture2D" uid="uid://nvce8gm7dso8" path="res://Graphics/units/party/ishil/attack.png" id="1_jfpt7"]
 [ext_resource type="Texture2D" uid="uid://u1m2g45k4t24" path="res://Graphics/units/party/ishil/idle.png" id="2_w7613"]
 [ext_resource type="Texture2D" uid="uid://c5j7hg88ugnev" path="res://Graphics/units/party/ishil/hurt.png" id="3_aby36"]
 [ext_resource type="Texture2D" uid="uid://wue6m6yrs5kc" path="res://Graphics/units/party/ishil/dash.png" id="4_3cx04"]
 [ext_resource type="Texture2D" uid="uid://edh76dtui5se" path="res://Graphics/units/party/ishil/standby.png" id="5_2a5kv"]
+[ext_resource type="Texture2D" uid="uid://bhhqwpur38ogu" path="res://Graphics/units/party/ishil/magic_end.png" id="5_cqyx7"]
 [ext_resource type="Texture2D" uid="uid://rpqjjg47x45e" path="res://Graphics/units/party/ishil/win_end.png" id="6_0po1a"]
+[ext_resource type="Texture2D" uid="uid://ppo25dagkpuh" path="res://Graphics/units/party/ishil/magic_begin.png" id="6_4re21"]
 [ext_resource type="Texture2D" uid="uid://beymi11gc80o5" path="res://Graphics/units/party/ishil/win_begin.png" id="7_s7g8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idmkm"]
@@ -123,6 +125,54 @@ region = Rect2(0, 0, 58, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3etka"]
 atlas = ExtResource("4_3cx04")
 region = Rect2(58, 0, 58, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gctw4"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(0, 0, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ketir"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(79, 0, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60nal"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(158, 0, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckeyf"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(0, 101, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7328b"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(79, 101, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw3p4"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(158, 101, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oajnx"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(0, 202, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf8go"]
+atlas = ExtResource("5_cqyx7")
+region = Rect2(79, 202, 79, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvlst"]
+atlas = ExtResource("6_4re21")
+region = Rect2(0, 0, 77, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6y2h"]
+atlas = ExtResource("6_4re21")
+region = Rect2(77, 0, 77, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3kpj"]
+atlas = ExtResource("6_4re21")
+region = Rect2(154, 0, 77, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h78e8"]
+atlas = ExtResource("6_4re21")
+region = Rect2(0, 82, 77, 82)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kclrl"]
 atlas = ExtResource("5_2a5kv")
@@ -359,6 +409,52 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gctw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ketir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60nal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckeyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7328b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw3p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oajnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf8go")
+}],
+"loop": true,
+"name": &"shard_cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvlst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6y2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3kpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h78e8")
+}],
+"loop": true,
+"name": &"shard_charge",
 "speed": 5.0
 }, {
 "frames": [{

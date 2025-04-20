@@ -11,8 +11,9 @@ shards = Array[Resource]([])
 
 [node name="Wadow" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = ExtResource("1_kaco3")
-animation = &"win_after"
+animation = &"shard_cast"
 autoplay = "default"
+frame_progress = 0.8
 script = ExtResource("2_qtrd0")
 stats = ExtResource("3_8lhq8")
 shard_pile = SubResource("Resource_wtmf2")

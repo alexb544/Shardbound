@@ -11,8 +11,9 @@ shards = Array[Resource]([])
 
 [node name="Roy" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = ExtResource("1_bt0gw")
-animation = &"win_after"
+animation = &"shard_cast"
 autoplay = "default"
+frame_progress = 0.242679
 script = ExtResource("2_mkori")
 stats = ExtResource("3_fewed")
 shard_pile = SubResource("Resource_74ysu")
