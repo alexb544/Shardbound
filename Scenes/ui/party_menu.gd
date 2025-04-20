@@ -1,13 +1,8 @@
 class_name PartyMenu
 extends CanvasLayer
 
-#@export var current_party : CurrentParty #= preload("res://Resources/current_party.tres")
-
 @onready var party_menu : HBoxContainer = %Party
 @onready var party_menu_ui : PartyPanel
-
-# var stats : CharacterStats
-# var run_stats : RunStats
 
 
 func _ready():

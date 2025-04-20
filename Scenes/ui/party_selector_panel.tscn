@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://xnvl272st3rd"]
+
+[ext_resource type="Script" path="res://Scenes/ui/party_selector_panel.gd" id="1_xfn7u"]
+[ext_resource type="StyleBox" uid="uid://budexqnqbal4u" path="res://Utilities/Themes/party_panel_theme.tres" id="3_htcfn"]
+[ext_resource type="Texture2D" uid="uid://dfnnioxksktmb" path="res://Graphics/units/party/player/attack_stance.png" id="4_w8r26"]
+[ext_resource type="SpriteFrames" uid="uid://pptrq6podwf" path="res://Graphics/units/party/player/player_sprite_frames.tres" id="5_0nd64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xutdj"]
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5ii7"]
+outline_size = 3
+outline_color = Color(0.528768, 0.00189808, 0.750115, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0ajm8"]
+color = Color(0.176471, 0, 0.192157, 1)
+grow_begin = -15.0
+grow_end = -15.0
+
+[node name="PartySelectorPanel" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -90.0
+offset_right = 60.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.992674, 0.997322)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_xfn7u")
+
+[node name="Visuals" type="Control" parent="."]
+custom_minimum_size = Vector2(120, 180)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Visuals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_htcfn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Visuals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.995671)
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Visuals/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Name" type="Label" parent="Visuals/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Party Member"
+label_settings = SubResource("LabelSettings_xutdj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Placeholder" type="TextureRect" parent="Visuals/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(110, 95)
+layout_mode = 2
+texture = ExtResource("4_w8r26")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Visuals/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(54.4354, 66.4931)
+scale = Vector2(1.36338, 1.36338)
+sprite_frames = ExtResource("5_0nd64")
+
+[node name="Shards" type="Label" parent="Visuals/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+text = "Shards"
+label_settings = SubResource("LabelSettings_j5ii7")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Visuals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 9
+theme_override_styles/separator = SubResource("StyleBoxLine_0ajm8")
+
+[node name="CenterContainer" type="CenterContainer" parent="Visuals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ShardList" type="RichTextLabel" parent="Visuals/MarginContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "(img) Shard
+(img) Shard"
+fit_content = true
+scroll_active = false
+
+[node name="SelectButton" type="Button" parent="Visuals/MarginContainer"]
+self_modulate = Color(0, 0, 0, 0.392157)
+custom_minimum_size = Vector2(112, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="pressed" from="Visuals/MarginContainer/SelectButton" to="." method="_on_select_button_pressed"]

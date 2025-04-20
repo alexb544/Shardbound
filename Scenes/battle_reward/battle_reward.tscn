@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b82tweuisuwtf"]
+[gd_scene load_steps=10 format=3 uid="uid://b82tweuisuwtf"]
 
 [ext_resource type="Script" path="res://Scenes/battle_reward/battle_reward.gd" id="1_aqpxl"]
 [ext_resource type="Theme" uid="uid://llodmqv2j7vt" path="res://Utilities/Themes/button_theme.tres" id="2_hhtu2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dngb8cht4mqbl" path="res://Scenes/ui/reward_button.tscn" id="4_jsdaj"]
 [ext_resource type="Texture2D" uid="uid://5r0yx38u0vh5" path="res://Graphics/ui/gold_icon.png" id="5_3lc7x"]
 [ext_resource type="Texture2D" uid="uid://didtde55261nd" path="res://Graphics/items/shards/supp_small.png" id="6_wnsqx"]
+[ext_resource type="PackedScene" uid="uid://da3tppl8n5t1q" path="res://Scenes/ui/party_selector.tscn" id="8_bfo4l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8ktr"]
 bg_color = Color(0.266667, 0, 0.431373, 0.564706)
@@ -109,5 +110,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_hhtu2")
 text = "Skip"
+
+[node name="PartySelector" parent="." instance=ExtResource("8_bfo4l")]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

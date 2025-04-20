@@ -62,6 +62,3 @@ func set_party_ui(unit : CharacterStats) -> void:
 	experience_bar.value = party_member.experience
 	var experience_label : Label = experience_bar.get_child(0)
 	experience_label.text = str(party_member.experience) #+ "/" + str(party_member.next_level)
-
-
-	

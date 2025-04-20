@@ -8,11 +8,10 @@ const GOLD_TEXT := "%s Gold"
 const SHARD_TEXT := "%s"
 
 @export var run_stats : RunStats
-@export var character : PackedScene = preload("res://Scenes/Characters/player.tscn")
 
 @onready var rewards : VBoxContainer = %Rewards
-@onready var instance = character.instantiate()
 @onready var back_button : Button = %BackButton
+@onready var party_selector : PartySelector = %PartySelector
 
 var current_party : CurrentParty = GlobalParty.current_party
 var total_rewards := 0
@@ -20,6 +19,7 @@ var claimed_rewards := 0
 
 
 func _ready():
+	party_selector.hide()
 	party_instantiate()
 	for node : Node in rewards.get_children():
 		node.queue_free()
@@ -45,9 +45,12 @@ func _on_gold_reward_taken(amount : int) -> void:
 func add_shard_reward() -> void:
 	var random_shard = SHARD_REWARDS.shards.pick_random()
 	var shard_reward := REWARD_BUTTON.instantiate() as RewardButton
+
 	shard_reward.reward_icon = random_shard.icon
 	shard_reward.reward_text = SHARD_TEXT % random_shard.id
+	
 	shard_reward.pressed.connect(_on_shard_reward_taken.bind(random_shard))
+
 	rewards.add_child.call_deferred(shard_reward)
 	total_rewards += 1
 
@@ -55,8 +58,14 @@ func add_shard_reward() -> void:
 func _on_shard_reward_taken(shard : Resource) -> void:
 	if not shard:
 		return
-	# would need some type of menu here (party panel?) -> then click on who to equip shard
-	instance.shard_pile.add_shard(shard)
+
+	party_selector.show()
+	var party_selector_panels = party_selector.party_menu.get_children()
+
+	for panel : PartySelectorPanel in party_selector_panels:
+		if panel != null or hidden:
+			panel.set_shard_to_select(shard)
+
 	_check_all_rewards_claimed()
 
 
