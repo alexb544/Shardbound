@@ -7,7 +7,7 @@
 script = ExtResource("1_suqk6")
 id = "Firebolt"
 type = 0
-target = 0
+target = 2
 mana = 10
 icon = ExtResource("1_erah8")
 description = "Hurl a ball of fire at your enemy

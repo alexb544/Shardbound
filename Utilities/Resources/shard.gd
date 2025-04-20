@@ -1,7 +1,7 @@
 class_name Shard 
 extends Resource
 
-enum Type {ATTACK, HEAL}
+enum Type {ATTACK, HEAL} # 0 = Attack, 1 = Heal
 enum Target {PARTY, ALL_PARTY, SINGLE_ENEMY, ALL_ENEMIES}
 
 @export_group("Shard Attributes")
@@ -37,8 +37,7 @@ func _get_targets(targets: Array[Node]) -> Array[Node]:
 
 
 func play(targets : Array[Node], stats : CharacterStats) -> void:
-    Events.shard_used.emit(self)
-    stats.mana_changed.emit(mana)
+    stats.current_mana -= mana
 
     if is_single_targeted():
         apply_effects(targets)

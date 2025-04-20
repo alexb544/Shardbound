@@ -591,6 +591,7 @@ theme = ExtResource("4_3cb6v")
 alignment = 1
 
 [node name="Attack" type="Button" parent="BottomWindow/ActionsBox/ActionList"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -648,7 +649,8 @@ layer = 2
 
 [node name="BattleOverPanel" parent="BattleOverLayer" instance=ExtResource("12_v623e")]
 visible = false
-offset_top = -144.0
-offset_bottom = 54.0
+offset_top = -105.0
+offset_bottom = 15.0
 
 [connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Attack" to="CombatManager" method="_on_attack_pressed"]
+[connection signal="toggled" from="BottomWindow/ActionsBox/ActionList/Shards" to="CombatManager" method="_on_shards_toggled"]

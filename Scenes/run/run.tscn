@@ -65,111 +65,111 @@ run_startup = ExtResource("2_3na1u")
 
 [node name="Map" parent="." instance=ExtResource("1_2fcmb")]
 
-[node name="Label" type="CanvasLayer" parent="Map"]
+[node name="KeyCanvas" type="CanvasLayer" parent="Map"]
 layer = -1
 offset = Vector2(5, 0)
 transform = Transform2D(1, 0, 0, 1, 5, 0)
 
-[node name="Key" type="VBoxContainer" parent="Map/Label"]
+[node name="Key" type="VBoxContainer" parent="Map/KeyCanvas"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -136.0
+offset_top = -109.0
 offset_right = 102.0
-offset_bottom = 34.0
+offset_bottom = 61.0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -1
 
-[node name="KeyLabel" type="Label" parent="Map/Label/Key"]
+[node name="KeyLabel" type="Label" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "KEY:"
 label_settings = SubResource("LabelSettings_1fd26")
 
-[node name="HSeparator" type="HSeparator" parent="Map/Label/Key"]
+[node name="HSeparator" type="HSeparator" parent="Map/KeyCanvas/Key"]
 self_modulate = Color(0.368802, 0.0013286, 0.59252, 1)
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="Combat" type="HBoxContainer" parent="Map/Label/Key"]
+[node name="Combat" type="HBoxContainer" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Combat"]
+[node name="TextureRect" type="TextureRect" parent="Map/KeyCanvas/Key/Combat"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = ExtResource("4_l135o")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="Map/Label/Key/Combat"]
+[node name="Label" type="Label" parent="Map/KeyCanvas/Key/Combat"]
 layout_mode = 2
 text = "Combat"
 label_settings = SubResource("LabelSettings_fb0o1")
 
-[node name="Elite" type="HBoxContainer" parent="Map/Label/Key"]
+[node name="Elite" type="HBoxContainer" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Elite"]
+[node name="TextureRect" type="TextureRect" parent="Map/KeyCanvas/Key/Elite"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = ExtResource("5_bbfw0")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="Map/Label/Key/Elite"]
+[node name="Label" type="Label" parent="Map/KeyCanvas/Key/Elite"]
 layout_mode = 2
 text = "Elite"
 label_settings = SubResource("LabelSettings_fb0o1")
 
-[node name="Boss" type="HBoxContainer" parent="Map/Label/Key"]
+[node name="Boss" type="HBoxContainer" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Boss"]
+[node name="TextureRect" type="TextureRect" parent="Map/KeyCanvas/Key/Boss"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = ExtResource("8_ji52s")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="Map/Label/Key/Boss"]
+[node name="Label" type="Label" parent="Map/KeyCanvas/Key/Boss"]
 layout_mode = 2
 text = "Boss"
 label_settings = SubResource("LabelSettings_fb0o1")
 
-[node name="Treasure" type="HBoxContainer" parent="Map/Label/Key"]
+[node name="Treasure" type="HBoxContainer" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Treasure"]
+[node name="TextureRect" type="TextureRect" parent="Map/KeyCanvas/Key/Treasure"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = ExtResource("7_oktae")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="Map/Label/Key/Treasure"]
+[node name="Label" type="Label" parent="Map/KeyCanvas/Key/Treasure"]
 layout_mode = 2
 text = "Treasure"
 label_settings = SubResource("LabelSettings_fb0o1")
 
-[node name="Town" type="HBoxContainer" parent="Map/Label/Key"]
+[node name="Town" type="HBoxContainer" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="TextureRect" type="TextureRect" parent="Map/Label/Key/Town"]
+[node name="TextureRect" type="TextureRect" parent="Map/KeyCanvas/Key/Town"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = ExtResource("6_2m4gf")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="Map/Label/Key/Town"]
+[node name="Label" type="Label" parent="Map/KeyCanvas/Key/Town"]
 layout_mode = 2
 text = "Town"
 label_settings = SubResource("LabelSettings_fb0o1")

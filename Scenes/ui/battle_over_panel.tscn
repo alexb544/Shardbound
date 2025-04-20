@@ -1,23 +1,113 @@
-[gd_scene load_steps=3 format=3 uid="uid://ekip16go0cc6"]
+[gd_scene load_steps=9 format=3 uid="uid://ekip16go0cc6"]
 
 [ext_resource type="Script" path="res://Scenes/ui/battle_over_panel.gd" id="1_7x5xf"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_nj3br"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om1qu"]
+bg_color = Color(0.262745, 0, 0.407843, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsgpc"]
+bg_color = Color(0.261345, 0.00056828, 0.408267, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja303"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.23739, 0.000526767, 0.386979, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3157, 0.00115297, 0.554708, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6q1v"]
+bg_color = Color(0.392157, 0, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.174508, 2.11896e-05, 0.174507, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_offset = Vector2(-1, 1)
+
+[sub_resource type="Theme" id="Theme_hqdsp"]
+Button/colors/font_color = Color(0.901961, 0.811765, 1, 1)
+Button/colors/font_disabled_color = Color(0.364706, 0.364706, 0.364706, 0.560784)
+Button/colors/font_focus_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.776471, 0.984314, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/align_to_largest_stylebox = 1
+Button/icons/icon = null
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxFlat_om1qu")
+Button/styles/hover = SubResource("StyleBoxFlat_tsgpc")
+Button/styles/normal = SubResource("StyleBoxFlat_ja303")
+Button/styles/pressed = SubResource("StyleBoxFlat_r6q1v")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8brf"]
+bg_color = Color(0.266667, 0, 0.431373, 0.564706)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.37551, 0.00165262, 0.653501, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_moki2"]
 font_size = 30
+outline_size = 3
+outline_color = Color(0.511823, 0.00163933, 0.714915, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="BattleOverPanel" type="Panel"]
 process_mode = 3
+custom_minimum_size = Vector2(170, 120)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -112.0
-offset_right = 179.0
-offset_bottom = 86.0
+offset_left = -85.0
+offset_top = -60.0
+offset_right = 85.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_hqdsp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8brf")
 script = ExtResource("1_7x5xf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -27,19 +117,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -52.5
+offset_top = -51.5
+offset_right = 52.5
+offset_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "You Win!"
-label_settings = SubResource("LabelSettings_nj3br")
+label_settings = SubResource("LabelSettings_moki2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -48,6 +139,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Continue"
 
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
@@ -55,5 +147,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Restart
 "

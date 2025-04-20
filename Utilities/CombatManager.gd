@@ -5,22 +5,24 @@ extends Node
 
 @onready var party_manager = get_node("../PartyManager")
 @onready var enemy_manager = get_node("../EnemyManager")
-@onready var shards_button = %Shards 
+@onready var shards_button : MenuButton = %Shards 
+@onready var attack_button : Button = %Attack
 
 var party : Array = []   # access party members in scene
 var enemies : Array = [] # access enemies in scene
-var character : Character # access Character class
 
 var turn_order: Array = [] # Stores all characters for turn order
-var turn_tracker: int      # Tracks whose turn it is
+var turn_tracker: int # Tracks whose turn it is
 var turn : AnimatedSprite2D # Current unit's turn.
 
 var enemy_index : int = 0  # Selected enemy's index in enemies
-var target : AnimatedSprite2D 
+var target : AnimatedSprite2D # Used only for enemy targeting
 
 var players_turn : bool = false
 var waiting_for_input: bool = false
 var battle_over : bool = false
+var shard_list : Array[Resource] # Current turn's shardpile
+
 
 func _ready():
 	battle_over = false
@@ -29,9 +31,7 @@ func _ready():
 
 	party = party_manager.get_children()
 	enemies = enemy_manager.get_children()
-
 	set_turn_order()
-
 	current_turn()
 	battle_over = false
 	
@@ -43,12 +43,12 @@ func set_turn_order():
 
 # Determines if current turn is party/enemy
 func current_turn():
-	
+	shards_button.disabled = true
+	attack_button.disabled = true
 	battle_status()
 	if battle_over == true:
 		return
-	
-	print(turn_order[turn_tracker].name, "'s turn!") # "Unit's Turn!"
+
 	turn = turn_order[turn_tracker] # Stores active unit
 
 	# Enemy turn: selects random target
@@ -57,14 +57,9 @@ func current_turn():
 		var offset = Vector2(-50, -10)
 
 		await get_tree().create_timer(.75).timeout # Enemy makes "decision"
-
 		target = target_random_party()
 		target.stats.current_health -= turn.stats.strength
-
 		await move_next_to_target(offset) # move to targeted party member
-		
-		print("Random Target: ", target.stats.name) # "Random Target: Player"
-		print(turn.name, " Attacks!") # "Rat Attacks!"
 		
 		target.modulate = Color(1,0,0,1)
 		target.play("hit") # plays "hit" animation for the attacked party member.
@@ -77,59 +72,62 @@ func current_turn():
 		else:
 			target.play("default")
 		
-		next_turn()
-		print("\n === Next Turn === \n")
-		current_turn()
-
-	elif turn.is_enemy == false && battle_over == false: # Player turn: select action -> select target
+		end_turn()
+	
+	# Player turn: select action -> select target
+	elif turn.is_enemy == false && battle_over == false:
 		players_turn = true
 		waiting_for_input = true
+		shards_button.disabled = false
+		attack_button.disabled = false
 
-		var shard_list = turn.get_shards()
-		generate_shard_list(shard_list)
+		shard_list = turn.get_shards()
+		generate_shard_list()
 
 		turn.play("turn") # active turn animation
-		print("Waiting on target confirmation...")
 
-# Increments turn count 
-func next_turn():
+
+func next_turn(): # Increments turn count 
 	turn_tracker += 1
 	if turn_tracker >= turn_order.size():
 		turn_tracker = 0
 
-# Enemy Targeting
-func target_random_party() -> AnimatedSprite2D:
+
+func end_turn():
+	players_turn = false
+	waiting_for_input = false
+	next_turn()
+	current_turn()
+
+
+func target_random_party() -> AnimatedSprite2D: # Enemy Targeting
 	var select_target = party_manager.get_children()
 	var random_target = select_target[randi() % party_manager.get_child_count()]
 	return random_target
 
-# Select an enemy; highlights selected enemy
-func change_selected_enemy(direction : int):
+
+func change_selected_enemy(direction : int): # Select an enemy; highlights selected enemy
 	if enemies.size() == 0:
 		return
-
 	enemy_index = (enemy_index + direction) % enemies.size()
 
 	if enemy_index < 0:
 		enemy_index = enemies.size() - 1 # goes back to first enemy in index
 	highlight_enemy(enemy_index)
 
-# Helper: highlight targeted enemy 
-func highlight_enemy(index : int):
+
+func highlight_enemy(index : int): # Helper: highlight targeted enemy 
 	for i in range(enemies.size()):
 		enemies[i].modulate = Color(1,1,1,1) # resets color
 	enemies[index].modulate = Color(1,0,0,1) # highlights selected enemy
-	print("> Selected Enemey: ", enemies[index].name)
 
-# Confirms target to attack
-func confirm_selection():
+
+func confirm_selection(): # Confirms target to attack
 	if enemies.size() > 0 && enemy_index < enemies.size():
-		var selected_enemy = enemies[enemy_index]
-		print("Confirmed Target: ", selected_enemy.name)
-		
+		var selected_enemy = enemies[enemy_index]		
 		waiting_for_input = false
 		players_turn = false # end players turn
-		
+
 		enemies[enemy_index].modulate = Color(1,1,1,1) # reset color
 		attack_enemy(selected_enemy)
 	else:
@@ -139,17 +137,14 @@ func confirm_selection():
 func attack_enemy(enemy: AnimatedSprite2D):
 	if waiting_for_input:
 		return
-
 	var current_position = turn.global_position
 	var offset = Vector2(50, -10)
 
-	print(turn.name, " attacks ", enemy.name, "!\n")
-
-	turn.play("move")
+	turn.play("move") # moves to target
 	await move_next_to_target(offset) # move to selected enemy
 
-	turn.play("attack")
-	enemy.stats.current_health = enemy.stats.current_health - turn.stats.strength
+	turn.play("attack") # plays attack animation
+	enemy.stats.current_health -= turn.stats.strength
 
 	if enemy.stats.current_health > 0:
 		enemy.play("hit")
@@ -187,17 +182,19 @@ func move_next_to_target(offset: Vector2, duration: float = 0.4 ):
 
 
 func remove_unit(unit : AnimatedSprite2D):
-	if unit.is_enemy == true:
+	if unit.is_enemy and unit.stats.current_health <= 0:
 		enemies.erase(unit)
-	else:
+		turn_order.erase(unit)
+		unit.queue_free()
+
+	elif !unit.is_enemy and unit.stats.current_health <= 0:
 		party.erase(unit)
+		turn_order.erase(unit)
+		unit.queue_free()
 
-	turn_order.erase(unit)
-	unit.queue_free()
 
-
-func battle_status():
-	if party.is_empty():
+func battle_status(): # checks if battle is over
+	if party.is_empty() or GlobalParty.current_party.party_members[0].stats.current_health <= 0:
 		battle_over = true
 		Events.battle_over_screen_requested.emit("Game Over!", BattleOverPanel.Type.LOSE)
 
@@ -238,11 +235,7 @@ func _on_attack_pressed() -> void:
 		print("Wait your turn!")
 
 
-func _on_defend_pressed() -> void:
-	print("Defend button pressed")
-
-
-func generate_shard_list(shard_list : Array[Resource]):
+func generate_shard_list():
 	var popup = shards_button.get_popup()
 	popup.clear()
 	
@@ -254,5 +247,43 @@ func generate_shard_list(shard_list : Array[Resource]):
 		popup.add_item(shard.id)
 		popup.set_item_icon(index, shard.icon)
 
+		if not popup.is_connected("id_pressed", Callable(self, "_on_shard_option_selected")):
+			popup.connect("id_pressed", Callable(self, "_on_shard_option_selected"))
 
 
+func _on_shard_option_selected(i : int) -> void:
+	if i >= 0 and i < shard_list.size():
+		if shard_list[i].type == 0:
+			var target_array : Array[Node]
+			target_array.append(enemies[enemy_index])
+
+			turn.play("shard_cast")
+			await get_tree().create_timer(1).timeout
+
+			shard_list[i].play(target_array, turn.stats)
+			remove_unit(target_array[i] as AnimatedSprite2D)
+		
+		if shard_list[i].type == 1:
+			var target_array : Array[Node]
+			target_array.append(party[0])
+			turn.play("shard_cast")
+			await get_tree().create_timer(1).timeout
+			shard_list[i].play(target_array, turn.stats)
+		
+		players_turn = false
+		turn.play("default")
+		end_turn()
+
+	else:
+		print("invalid shard ID: ", i)
+
+
+func _on_shards_toggled(toggled_on: bool) -> void:
+	if toggled_on and players_turn:
+		turn.play("shard_charge")
+	
+	if !toggled_on and players_turn:
+		if turn:
+			turn.play("turn")
+		else:
+			turn.play("default")

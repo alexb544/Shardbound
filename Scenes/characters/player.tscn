@@ -1,18 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://croju2g5rttil"]
+[gd_scene load_steps=8 format=3 uid="uid://croju2g5rttil"]
 
 [ext_resource type="SpriteFrames" uid="uid://pptrq6podwf" path="res://Graphics/units/party/player/player_sprite_frames.tres" id="1_3j8rh"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="3_ggd22"]
 [ext_resource type="Resource" uid="uid://cojtu0lyxlxfo" path="res://Resources/CharacterStats/player.tres" id="4_uhvrl"]
 [ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="4_y0kbo"]
+[ext_resource type="Resource" uid="uid://c6l3h6ncnrhtf" path="res://Resources/Shards/firebolt.tres" id="5_6u78y"]
+[ext_resource type="Resource" uid="uid://rv815f2akbrm" path="res://Resources/Shards/grace.tres" id="6_b3y3a"]
 
 [sub_resource type="Resource" id="Resource_dxwpf"]
 script = ExtResource("4_y0kbo")
-shards = Array[Resource]([])
+shards = Array[Resource]([ExtResource("5_6u78y"), ExtResource("6_b3y3a")])
 
 [node name="Player" type="AnimatedSprite2D" groups=["party_members"]]
 sprite_frames = ExtResource("1_3j8rh")
+animation = &"shard_cast"
 autoplay = "default"
-frame_progress = 0.138213
+frame_progress = 0.496208
 script = ExtResource("3_ggd22")
 stats = ExtResource("4_uhvrl")
 shard_pile = SubResource("Resource_dxwpf")

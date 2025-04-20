@@ -5,6 +5,7 @@ extends Control
 
 var party : CurrentParty = GlobalParty.current_party
 var recruit_pool : Array[CharacterData] = Recruits.recruit_pool
+var run_stats : RunStats
 
 
 func _on_inn_button_pressed() -> void:
@@ -18,12 +19,13 @@ func _on_inn_button_pressed() -> void:
 
 
 func _on_recruit_button_pressed() -> void:
-	if recruit_pool.size() > 0:
+	if recruit_pool.size() > 0 and run_stats.gold >= 100:
 		var index = randi_range(0, recruit_pool.size() - 1)
 		var selected_character = recruit_pool[index]
 
 		GlobalParty.add_to_party(selected_character)
 		recruit_pool.erase(selected_character)
+		run_stats.gold -= 100
 
 		animation_player.play("fade_out") # exits town
 

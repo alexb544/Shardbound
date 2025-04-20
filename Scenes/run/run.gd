@@ -103,6 +103,11 @@ func _on_battle_won() -> void:
 	reward_scene.add_shard_reward()
 
 
+func _on_town_entered(_room : Room) -> void:
+	var town_scene : Town = _change_view(TOWN_SCENE) as Town
+	town_scene.run_stats = run_stats
+
+
 func _on_map_exited(room : Room) -> void:
 	match room.type:
 		Room.Type.MONSTER:
@@ -110,7 +115,7 @@ func _on_map_exited(room : Room) -> void:
 		Room.Type.TREASURE:
 			_change_view(LOOT_ROOM_SCENE)
 		Room.Type.TOWN:
-			_change_view(TOWN_SCENE)
+			_on_town_entered(room)
 		Room.Type.ELITE:
 			_on_battle_room_entered(room) # TODO: might need to change later
 		Room.Type.BOSS:
