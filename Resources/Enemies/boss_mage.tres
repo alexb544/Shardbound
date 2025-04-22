@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://8eni2aibgu0b"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_lxjbr"]
+[ext_resource type="Texture2D" uid="uid://bfobajymlf6m7" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_3050130.png" id="1_xvb27"]
+
+[resource]
+script = ExtResource("1_lxjbr")
+name = "Boss Mage"
+icon = ExtResource("1_xvb27")
+level = 10
+experience = 200
+max_health = 250
+max_mana = 50
+strength = 30
+magic = 30
+speed = 15

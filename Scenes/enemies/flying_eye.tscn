@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://dw8bhx8vcdxx0"]
+
+[ext_resource type="Texture2D" uid="uid://cfv37x0wy3ic2" path="res://Graphics/units/enemies/zone1_enemies/1040020_idle.png" id="1_safrp"]
+[ext_resource type="Texture2D" uid="uid://lq5l7dxd4o2d" path="res://Graphics/units/enemies/zone1_enemies/1040020_atk.png" id="2_ugbpa"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="3_u4x2u"]
+[ext_resource type="Resource" uid="uid://bxl4npatakllh" path="res://Resources/Enemies/flying_eye.tres" id="4_iiv2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oqeq"]
+atlas = ExtResource("1_safrp")
+region = Rect2(0, 0, 142, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x7l3"]
+atlas = ExtResource("1_safrp")
+region = Rect2(142, 0, 142, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4by5m"]
+atlas = ExtResource("1_safrp")
+region = Rect2(284, 0, 142, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csnym"]
+atlas = ExtResource("1_safrp")
+region = Rect2(0, 130, 142, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moewn"]
+atlas = ExtResource("2_ugbpa")
+region = Rect2(0, 0, 136, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twcpy"]
+atlas = ExtResource("2_ugbpa")
+region = Rect2(136, 0, 136, 129)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql5w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oqeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x7l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4by5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csnym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moewn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twcpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moewn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twcpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moewn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twcpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moewn")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="FlyingEye" type="AnimatedSprite2D" groups=["enemies"]]
+sprite_frames = SubResource("SpriteFrames_ql5w2")
+animation = &"hit"
+autoplay = "default"
+script = ExtResource("3_u4x2u")
+stats = ExtResource("4_iiv2e")
+is_enemy = true

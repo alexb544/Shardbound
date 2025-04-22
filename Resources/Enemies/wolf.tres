@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://bd1qkw5se6m0"]
+
+[ext_resource type="Texture2D" uid="uid://bupk0okhn5rrq" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010250.png" id="1_de5rk"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="2_l3j41"]
+
+[resource]
+script = ExtResource("2_l3j41")
+name = "Wolf"
+icon = ExtResource("1_de5rk")
+level = 1
+experience = 30
+max_health = 25
+max_mana = 0
+strength = 10
+magic = 0
+speed = 12

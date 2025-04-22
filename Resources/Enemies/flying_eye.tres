@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://bxl4npatakllh"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_1xf87"]
+[ext_resource type="Texture2D" uid="uid://yc3j2780oiee" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1040020.png" id="1_j3yib"]
+
+[resource]
+script = ExtResource("1_1xf87")
+name = "Flying Eye"
+icon = ExtResource("1_j3yib")
+level = 1
+experience = 20
+max_health = 40
+max_mana = 0
+strength = 15
+magic = 0
+speed = 8

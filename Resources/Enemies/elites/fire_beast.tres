@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://deh1gnqy171r8"]
+
+[ext_resource type="Texture2D" uid="uid://cq1fc2we2wy6u" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_3010210.png" id="1_gu4w3"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_wjehc"]
+
+[resource]
+script = ExtResource("1_wjehc")
+name = "Fire Beast"
+icon = ExtResource("1_gu4w3")
+level = 5
+experience = 50
+max_health = 150
+max_mana = 50
+strength = 25
+magic = 10
+speed = 15

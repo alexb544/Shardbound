@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dx0t1ntuurx1o" path="res://Graphics/units/enemies/zone1_enemies/elites/3050140_idle.png" id="1_jnyid"]
 [ext_resource type="Texture2D" uid="uid://bceepxookv2gt" path="res://Graphics/units/enemies/zone1_enemies/elites/3050142_atk.png" id="2_ihcus"]
 [ext_resource type="Script" path="res://Utilities/Character.gd" id="3_sfyv7"]
-[ext_resource type="Resource" uid="uid://b10tqssddrnyh" path="res://Resources/Enemies/elites/elite_1_stats.tres" id="4_pub21"]
+[ext_resource type="Resource" uid="uid://b10tqssddrnyh" path="res://Resources/Enemies/elites/axe_knight.tres" id="4_pub21"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwye0"]
 atlas = ExtResource("1_jnyid")

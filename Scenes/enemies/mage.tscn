@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://bba0vlq1t8nu1"]
+
+[ext_resource type="Texture2D" uid="uid://1nhe166iaugq" path="res://Graphics/units/enemies/zone1_enemies/1050110_idle.png" id="1_5rxpw"]
+[ext_resource type="Texture2D" uid="uid://bxvu8lb8to2i8" path="res://Graphics/units/enemies/zone1_enemies/1050110_atk.png" id="2_0m40s"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_m665j"]
+[ext_resource type="Resource" uid="uid://c217qqafxceq6" path="res://Resources/Enemies/mage.tres" id="4_7kvat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdi7x"]
+atlas = ExtResource("1_5rxpw")
+region = Rect2(0, 0, 106, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7mbu"]
+atlas = ExtResource("1_5rxpw")
+region = Rect2(106, 0, 106, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3yux"]
+atlas = ExtResource("1_5rxpw")
+region = Rect2(212, 0, 106, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pflmw"]
+atlas = ExtResource("1_5rxpw")
+region = Rect2(0, 97, 106, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2ynb"]
+atlas = ExtResource("2_0m40s")
+region = Rect2(0, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrjw4"]
+atlas = ExtResource("2_0m40s")
+region = Rect2(99, 0, 99, 95)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql5w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdi7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7mbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3yux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pflmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ynb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrjw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ynb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrjw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ynb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrjw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ynb")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="Mage" type="AnimatedSprite2D" groups=["enemies"]]
+sprite_frames = SubResource("SpriteFrames_ql5w2")
+autoplay = "default"
+script = ExtResource("2_m665j")
+stats = ExtResource("4_7kvat")
+is_enemy = true

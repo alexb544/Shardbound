@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://c217qqafxceq6"]
+
+[ext_resource type="Texture2D" uid="uid://c7yugcjjt6lme" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1050110.png" id="1_kgm66"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_und7w"]
+
+[resource]
+script = ExtResource("1_und7w")
+name = "Mage"
+icon = ExtResource("1_kgm66")
+level = 3
+experience = 40
+max_health = 50
+max_mana = 60
+strength = 10
+magic = 15
+speed = 0
