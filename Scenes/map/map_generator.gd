@@ -1,16 +1,15 @@
 class_name MapGenerator
 extends Node
 
-# Experiment later with different values
-const X_DIST := 50
+const X_DIST := 55
 const Y_DIST := 40
 const PLACEMENT_RANDOMNESS := 5
 const FLOORS := 15
 const MAP_WIDTH := 7
 const PATHS := 6
-const MONSTER_ROOM_WEIGHT := 8.0
-const ELITE_ROOM_WEIGHT := 2.0
-const TOWN_ROOM_WEIGHT := 5.0
+const MONSTER_ROOM_WEIGHT := 7.5
+const ELITE_ROOM_WEIGHT := 1.5
+const TOWN_ROOM_WEIGHT := 6
 
 @export var enemy_groups_pool : EnemyGroups
 
@@ -153,10 +152,11 @@ func _setup_room_types() -> void:
 			room.type = Room.Type.MONSTER
 			room.battle_stats = enemy_groups_pool.get_random_battle_for_tier(0)
 	
-	# 9th floor is always loot
-	for room : Room in map_data[floori(FLOORS / 2)]:
-		if room.next_rooms.size() > 0:
-			room.type = Room.Type.TREASURE
+	# Disabled For QualCon, Treasure Room not finished
+	# # 9th floor is always loot
+	# for room : Room in map_data[floori(FLOORS / 2)]:
+	# 	if room.next_rooms.size() > 0:
+	# 		room.type = Room.Type.TREASURE
 	
 	# last floor before boss is always a town
 	for room : Room in map_data[FLOORS - 2]:
@@ -196,17 +196,21 @@ func _set_room_randomly(room_to_set : Room) -> void:
 	
 	room_to_set.type = type_candidate
 
+	# Assigns difficulty for MONSTER fights
 	if type_candidate == Room.Type.MONSTER:
 		var tier_for_monster_rooms := 0
 
 		if room_to_set.row > 2:
-			tier_for_monster_rooms = 1
+			tier_for_monster_rooms = 1 # Normal Enemy Pool
+
+		if room_to_set.row > 8:
+			tier_for_monster_rooms = 4 # Hard Enemy Pool
 
 		room_to_set.battle_stats = enemy_groups_pool.get_random_battle_for_tier(tier_for_monster_rooms)
 	
 	if type_candidate == Room.Type.ELITE:
 		var tier_for_elite_rooms := 2
-		
+
 		room_to_set.battle_stats = enemy_groups_pool.get_random_battle_for_tier(tier_for_elite_rooms)
 
 

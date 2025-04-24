@@ -7,8 +7,8 @@
 script = ExtResource("2_42np0")
 battle_tier = 0
 weight = 1.0
-gold_reward_min = 40
-gold_reward_max = 50
+gold_reward_min = 38
+gold_reward_max = 45
 exp_reward = 40
-enemies = Array[PackedScene]([ExtResource("1_lexfv")])
+enemies = Array[PackedScene]([null, null, ExtResource("1_lexfv"), null])
 pool = Array[ExtResource("2_42np0")]([])

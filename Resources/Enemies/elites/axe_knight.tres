@@ -7,10 +7,10 @@
 script = ExtResource("1_tdwoj")
 name = "Axe Knight"
 icon = ExtResource("1_fnqd2")
-level = 0
-experience = 0
-max_health = 60
-max_mana = 0
-strength = 15
-magic = 0
+level = 2
+experience = 90
+max_health = 150
+max_mana = 50
+strength = 35
+magic = 10
 speed = 8

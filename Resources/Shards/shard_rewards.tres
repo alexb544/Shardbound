@@ -6,4 +6,4 @@
 
 [resource]
 script = ExtResource("1_ugee1")
-shards = Array[Resource]([ExtResource("2_sgipr"), ExtResource("2_sgipr"), ExtResource("2_sgipr"), ExtResource("2_sgipr"), ExtResource("3_eo11w"), ExtResource("3_eo11w"), ExtResource("3_eo11w"), ExtResource("3_eo11w"), ExtResource("3_eo11w")])
+shards = Array[Resource]([ExtResource("2_sgipr"), ExtResource("3_eo11w")])

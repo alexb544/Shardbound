@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://cah1wgxyggtat"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_11bpf"]
+[ext_resource type="Texture2D" uid="uid://j4lknmsssbry" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1040210.png" id="1_t1smh"]
+
+[resource]
+script = ExtResource("1_11bpf")
+name = "Fire Sprite"
+icon = ExtResource("1_t1smh")
+level = 1
+experience = 25
+max_health = 40
+max_mana = 20
+strength = 5
+magic = 10
+speed = 8

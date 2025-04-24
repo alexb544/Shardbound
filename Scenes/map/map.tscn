@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1dnnokw604gt"]
+[gd_scene load_steps=7 format=3 uid="uid://d1dnnokw604gt"]
 
 [ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_sr2ls"]
 [ext_resource type="Script" path="res://Scenes/map/map_generator.gd" id="2_0cx1m"]
 [ext_resource type="Resource" uid="uid://cyoyg1cls8v7w" path="res://Resources/EnemyGroups/all_enemy_groups.tres" id="3_mokso"]
-
-[sub_resource type="Gradient" id="Gradient_ldnfe"]
-offsets = PackedFloat32Array(0, 0.342105, 0.673684, 1)
-colors = PackedColorArray(0.0338533, 0.0338533, 0.0338533, 1, 0.352941, 0, 0.560784, 1, 0.352941, 0, 0.560784, 1, 0.0352941, 0.0352941, 0.0352941, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ow0i3"]
-gradient = SubResource("Gradient_ldnfe")
-width = 100
+[ext_resource type="Texture2D" uid="uid://532g8mfa88ur" path="res://Graphics/map/map_background1.jpg" id="4_uidm6"]
+[ext_resource type="Texture2D" uid="uid://bb5p6xrgf1rxl" path="res://Graphics/map/map_background2.jpg" id="5_ox3uu"]
+[ext_resource type="Texture2D" uid="uid://cikemgsqvantc" path="res://Graphics/map/map_scroll2.png" id="7_11evo"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_sr2ls")
@@ -37,10 +32,57 @@ enemy_groups_pool = ExtResource("3_mokso")
 [node name="MapBackground" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Background" type="TextureRect" parent="MapBackground"]
+[node name="GalaxyBackground" type="TextureRect" parent="MapBackground"]
+self_modulate = Color(0.805243, 0.000506528, 0.805237, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_ow0i3")
+texture = ExtResource("4_uidm6")
+expand_mode = 2
+
+[node name="MapScrollBackground" type="TextureRect" parent="MapBackground"]
+self_modulate = Color(0.368627, 0.368627, 0.368627, 0.831373)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -67.0
+offset_right = 208.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_11evo")
+expand_mode = 1
+
+[node name="WorldMap" type="TextureRect" parent="MapBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 151.0
+offset_right = -151.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ox3uu")
+expand_mode = 1
+
+[node name="MapScrollForeground" type="TextureRect" parent="MapBackground"]
+self_modulate = Color(0.368627, 0.368627, 0.368627, 0.831373)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -67.0
+offset_right = 208.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_11evo")
+expand_mode = 1

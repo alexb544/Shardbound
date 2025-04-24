@@ -7,10 +7,10 @@
 script = ExtResource("2_l3j41")
 name = "Wolf"
 icon = ExtResource("1_de5rk")
-level = 1
-experience = 30
-max_health = 25
+level = 3
+experience = 0
+max_health = 24
 max_mana = 0
-strength = 10
+strength = 7
 magic = 0
-speed = 12
+speed = 13

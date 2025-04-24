@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://bflbr3cvihpui"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="1_e5ph4"]
+[ext_resource type="Texture2D" uid="uid://nqif1pbefyte" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1050520.png" id="1_q6p52"]
+
+[resource]
+script = ExtResource("1_e5ph4")
+name = "Thief"
+icon = ExtResource("1_q6p52")
+level = 1
+experience = 30
+max_health = 15
+max_mana = 10
+strength = 7
+magic = 1
+speed = 13

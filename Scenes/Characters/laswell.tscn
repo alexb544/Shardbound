@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://crbttk32difbj"]
+
+[ext_resource type="SpriteFrames" uid="uid://vcudtuxg2te0" path="res://Resources/SpriteFrames/laswell_frames.tres" id="1_op1id"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_jqekf"]
+[ext_resource type="Resource" uid="uid://csgda6c7r48ic" path="res://Resources/CharacterStats/laswell.tres" id="3_gcags"]
+[ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="4_b2kh6"]
+
+[sub_resource type="Resource" id="Resource_8pdhx"]
+script = ExtResource("4_b2kh6")
+shards = Array[Resource]([])
+
+[node name="Laswell" type="AnimatedSprite2D" groups=["party_members"]]
+sprite_frames = ExtResource("1_op1id")
+autoplay = "default"
+frame_progress = 0.997275
+script = ExtResource("2_jqekf")
+stats = ExtResource("3_gcags")
+shard_pile = SubResource("Resource_8pdhx")

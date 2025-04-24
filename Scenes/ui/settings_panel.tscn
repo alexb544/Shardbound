@@ -163,7 +163,7 @@ Battle:
  - Select Target = [E] or Click [Attack]
 
 Menus:
- - Select Options = [LMB]"
+ - Select = [LMB]"
 label_settings = SubResource("LabelSettings_gw2il")
 
 [node name="Button" type="Button" parent="."]

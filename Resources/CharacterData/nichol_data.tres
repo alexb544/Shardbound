@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://kvc5mxailmht"]
+
+[ext_resource type="PackedScene" uid="uid://dgrqdjt7xixx6" path="res://Scenes/Characters/nichol.tscn" id="1_k2iqu"]
+[ext_resource type="Script" path="res://Utilities/Resources/character_data.gd" id="1_wr1kl"]
+[ext_resource type="Resource" uid="uid://ctcka3tqpt3ey" path="res://Resources/CharacterStats/nichol.tres" id="3_thp5b"]
+
+[resource]
+script = ExtResource("1_wr1kl")
+scene = ExtResource("1_k2iqu")
+stats = ExtResource("3_thp5b")

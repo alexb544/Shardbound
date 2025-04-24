@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://cgwbfct5m6lsx"]
+
+[ext_resource type="Texture2D" uid="uid://cxv4r38don5k3" path="res://Graphics/units/party/lunera/icon.png" id="1_1ppc7"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="2_hq42k"]
+[ext_resource type="SpriteFrames" uid="uid://dr6nnoybt2gyx" path="res://Resources/SpriteFrames/lunera_sprite_frames.tres" id="3_43wjc"]
+
+[resource]
+script = ExtResource("2_hq42k")
+name = "Lunera"
+icon = ExtResource("1_1ppc7")
+level = 1
+experience = 0
+max_health = 90
+max_mana = 110
+strength = 12
+magic = 13
+speed = 12
+sprite = ExtResource("3_43wjc")

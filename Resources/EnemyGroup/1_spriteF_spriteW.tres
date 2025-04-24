@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=4 format=3 uid="uid://b2st7l1eun4nq"]
+
+[ext_resource type="PackedScene" uid="uid://c1jn3cu1a2vnb" path="res://Scenes/Enemies/fire_sprite.tscn" id="1_857xv"]
+[ext_resource type="PackedScene" uid="uid://bfomk38htx4fp" path="res://Scenes/Enemies/wind_sprite.tscn" id="2_sm421"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="3_6ygdg"]
+
+[resource]
+script = ExtResource("3_6ygdg")
+battle_tier = 1
+weight = 1.0
+gold_reward_min = 50
+gold_reward_max = 80
+exp_reward = 35
+enemies = Array[PackedScene]([null, ExtResource("1_857xv"), null, ExtResource("2_sm421")])
+pool = Array[ExtResource("3_6ygdg")]([])

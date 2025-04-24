@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://8eni2aibgu0b"]
+
+[ext_resource type="Texture2D" uid="uid://bfobajymlf6m7" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_3050130.png" id="1_kthko"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="2_gatgc"]
+
+[resource]
+script = ExtResource("2_gatgc")
+name = "Elite Mage"
+icon = ExtResource("1_kthko")
+level = 10
+experience = 200
+max_health = 110
+max_mana = 200
+strength = 30
+magic = 35
+speed = 4

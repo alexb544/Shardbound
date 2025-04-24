@@ -12,8 +12,8 @@ func _on_inn_button_pressed() -> void:
 	for unit in GlobalParty.current_party.party_members:
 		if unit != null:
 			var party_member = unit.scene.instantiate()
-			party_member.stats.heal(ceili(party_member.stats.max_health * 0.30))
-			party_member.stats.regen(ceili(party_member.stats.max_mana * 0.30))
+			party_member.stats.heal(ceili(party_member.stats.max_health * 0.50))
+			party_member.stats.regen(ceili(party_member.stats.max_mana * 0.50))
 
 			animation_player.play("fade_out") # exits town
 

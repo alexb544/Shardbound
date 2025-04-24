@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://b4mcrj3m6p1sy"]
+
+[ext_resource type="Texture2D" uid="uid://dgusyknwel8wf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1040280.png" id="1_arbgm"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="2_5x2kw"]
+
+[resource]
+script = ExtResource("2_5x2kw")
+name = "Lightning Sprite"
+icon = ExtResource("1_arbgm")
+level = 1
+experience = 25
+max_health = 5
+max_mana = 10
+strength = 30
+magic = 10
+speed = 2

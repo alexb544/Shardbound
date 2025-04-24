@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://cbb13pv8us8ug"]
+
+[ext_resource type="PackedScene" uid="uid://bsqdlsv4i4a2j" path="res://Scenes/Enemies/thief.tscn" id="1_yac8b"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="2_2ij5b"]
+
+[resource]
+script = ExtResource("2_2ij5b")
+battle_tier = 1
+weight = 1.0
+gold_reward_min = 150
+gold_reward_max = 200
+exp_reward = 20
+enemies = Array[PackedScene]([null, ExtResource("1_yac8b"), ExtResource("1_yac8b"), ExtResource("1_yac8b")])
+pool = Array[ExtResource("2_2ij5b")]([])

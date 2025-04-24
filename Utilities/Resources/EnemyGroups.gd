@@ -1,7 +1,7 @@
 class_name EnemyGroups
 extends Resource
 
-@export_range(0, 3) var battle_tier : int # 0 = easy, 1 = normal, 2 = elite, 3 = boss
+@export_range(0, 4) var battle_tier : int # [0 = easy, 1 = normal, 2 = elite, 3 = boss, 4 = hard] (5 options total)
 @export_range(0.0, 10.0) var weight : float
 @export var gold_reward_min : int
 @export var gold_reward_max : int
@@ -11,7 +11,7 @@ extends Resource
 @export var pool : Array[EnemyGroups]
 
 var accumulated_weight : float = 0.0 
-var total_weights_by_tier := [0.0, 0.0, 0.0, 0.0]
+var total_weights_by_tier := [0.0, 0.0, 0.0, 0.0, 0.0]
 
 
 func _get_enemy_group() -> Array[PackedScene]:
@@ -55,5 +55,5 @@ func get_random_battle_for_tier(tier : int) -> EnemyGroups:
 
 
 func setup() -> void:
-	for i in 4:
+	for i in 5: # changed from 4 -> 5
 		_setup_weight_for_tier(i)

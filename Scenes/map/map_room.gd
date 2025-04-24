@@ -19,16 +19,6 @@ const ICONS := {
 var available := false : set = set_available
 var room : Room : set = set_room
 
-# CODE TO TEST SCENE INDEPENDENTLY
-# func _ready():
-# 	var test_room := Room.new()
-# 	test_room.type = Room.Type.TREASURE
-# 	test_room.position = Vector2(100, 100)
-# 	room = test_room
-
-# 	await get_tree().create_timer(2).timeout
-# 	available = true
-
 
 func set_available(new_value : bool) -> void:
 	available = new_value

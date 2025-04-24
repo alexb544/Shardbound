@@ -76,6 +76,7 @@ animations = [{
 }]
 
 [node name="FlyingEye" type="AnimatedSprite2D" groups=["enemies"]]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_ql5w2")
 animation = &"hit"
 autoplay = "default"

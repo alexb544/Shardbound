@@ -1,0 +1,20 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgrqdjt7xixx6"]
+
+[ext_resource type="SpriteFrames" uid="uid://en1ijlbru405" path="res://Resources/SpriteFrames/nichol_sprite_frames.tres" id="1_53e6l"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_hsjjv"]
+[ext_resource type="Resource" uid="uid://ctcka3tqpt3ey" path="res://Resources/CharacterStats/nichol.tres" id="3_5cl1k"]
+[ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="4_dd4qa"]
+[ext_resource type="Resource" uid="uid://c6l3h6ncnrhtf" path="res://Resources/Shards/firebolt.tres" id="5_scbw8"]
+[ext_resource type="Resource" uid="uid://rv815f2akbrm" path="res://Resources/Shards/grace.tres" id="6_ulra7"]
+
+[sub_resource type="Resource" id="Resource_74ysu"]
+script = ExtResource("4_dd4qa")
+shards = Array[Resource]([ExtResource("5_scbw8"), ExtResource("6_ulra7")])
+
+[node name="Nichol" type="AnimatedSprite2D" groups=["party_members"]]
+sprite_frames = ExtResource("1_53e6l")
+animation = &"win_before"
+autoplay = "default"
+script = ExtResource("2_hsjjv")
+stats = ExtResource("3_5cl1k")
+shard_pile = SubResource("Resource_74ysu")

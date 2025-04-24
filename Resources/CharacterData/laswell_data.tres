@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://ehdxwxawk73q"]
+
+[ext_resource type="PackedScene" uid="uid://crbttk32difbj" path="res://Scenes/Characters/laswell.tscn" id="1_fxq2d"]
+[ext_resource type="Script" path="res://Utilities/Resources/character_data.gd" id="1_lojbk"]
+[ext_resource type="Resource" uid="uid://csgda6c7r48ic" path="res://Resources/CharacterStats/laswell.tres" id="3_o2ds5"]
+
+[resource]
+script = ExtResource("1_lojbk")
+scene = ExtResource("1_fxq2d")
+stats = ExtResource("3_o2ds5")

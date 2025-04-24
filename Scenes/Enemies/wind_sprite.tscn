@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfomk38htx4fp"]
+
+[ext_resource type="Texture2D" uid="uid://cp4rarlrpmpvc" path="res://Graphics/units/enemies/zone1_enemies/1040220_idle.png" id="1_3m4xs"]
+[ext_resource type="Texture2D" uid="uid://k43kodijnjo3" path="res://Graphics/units/enemies/zone1_enemies/1040220_atk.png" id="2_uk580"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="3_kp73d"]
+[ext_resource type="Resource" uid="uid://ek4ohkbx7xw1" path="res://Resources/Enemies/wind_sprite.tres" id="4_dtv1q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05tuw"]
+atlas = ExtResource("1_3m4xs")
+region = Rect2(0, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lama"]
+atlas = ExtResource("1_3m4xs")
+region = Rect2(75, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u167d"]
+atlas = ExtResource("1_3m4xs")
+region = Rect2(150, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oabo7"]
+atlas = ExtResource("1_3m4xs")
+region = Rect2(0, 100, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tegri"]
+atlas = ExtResource("2_uk580")
+region = Rect2(0, 0, 75, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxac4"]
+atlas = ExtResource("2_uk580")
+region = Rect2(75, 0, 75, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql5w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05tuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lama")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u167d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oabo7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tegri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxac4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tegri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxac4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tegri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxac4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tegri")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="WindSprite" type="AnimatedSprite2D" groups=["enemies"]]
+sprite_frames = SubResource("SpriteFrames_ql5w2")
+autoplay = "default"
+frame_progress = 0.271115
+script = ExtResource("3_kp73d")
+stats = ExtResource("4_dtv1q")
+is_enemy = true

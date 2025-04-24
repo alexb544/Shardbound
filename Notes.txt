@@ -1,5 +1,0 @@
-Notes:
-	
-	For the Map:
-		- Adjust spacing between rooms
-		- Adjust size of icons/selection border 

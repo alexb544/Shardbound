@@ -87,7 +87,7 @@ func current_turn():
 
 func next_turn(): # Increments turn count 
 	turn_tracker += 1
-	if turn_tracker >= turn_order.size():
+	if turn_tracker > turn_order.size() - 1:
 		turn_tracker = 0
 
 
@@ -252,6 +252,7 @@ func generate_shard_list():
 
 func _on_shard_option_selected(i : int) -> void:
 	if enemies.size() > 0 && enemy_index < enemies.size():
+
 		if i >= 0 and i < shard_list.size():
 			if shard_list[i].type == 0:
 				disable_buttons()
@@ -262,7 +263,8 @@ func _on_shard_option_selected(i : int) -> void:
 				await get_tree().create_timer(1).timeout
 
 				shard_list[i].play(target_array, turn.stats)
-				remove_unit(target_array[i] as AnimatedSprite2D)
+				if i >= 0 and i < target_array.size() and target_array[i]:
+					remove_unit(target_array[i] as AnimatedSprite2D)
 			
 			if shard_list[i].type == 1:
 				disable_buttons()

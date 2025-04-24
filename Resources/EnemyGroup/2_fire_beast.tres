@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://l1fhgn1kt0s3"]
+
+[ext_resource type="PackedScene" uid="uid://cdag5wk2vabaq" path="res://Scenes/Enemies/elites/fire_beast.tscn" id="1_b14v0"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_r4b5c"]
+
+[resource]
+script = ExtResource("1_r4b5c")
+battle_tier = 2
+weight = 1.0
+gold_reward_min = 120
+gold_reward_max = 150
+exp_reward = 100
+enemies = Array[PackedScene]([ExtResource("1_b14v0"), null, null, null])
+pool = Array[ExtResource("1_r4b5c")]([])

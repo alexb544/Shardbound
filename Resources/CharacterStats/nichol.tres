@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://ctcka3tqpt3ey"]
+
+[ext_resource type="Texture2D" uid="uid://cwe1kj71dodfo" path="res://Graphics/units/party/nichol/icon.png" id="1_qmc1b"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="2_gq2by"]
+[ext_resource type="SpriteFrames" uid="uid://en1ijlbru405" path="res://Resources/SpriteFrames/nichol_sprite_frames.tres" id="3_6eu27"]
+
+[resource]
+script = ExtResource("2_gq2by")
+name = "Nichol"
+icon = ExtResource("1_qmc1b")
+level = 1
+experience = 0
+max_health = 80
+max_mana = 120
+strength = 15
+magic = 15
+speed = 12
+sprite = ExtResource("3_6eu27")

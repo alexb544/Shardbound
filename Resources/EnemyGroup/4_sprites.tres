@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=5 format=3 uid="uid://fmv0t7mq6qj0"]
+
+[ext_resource type="PackedScene" uid="uid://bfomk38htx4fp" path="res://Scenes/Enemies/wind_sprite.tscn" id="1_q7g72"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_tvyak"]
+[ext_resource type="PackedScene" uid="uid://mou0s4o7dxcf" path="res://Scenes/Enemies/lightning_sprite.tscn" id="2_f02dq"]
+[ext_resource type="PackedScene" uid="uid://c1jn3cu1a2vnb" path="res://Scenes/Enemies/fire_sprite.tscn" id="3_e7ty4"]
+
+[resource]
+script = ExtResource("1_tvyak")
+battle_tier = 4
+weight = 1.0
+gold_reward_min = 90
+gold_reward_max = 120
+exp_reward = 65
+enemies = Array[PackedScene]([ExtResource("1_q7g72"), ExtResource("2_f02dq"), ExtResource("3_e7ty4"), null])
+pool = Array[ExtResource("1_tvyak")]([])

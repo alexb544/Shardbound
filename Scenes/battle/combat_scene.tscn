@@ -80,6 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_adwrt")
+metadata/_edit_lock_ = true
 
 [node name="BattleBackground" type="TextureRect" parent="."]
 layout_mode = 1
@@ -89,6 +90,7 @@ offset_bottom = 260.0
 texture = ExtResource("1_bas1t")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="BottomBackground" type="NinePatchRect" parent="."]
 self_modulate = Color(0.852624, 0.630733, 1, 1)
@@ -106,6 +108,7 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+metadata/_edit_lock_ = true
 
 [node name="TextBox" type="Panel" parent="."]
 layout_mode = 1
@@ -121,6 +124,7 @@ offset_bottom = -111.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m1ncj")
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="TextBox"]
 layout_mode = 1
@@ -147,6 +151,8 @@ anchor_bottom = 1.0
 offset_top = -1.92001
 offset_bottom = -2.0
 alignment = 1
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="EnemyBox" type="NinePatchRect" parent="BottomWindow"]
 custom_minimum_size = Vector2(150, 100)
@@ -626,16 +632,16 @@ position = Vector2(580, 180)
 [node name="Enemies" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="EnemySpawner1" type="Marker2D" parent="Enemies"]
-position = Vector2(230, 181)
-
 [node name="EnemySpawner2" type="Marker2D" parent="Enemies"]
 position = Vector2(174, 145)
 
-[node name="EnemySpawner3" type="Marker2D" parent="Enemies"]
+[node name="EnemySpawner4" type="Marker2D" parent="Enemies"]
 position = Vector2(82, 161)
 
-[node name="EnemySpawner4" type="Marker2D" parent="Enemies"]
+[node name="EnemySpawner1" type="Marker2D" parent="Enemies"]
+position = Vector2(230, 181)
+
+[node name="EnemySpawner3" type="Marker2D" parent="Enemies"]
 position = Vector2(133, 197)
 
 [node name="PartyManager" parent="." instance=ExtResource("3_yct45")]

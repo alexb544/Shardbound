@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bsqdlsv4i4a2j"]
+
+[ext_resource type="Texture2D" uid="uid://bq2x05lipwmx1" path="res://Graphics/units/enemies/zone1_enemies/1050520_idle.png" id="1_sauyl"]
+[ext_resource type="Texture2D" uid="uid://ctj4qj2xqhitk" path="res://Graphics/units/enemies/zone1_enemies/1050520_atk.png" id="2_qhe5r"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="3_g2mk6"]
+[ext_resource type="Resource" uid="uid://bflbr3cvihpui" path="res://Resources/Enemies/thief.tres" id="4_lp00c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw3wh"]
+atlas = ExtResource("1_sauyl")
+region = Rect2(0, 0, 81, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xqc2"]
+atlas = ExtResource("1_sauyl")
+region = Rect2(81, 0, 81, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6c5j"]
+atlas = ExtResource("1_sauyl")
+region = Rect2(162, 0, 81, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6r5c"]
+atlas = ExtResource("1_sauyl")
+region = Rect2(0, 76, 81, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvha2"]
+atlas = ExtResource("2_qhe5r")
+region = Rect2(0, 0, 80, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68m27"]
+atlas = ExtResource("2_qhe5r")
+region = Rect2(80, 0, 80, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql5w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw3wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xqc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6c5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6r5c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvha2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68m27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvha2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68m27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvha2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68m27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvha2")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="Thief" type="AnimatedSprite2D" groups=["enemies"]]
+sprite_frames = SubResource("SpriteFrames_ql5w2")
+autoplay = "default"
+frame_progress = 0.745521
+script = ExtResource("3_g2mk6")
+stats = ExtResource("4_lp00c")
+is_enemy = true

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://cpul4nfbpwier"]
+
+[ext_resource type="PackedScene" uid="uid://blwcgp65p2dn6" path="res://Scenes/Enemies/wolf.tscn" id="1_hnuky"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_tx7yp"]
+
+[resource]
+script = ExtResource("1_tx7yp")
+battle_tier = 0
+weight = 1.0
+gold_reward_min = 30
+gold_reward_max = 40
+exp_reward = 30
+enemies = Array[PackedScene]([null, null, ExtResource("1_hnuky"), null])
+pool = Array[ExtResource("1_tx7yp")]([])

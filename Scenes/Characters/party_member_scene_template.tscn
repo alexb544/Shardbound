@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsv6k3u4dsyxt"]
+
+[ext_resource type="SpriteFrames" uid="uid://cdt2s7f20vkkc" path="res://Resources/SpriteFrames/party_template_sprite_frames.tres" id="1_melct"]
+[ext_resource type="Script" path="res://Utilities/Character.gd" id="2_mmxfy"]
+[ext_resource type="Script" path="res://Utilities/Resources/CharacterStats.gd" id="3_8wu1w"]
+[ext_resource type="Script" path="res://Utilities/Resources/shard_pile.gd" id="4_n7yec"]
+
+[sub_resource type="Resource" id="Resource_c53la"]
+script = ExtResource("3_8wu1w")
+name = ""
+level = 0
+experience = 0
+max_health = 0
+max_mana = 0
+strength = 0
+magic = 0
+speed = 0
+
+[sub_resource type="Resource" id="Resource_fte37"]
+script = ExtResource("4_n7yec")
+shards = Array[Resource]([])
+
+[node name="Name" type="AnimatedSprite2D" groups=["party_members"]]
+sprite_frames = ExtResource("1_melct")
+autoplay = "default"
+script = ExtResource("2_mmxfy")
+stats = SubResource("Resource_c53la")
+shard_pile = SubResource("Resource_fte37")

@@ -76,6 +76,7 @@ animations = [{
 }]
 
 [node name="Mage" type="AnimatedSprite2D" groups=["enemies"]]
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_ql5w2")
 autoplay = "default"
 script = ExtResource("2_m665j")

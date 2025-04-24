@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://dmr3cjvdoqld5"]
+
+[ext_resource type="PackedScene" uid="uid://bve51qxv334sp" path="res://Scenes/Characters/lunera.tscn" id="1_toovu"]
+[ext_resource type="Script" path="res://Utilities/Resources/character_data.gd" id="1_y3pmi"]
+[ext_resource type="Resource" uid="uid://cgwbfct5m6lsx" path="res://Resources/CharacterStats/lunera.tres" id="3_2xefq"]
+
+[resource]
+script = ExtResource("1_y3pmi")
+scene = ExtResource("1_toovu")
+stats = ExtResource("3_2xefq")

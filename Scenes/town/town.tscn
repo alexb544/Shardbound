@@ -194,7 +194,7 @@ layout_mode = 2
 
 [node name="Description" type="Label" parent="VBoxContainer/TownMenuContainer/MarginContainer/UI/Options/Inn"]
 layout_mode = 2
-text = "+30% HP & MP"
+text = "+50% HP & MP"
 label_settings = SubResource("LabelSettings_id7wt")
 horizontal_alignment = 1
 

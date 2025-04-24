@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://bblw2l2wcfpqy"]
+
+[ext_resource type="PackedScene" uid="uid://c2fx6uioob4es" path="res://Scenes/Enemies/bosses/arch_demon.tscn" id="1_dejws"]
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_s0p8t"]
+
+[resource]
+script = ExtResource("1_s0p8t")
+battle_tier = 3
+weight = 10.0
+gold_reward_min = 200
+gold_reward_max = 500
+exp_reward = 100
+enemies = Array[PackedScene]([ExtResource("1_dejws")])
+pool = Array[ExtResource("1_s0p8t")]([])

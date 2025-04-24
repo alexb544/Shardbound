@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtdqe5v3g6uin"]
+[gd_scene load_steps=25 format=3 uid="uid://dtdqe5v3g6uin"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
 [ext_resource type="Resource" uid="uid://dfagqkp8yyiob" path="res://Resources/run_startup.tres" id="2_3na1u"]
+[ext_resource type="Texture2D" uid="uid://cxb2dcihxmh2n" path="res://Graphics/map/map_scroll.jpg" id="4_026uk"]
 [ext_resource type="Texture2D" uid="uid://brlsgd4rojgrf" path="res://Graphics/map/combat.png" id="4_l135o"]
 [ext_resource type="StyleBox" uid="uid://c64f2c4biko0q" path="res://Utilities/Themes/button_normal_theme.tres" id="4_q6bvw"]
 [ext_resource type="Texture2D" uid="uid://ddr0jnpr6fbvb" path="res://Graphics/ui/menus/equipment.png" id="5_0kxh3"]
@@ -13,6 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://bgteih626b36d" path="res://Graphics/map/treasure.png" id="7_oktae"]
 [ext_resource type="Texture2D" uid="uid://dcb82imadalll" path="res://Graphics/map/combat_boss.png" id="8_ji52s"]
 [ext_resource type="Texture2D" uid="uid://djnoca0e6mh75" path="res://Graphics/ui/setting.png" id="11_ikp8x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x064x"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1fd26"]
 font_size = 15
@@ -70,29 +79,50 @@ layer = -1
 offset = Vector2(5, 0)
 transform = Transform2D(1, 0, 0, 1, 5, 0)
 
+[node name="Panel" type="Panel" parent="Map/KeyCanvas"]
+offset_left = 2.0
+offset_top = 41.0
+offset_right = 91.0
+offset_bottom = 182.0
+scale = Vector2(0.983595, 0.960838)
+theme_override_styles/panel = SubResource("StyleBoxFlat_x064x")
+
+[node name="Background" type="TextureRect" parent="Map/KeyCanvas/Panel"]
+self_modulate = Color(0.304642, 0.000927383, 0.500802, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -69.5
+offset_right = 43.5
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_026uk")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Key" type="VBoxContainer" parent="Map/KeyCanvas"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -109.0
-offset_right = 102.0
-offset_bottom = 61.0
+offset_left = 6.0
+offset_top = -137.0
+offset_right = 81.0
+offset_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = -1
+theme_override_constants/separation = -3
 
 [node name="KeyLabel" type="Label" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "KEY:"
 label_settings = SubResource("LabelSettings_1fd26")
-
-[node name="HSeparator" type="HSeparator" parent="Map/KeyCanvas/Key"]
-self_modulate = Color(0.368802, 0.0013286, 0.59252, 1)
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 0
 
 [node name="Combat" type="HBoxContainer" parent="Map/KeyCanvas/Key"]
 layout_mode = 2
@@ -177,15 +207,16 @@ label_settings = SubResource("LabelSettings_fb0o1")
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="DebugButtonsCL" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="DebugButtons" type="VBoxContainer" parent="DebugButtonsCL"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 7.0
-offset_top = 10.0
+offset_top = 32.0
 offset_right = 58.0
-offset_bottom = 110.0
+offset_bottom = 132.0
 grow_vertical = 2
 
 [node name="MapButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
@@ -209,12 +240,14 @@ text = "Town"
 
 [node name="LootRoomButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Loot"
 
 [node name="RewardButton" type="Button" parent="DebugButtonsCL/DebugButtons"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_q6bvw")
 text = "Reward"

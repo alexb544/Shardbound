@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=3 format=3 uid="uid://7utusxt5617l"]
+
+[ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_cf8jq"]
+[ext_resource type="PackedScene" uid="uid://bba0vlq1t8nu1" path="res://Scenes/Enemies/mage.tscn" id="1_lfh66"]
+
+[resource]
+script = ExtResource("1_cf8jq")
+battle_tier = 4
+weight = 1.0
+gold_reward_min = 74
+gold_reward_max = 99
+exp_reward = 60
+enemies = Array[PackedScene]([ExtResource("1_lfh66"), ExtResource("1_lfh66"), null, ExtResource("1_lfh66")])
+pool = Array[ExtResource("1_cf8jq")]([])

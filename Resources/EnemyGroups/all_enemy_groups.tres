@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="EnemyGroups" load_steps=10 format=3 uid="uid://cyoyg1cls8v7w"]
+[gd_resource type="Resource" script_class="EnemyGroups" load_steps=18 format=3 uid="uid://cyoyg1cls8v7w"]
 
 [ext_resource type="Script" path="res://Utilities/Resources/EnemyGroups.gd" id="1_b2fct"]
 [ext_resource type="Resource" uid="uid://bvpgvbiixuw5p" path="res://Resources/EnemyGroup/0_rat.tres" id="2_yeqvv"]
 [ext_resource type="Resource" uid="uid://bdyjo3pbwapjt" path="res://Resources/EnemyGroup/0_squirrel.tres" id="3_j5nwk"]
-[ext_resource type="Resource" uid="uid://mmlgx2nulvgv" path="res://Resources/EnemyGroup/0_squirrel_two.tres" id="4_gpe1u"]
-[ext_resource type="Resource" uid="uid://vx3sbphethb0" path="res://Resources/EnemyGroup/1_rat_squirrel2.tres" id="5_lgalu"]
-[ext_resource type="Resource" uid="uid://dcwonyklrys7s" path="res://Resources/EnemyGroup/1_rat_two.tres" id="5_seea4"]
-[ext_resource type="Resource" uid="uid://o8qehvmn8hj8" path="res://Resources/EnemyGroup/2_elite_option_1.tres" id="6_m6pqr"]
-[ext_resource type="Resource" uid="uid://bblw2l2wcfpqy" path="res://Resources/EnemyGroup/3_boss_option_1.tres" id="7_twrag"]
-[ext_resource type="Resource" uid="uid://dis5p5gaxigxr" path="res://Resources/EnemyGroup/2_elite_axe_knight.tres" id="8_2aapn"]
+[ext_resource type="Resource" uid="uid://mmlgx2nulvgv" path="res://Resources/EnemyGroup/0_squirrels.tres" id="4_hn3x3"]
+[ext_resource type="Resource" uid="uid://cpul4nfbpwier" path="res://Resources/EnemyGroup/0_wolf.tres" id="5_qi3vb"]
+[ext_resource type="Resource" uid="uid://dcwonyklrys7s" path="res://Resources/EnemyGroup/1_rats_spriteL.tres" id="6_0muir"]
+[ext_resource type="Resource" uid="uid://vx3sbphethb0" path="res://Resources/EnemyGroup/1_rat_squirrel_wolf.tres" id="6_010pr"]
+[ext_resource type="Resource" uid="uid://ceqrxfbay7fav" path="res://Resources/EnemyGroup/1_wolves.tres" id="7_huf2i"]
+[ext_resource type="Resource" uid="uid://o8qehvmn8hj8" path="res://Resources/EnemyGroup/2_elite_mage.tres" id="8_n1cn7"]
+[ext_resource type="Resource" uid="uid://dis5p5gaxigxr" path="res://Resources/EnemyGroup/2_axe_knight.tres" id="9_cnubq"]
+[ext_resource type="Resource" uid="uid://cbb13pv8us8ug" path="res://Resources/EnemyGroup/1_theives.tres" id="9_kfdlv"]
+[ext_resource type="Resource" uid="uid://l1fhgn1kt0s3" path="res://Resources/EnemyGroup/2_fire_beast.tres" id="10_1rr5u"]
+[ext_resource type="Resource" uid="uid://bblw2l2wcfpqy" path="res://Resources/EnemyGroup/3_arch_demon.tres" id="10_5fqmw"]
+[ext_resource type="Resource" uid="uid://b2st7l1eun4nq" path="res://Resources/EnemyGroup/1_spriteF_spriteW.tres" id="10_dyi05"]
+[ext_resource type="Resource" uid="uid://cv73vuo445h7l" path="res://Resources/EnemyGroup/4_flying_eye_and_mage.tres" id="13_njupw"]
+[ext_resource type="Resource" uid="uid://7utusxt5617l" path="res://Resources/EnemyGroup/4_mages.tres" id="14_6rua5"]
+[ext_resource type="Resource" uid="uid://fmv0t7mq6qj0" path="res://Resources/EnemyGroup/4_sprites.tres" id="16_wi4r1"]
 
 [resource]
 script = ExtResource("1_b2fct")
@@ -18,4 +26,4 @@ gold_reward_min = 0
 gold_reward_max = 0
 exp_reward = 0
 enemies = Array[PackedScene]([])
-pool = Array[ExtResource("1_b2fct")]([ExtResource("2_yeqvv"), ExtResource("3_j5nwk"), ExtResource("4_gpe1u"), ExtResource("5_lgalu"), ExtResource("5_seea4"), ExtResource("6_m6pqr"), ExtResource("8_2aapn"), ExtResource("7_twrag")])
+pool = Array[ExtResource("1_b2fct")]([ExtResource("2_yeqvv"), ExtResource("3_j5nwk"), ExtResource("4_hn3x3"), ExtResource("5_qi3vb"), ExtResource("6_010pr"), ExtResource("6_0muir"), ExtResource("7_huf2i"), ExtResource("9_kfdlv"), ExtResource("10_dyi05"), ExtResource("8_n1cn7"), ExtResource("10_1rr5u"), ExtResource("9_cnubq"), ExtResource("10_5fqmw"), ExtResource("13_njupw"), ExtResource("14_6rua5"), ExtResource("16_wi4r1")])
