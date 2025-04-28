@@ -262,7 +262,6 @@ func generate_shard_list():
 
 func _on_shard_option_selected(i : int) -> void:
 	if enemies.size() > 0 && enemy_index < enemies.size():
-
 		if i >= 0 and i < shard_list.size():
 			if shard_list[i].type == 0:
 				disable_buttons()
@@ -275,6 +274,7 @@ func _on_shard_option_selected(i : int) -> void:
 
 				shard_list[i].play(target_array, turn.stats)
 				#if i >= 0 and i < target_array.size() and target_array[i]:
+				await get_tree().create_timer(0.5).timeout
 				remove_unit(enemies[enemy_index] as AnimatedSprite2D)
 			
 			if shard_list[i].type == 1:
