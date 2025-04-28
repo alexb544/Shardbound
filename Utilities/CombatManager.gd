@@ -9,6 +9,7 @@ extends Node
 @onready var attack_button : Button = %Attack
 @onready var battle_music : AudioStreamPlayer2D = get_node("../BattleMusic")
 @onready var sfx_player : AudioStreamPlayer = get_node("../SFX")
+@onready var aura_sprite = get_node("../AuraSprite")
 
 var party : Array = []   # access party members in scene
 var enemies : Array = [] # access enemies in scene
@@ -60,6 +61,7 @@ func current_turn():
 		await get_tree().create_timer(.75).timeout # Enemy makes "decision"
 		target = target_random_party()
 		target.stats.current_health -= turn.stats.strength
+
 		await move_next_to_target(offset) # move to targeted party member
 		sfx_player.play_sound(2, -5) # hit sound
 		target.modulate = Color(1,0,0,1)
@@ -75,9 +77,11 @@ func current_turn():
 		
 		end_turn()
 	
-	# Player turn: select action -> select target 
+	# Player turn: select target -> confirm action
 	elif turn.is_enemy == false && battle_over == false: 
-		sfx_player.play_sound(0) # player's turn sound 
+		sfx_player.play_sound(0) # player's turn sfx 
+		party_turn()
+
 		players_turn = true
 		waiting_for_input = true
 		enable_buttons()
@@ -117,7 +121,7 @@ func change_selected_enemy(direction : int): # Select an enemy; highlights selec
 	highlight_enemy(enemy_index)
 
 
-func highlight_enemy(index : int): # Helper: highlight targeted enemy 
+func highlight_enemy(index : int): # highlight targeted enemy 
 	for i in range(enemies.size()):
 		enemies[i].modulate = Color(1,1,1,1) # resets color
 	enemies[index].modulate = Color(1,0,0,1) # highlights selected enemy
@@ -129,11 +133,14 @@ func confirm_selection(): # Confirms target to attack
 		var selected_enemy = enemies[enemy_index]		
 		waiting_for_input = false
 		players_turn = false # end players turn
+		stop_highlight()
+		stop_aura()
+
 
 		enemies[enemy_index].modulate = Color(1,1,1,1) # reset color
 		attack_enemy(selected_enemy)
 	else:
-		pass # passes if invalid selection (usually out of range)
+		pass # passes if invalid selection (usually out of index)
 
 
 func attack_enemy(enemy: AnimatedSprite2D):
@@ -253,7 +260,10 @@ func generate_shard_list():
 
 	for shard in shard_list:
 		var index = popup.get_item_count()
-		popup.add_item(shard.id)
+
+		var label = "%s %dMP" % [shard.id, shard.mana]
+
+		popup.add_item(label)
 		popup.set_item_icon(index, shard.icon)
 
 		if not popup.is_connected("id_pressed", Callable(self, "_on_shard_option_selected")):
@@ -261,10 +271,12 @@ func generate_shard_list():
 
 
 func _on_shard_option_selected(i : int) -> void:
-	if enemies.size() > 0 && enemy_index < enemies.size():
-		if i >= 0 and i < shard_list.size():
+	if enemies.size() > 0 and enemy_index < enemies.size():
+		if i >= 0 and i < shard_list.size() and turn.stats.current_mana >= shard_list[i].mana:
 			if shard_list[i].type == 0:
 				disable_buttons()
+				stop_highlight()
+				enemies[enemy_index].modulate = Color(1,1,1,1)
 				
 				var target_array : Array[Node]
 				target_array.append(enemies[enemy_index])
@@ -276,6 +288,7 @@ func _on_shard_option_selected(i : int) -> void:
 				#if i >= 0 and i < target_array.size() and target_array[i]:
 				await get_tree().create_timer(0.5).timeout
 				remove_unit(enemies[enemy_index] as AnimatedSprite2D)
+				stop_aura()
 			
 			if shard_list[i].type == 1:
 				disable_buttons()
@@ -284,6 +297,7 @@ func _on_shard_option_selected(i : int) -> void:
 				turn.play("shard_cast")
 				await get_tree().create_timer(1).timeout
 				shard_list[i].play(target_array, turn.stats)
+				stop_aura()
 			
 			players_turn = false
 			turn.play("default")
@@ -312,3 +326,64 @@ func disable_buttons() -> void:
 func enable_buttons() -> void:
 	attack_button.disabled = false
 	shards_button.disabled = false
+
+
+func party_turn() -> void:
+	var active_character = turn_order[turn_tracker]
+	var party_index = party.find(active_character)
+
+	if party_index != -1:
+		highlight_active_party_member(party_index)
+
+	aura_sprite.global_position = active_character.global_position + Vector2(-8, 25)
+
+	aura_sprite.modulate = Color(1, 1, 1, 0)
+	aura_sprite.get_child(0).play("party_turn")
+
+	var fade_in_tween = get_tree().create_tween()
+	fade_in_tween.tween_property(aura_sprite, "modulate:a", 1.0, 0.5)
+		
+
+var pulse_tween : Tween = null
+func highlight_active_party_member(index : int) -> void:
+	var party_list : HBoxContainer = %PartyList 
+
+	if pulse_tween and pulse_tween.is_valid():
+		pulse_tween.kill()
+
+	for i in range(party_list.get_child_count()):
+		var party_member = party_list.get_child(i)
+		var border = party_member.get_node("Border")
+		border.modulate = Color(1, 1, 1, 1) # default
+
+	if index >= 0 and index < party_list.get_child_count():
+		var active_member = party_list.get_child(index)
+		var active_border = active_member.get_node("Border")
+		active_border.modulate = Color(0.6, 0.4, 0.8, 1) # purple
+
+		pulse_tween = get_tree().create_tween()
+		pulse_tween.set_loops()
+
+		pulse_tween.tween_property(active_border, "modulate", Color(1, 1, 1, 1), 0.8).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		pulse_tween.tween_property(active_border, "modulate", Color(0.6, 0.4, 1, 1), 0.7).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func stop_aura():
+	var fade_out_tween = get_tree().create_tween()
+	fade_out_tween.tween_property(aura_sprite, "modulate:a", 0.0, 0.5)
+	await fade_out_tween.finished
+
+	aura_sprite.get_child(0).stop()
+
+
+func stop_highlight() -> void:
+	if pulse_tween and pulse_tween.is_valid():
+		pulse_tween.kill()
+		pulse_tween = null
+	
+	# Reset all borders back to default purple
+	var party_list: HBoxContainer = %PartyList
+	for i in range(party_list.get_child_count()):
+		var party_member = party_list.get_child(i)
+		var border = party_member.get_node("Border")
+		border.modulate = Color(1, 1, 1, 1) # reset to default

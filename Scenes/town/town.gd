@@ -24,7 +24,7 @@ func _on_inn_button_pressed() -> void:
 
 
 func _on_recruit_button_pressed() -> void:
-	if recruit_pool.size() > 0 and run_stats.gold >= 100:
+	if recruit_pool.size() > 0 and run_stats.gold >= 100 and party.party_members.size() < 4:
 		var index = randi_range(0, recruit_pool.size() - 1)
 		var selected_character = recruit_pool[index]
 
@@ -35,7 +35,7 @@ func _on_recruit_button_pressed() -> void:
 		animation_player.play("fade_out") # exits town
 
 	else:
-		print("No more characters to add in pool")
+		print("Not enough gold or your party is already full!")
 
 # called from the AnimationPlayer at the end of 'fade_out' animation.
 func _on_fade_out_finished() -> void:
