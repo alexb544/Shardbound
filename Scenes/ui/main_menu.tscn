@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=3 uid="uid://ch5xt75a21cvl"]
+[gd_scene load_steps=196 format=3 uid="uid://ch5xt75a21cvl"]
 
 [ext_resource type="Script" path="res://Scenes/ui/main_menu.gd" id="1_x6r8s"]
 [ext_resource type="Resource" uid="uid://dfagqkp8yyiob" path="res://Resources/run_startup.tres" id="2_7dj4x"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dx0t1ntuurx1o" path="res://Graphics/units/enemies/zone1_enemies/elites/3050140_idle.png" id="23_427ih"]
 [ext_resource type="Texture2D" uid="uid://c7kc2iofyatl3" path="res://Graphics/units/enemies/zone1_enemies/1010110_idle.png" id="23_cxg42"]
 [ext_resource type="Texture2D" uid="uid://05nhb4mkt5px" path="res://Graphics/units/enemies/zone1_enemies/elites/3010210_idle.png" id="25_aa21x"]
+[ext_resource type="AudioStream" uid="uid://do51gd2jiq1jo" path="res://Sounds/music/01-The Prelude.mp3" id="28_bm37k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idmkm"]
 atlas = ExtResource("3_13y0l")
@@ -1325,6 +1326,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x6r8s")
 run_startup = ExtResource("2_7dj4x")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -1339,6 +1341,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_nwc6y")
 expand_mode = 3
+metadata/_edit_lock_ = true
 
 [node name="PartyImages" type="Node2D" parent="."]
 visible = false
@@ -1470,6 +1473,11 @@ text = "New Run"
 custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 text = "Exit Game"
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28_bm37k")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/NewRun" to="." method="_on_new_run_pressed"]

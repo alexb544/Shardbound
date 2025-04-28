@@ -41,9 +41,11 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Databases/": "gray",
 "res://Graphics/": "red",
+"res://Music/": "yellow",
 "res://Resources/": "teal",
 "res://Scenes/": "purple",
 "res://Scripts/": "green",
+"res://Sounds/": "yellow",
 "res://Utilities/": "orange"
 }
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4c73fmsfstv3"
+path="res://.godot/imported/87-One-Winged Angel.mp3-5d23a283c7d1bab505aaa6ba4dbf069f.mp3str"
+
+[deps]
+
+source_file="res://Sounds/music/87-One-Winged Angel.mp3"
+dest_files=["res://.godot/imported/87-One-Winged Angel.mp3-5d23a283c7d1bab505aaa6ba4dbf069f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

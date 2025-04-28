@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbk7wg7j533x3"]
+[gd_scene load_steps=25 format=3 uid="uid://bbk7wg7j533x3"]
 
 [ext_resource type="Texture2D" uid="uid://ch3o6cbf1tq3l" path="res://Graphics/ui/FreeButtons.png" id="1_7wgks"]
 [ext_resource type="Script" path="res://Scenes/battle/combat_scene.gd" id="1_adwrt"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bcr35mh0sm4hf" path="res://Graphics/units/enemies/zone1_enemies/icons/unit_icon_1010110.png" id="7_m4nht"]
 [ext_resource type="Theme" uid="uid://ll01f215dntj" path="res://Utilities/Themes/popup_menu_theme.tres" id="9_cdlp8"]
 [ext_resource type="PackedScene" uid="uid://ekip16go0cc6" path="res://Scenes/ui/battle_over_panel.tscn" id="12_v623e"]
+[ext_resource type="Script" path="res://Sounds/battle_sfx.gd" id="15_8p6iw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1ncj"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.745098)
@@ -657,6 +658,14 @@ layer = 2
 visible = false
 offset_top = -105.0
 offset_bottom = 15.0
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+volume_db = -15.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+script = ExtResource("15_8p6iw")
 
 [connection signal="pressed" from="BottomWindow/ActionsBox/ActionList/Attack" to="CombatManager" method="_on_attack_pressed"]
 [connection signal="toggled" from="BottomWindow/ActionsBox/ActionList/Shards" to="CombatManager" method="_on_shards_toggled"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vqyaeibcln3t"
+path="res://.godot/imported/15-Underneath the Rotting Pizza.mp3-fefec7b6fd98d383903d20453f6f8bbf.mp3str"
+
+[deps]
+
+source_file="res://Sounds/music/15-Underneath the Rotting Pizza.mp3"
+dest_files=["res://.godot/imported/15-Underneath the Rotting Pizza.mp3-fefec7b6fd98d383903d20453f6f8bbf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

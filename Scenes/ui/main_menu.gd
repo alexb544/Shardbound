@@ -24,7 +24,6 @@ func _on_continue_pressed() -> void:
 
 func _on_new_run_pressed() -> void:
 	run_startup.type = RunStartup.Type.NEW_RUN
-	#run_startup.current_party = current_party
 	get_tree().change_scene_to_packed(RUN_SCENE)
 
 

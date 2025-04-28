@@ -19,7 +19,10 @@ const SETTINGS_SCENE := preload("res://Scenes/ui/settings_panel.tscn")
 @onready var rewards_button : Button = %RewardButton
 
 @onready var gold_ui : GoldUI = %GoldUI
-@onready var party_menu_button : TextureButton = %PartyMenuButton 
+@onready var party_menu_button : TextureButton = %PartyMenuButton
+
+@onready var victory_music_player : AudioStreamPlayer = %VictoryMusic
+@onready var map_music_player : AudioStreamPlayer = %MapMusic
 
 var run_stats : RunStats
 
@@ -44,6 +47,7 @@ func _start_run() -> void:
 	_setup_top_bar()
 	map.generate_new_map()
 	map.unlock_floor(0)
+	play_map_music() # start map music
 
 
 func _change_view(scene : PackedScene) -> Node:
@@ -53,6 +57,7 @@ func _change_view(scene : PackedScene) -> Node:
 	var new_view := scene.instantiate()
 	current_view.add_child.call_deferred(new_view)
 	map.hide_map()
+	stop_map_music()
 	
 	return new_view
 
@@ -62,6 +67,7 @@ func _show_map() -> void:
 		current_view.get_child(0).queue_free()
 	
 	map.show_map()
+	play_map_music()
 	map.unlock_next_rooms()
 
 
@@ -89,9 +95,7 @@ func _on_battle_room_entered(room : Room) -> void:
 
 	var enemy_manager : EnemyManager = battle_scene.get_node("EnemyManager") as EnemyManager
 	enemy_manager.enemy_group = battle_scene.battle_stats
-	
-	battle_scene.start_battle()
-	
+
 
 func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARD_SCENE) as BattleReward
@@ -117,9 +121,9 @@ func _on_map_exited(room : Room) -> void:
 		Room.Type.TOWN:
 			_on_town_entered(room)
 		Room.Type.ELITE:
-			_on_battle_room_entered(room) # TODO: might need to change later
+			_on_battle_room_entered(room)
 		Room.Type.BOSS:
-			_on_battle_room_entered(room) # TODO: might need to change later
+			_on_battle_room_entered(room)
 
 
 func _on_party_menu_button_pressed() -> void:
@@ -153,3 +157,17 @@ func _on_map_pressed() -> void:
 			map.show_map()
 			current_view.get_child(0).hide()
 			map.dragging = false
+
+
+func play_victory_music():
+	victory_music_player.play()
+
+func stop_victory_music():
+	victory_music_player.stop()
+
+
+func play_map_music():
+	map_music_player.play()
+
+func stop_map_music():
+	map_music_player.stop()

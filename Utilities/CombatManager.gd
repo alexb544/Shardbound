@@ -7,6 +7,8 @@ extends Node
 @onready var enemy_manager = get_node("../EnemyManager")
 @onready var shards_button : MenuButton = %Shards 
 @onready var attack_button : Button = %Attack
+@onready var battle_music : AudioStreamPlayer2D = get_node("../BattleMusic")
+@onready var sfx_player : AudioStreamPlayer = get_node("../SFX")
 
 var party : Array = []   # access party members in scene
 var enemies : Array = [] # access enemies in scene
@@ -34,7 +36,7 @@ func _ready():
 	set_turn_order()
 	current_turn()
 	battle_over = false
-	
+
 # Appends party/enemies stats.speed to turn_order[] & sorts them (high -> low)
 func set_turn_order():
 	turn_order = party + enemies
@@ -59,7 +61,7 @@ func current_turn():
 		target = target_random_party()
 		target.stats.current_health -= turn.stats.strength
 		await move_next_to_target(offset) # move to targeted party member
-		
+		sfx_player.play_sound(2, -5) # hit sound
 		target.modulate = Color(1,0,0,1)
 		target.play("hit") # plays "hit" animation for the attacked party member.
 		await get_tree().create_timer(.75).timeout # delays the "hit" animation 1 second before going back to "default"
@@ -73,8 +75,9 @@ func current_turn():
 		
 		end_turn()
 	
-	# Player turn: select action -> select target
-	elif turn.is_enemy == false && battle_over == false:
+	# Player turn: select action -> select target 
+	elif turn.is_enemy == false && battle_over == false: 
+		sfx_player.play_sound(0) # player's turn sound 
 		players_turn = true
 		waiting_for_input = true
 		enable_buttons()
@@ -143,6 +146,7 @@ func attack_enemy(enemy: AnimatedSprite2D):
 	await move_next_to_target(offset) # move to selected enemy
 
 	turn.play("attack") # plays attack animation
+	sfx_player.play_sound(3) # hit sound
 	enemy.stats.current_health -= turn.stats.strength
 
 	if enemy.stats.current_health > 0:
@@ -182,11 +186,13 @@ func move_next_to_target(offset: Vector2, duration: float = 0.4 ):
 
 func remove_unit(unit : AnimatedSprite2D):
 	if unit.is_enemy and unit.stats.current_health <= 0:
+		sfx_player.play_sound(1) # death sound
 		enemies.erase(unit)
 		turn_order.erase(unit)
 		unit.queue_free()
 
 	elif !unit.is_enemy and unit.stats.current_health <= 0:
+		sfx_player.play_sound(1) # death sound
 		party.erase(unit)
 		turn_order.erase(unit)
 		unit.queue_free()
@@ -204,6 +210,10 @@ func battle_status(): # checks if battle is over
 
 
 func party_victory():
+	battle_music.stop()
+	var run = get_tree().get_root().get_node("Run")
+	run.play_victory_music()
+
 	for unit in party:
 		unit.play("win_before")
 
@@ -256,6 +266,7 @@ func _on_shard_option_selected(i : int) -> void:
 		if i >= 0 and i < shard_list.size():
 			if shard_list[i].type == 0:
 				disable_buttons()
+				
 				var target_array : Array[Node]
 				target_array.append(enemies[enemy_index])
 
@@ -263,8 +274,8 @@ func _on_shard_option_selected(i : int) -> void:
 				await get_tree().create_timer(1).timeout
 
 				shard_list[i].play(target_array, turn.stats)
-				if i >= 0 and i < target_array.size() and target_array[i]:
-					remove_unit(target_array[i] as AnimatedSprite2D)
+				#if i >= 0 and i < target_array.size() and target_array[i]:
+				remove_unit(enemies[enemy_index] as AnimatedSprite2D)
 			
 			if shard_list[i].type == 1:
 				disable_buttons()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dtdqe5v3g6uin"]
+[gd_scene load_steps=27 format=3 uid="uid://dtdqe5v3g6uin"]
 
 [ext_resource type="PackedScene" uid="uid://d1dnnokw604gt" path="res://Scenes/map/map.tscn" id="1_2fcmb"]
 [ext_resource type="Script" path="res://Scenes/run/run.gd" id="1_vv28b"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bgteih626b36d" path="res://Graphics/map/treasure.png" id="7_oktae"]
 [ext_resource type="Texture2D" uid="uid://dcb82imadalll" path="res://Graphics/map/combat_boss.png" id="8_ji52s"]
 [ext_resource type="Texture2D" uid="uid://djnoca0e6mh75" path="res://Graphics/ui/setting.png" id="11_ikp8x"]
+[ext_resource type="AudioStream" uid="uid://dw1q6e1b837ra" path="res://Sounds/music/12-Fanfare.mp3" id="15_y0fyt"]
+[ext_resource type="AudioStream" uid="uid://vqyaeibcln3t" path="res://Sounds/music/15-Underneath the Rotting Pizza.mp3" id="16_nxis4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x064x"]
 draw_center = false
@@ -207,7 +209,6 @@ label_settings = SubResource("LabelSettings_fb0o1")
 [node name="CurrentView" type="Node" parent="."]
 
 [node name="DebugButtonsCL" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="DebugButtons" type="VBoxContainer" parent="DebugButtonsCL"]
 anchors_preset = 4
@@ -330,6 +331,16 @@ stretch_mode = 6
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 5
+
+[node name="VictoryMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_y0fyt")
+volume_db = -25.0
+
+[node name="MapMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("16_nxis4")
+volume_db = -20.0
 
 [connection signal="pressed" from="TopBar/BarItemsContainer/BarItems/PartyMenuButton" to="." method="_on_party_menu_button_pressed"]
 [connection signal="pressed" from="TopBar/BarItemsContainer/BarItems/MenuIcons/ButtonMap/Settings" to="." method="_on_settings_pressed"]

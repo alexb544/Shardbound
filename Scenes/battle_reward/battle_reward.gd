@@ -84,4 +84,6 @@ func party_instantiate() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	var run = get_tree().get_root().get_node("Run")
+	run.stop_victory_music()
 	Events.battle_reward_exited.emit()
